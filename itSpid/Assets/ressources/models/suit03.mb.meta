@@ -1,0 +1,122 @@
+fileFormatVersion: 2
+guid: b1309b6abca184cbab684029d0593808
+timeCreated: 1461678971
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: curveDefaultPaint
+    100002: curveDefaultPaint1
+    100004: curveDefaultPaint2
+    100006: curveDefaultPaint3
+    100008: curveDefaultPaint4
+    100010: curveDefaultPaint5
+    100012: curveDefaultPaint6
+    100014: curveDefaultPaint7
+    100016: curveDefaultPaint8
+    100018: handschuhe
+    100020: hemd
+    100022: jacke_hose
+    100024: kopf_maske
+    100026: krawadde
+    100028: schuhe
+    100030: //RootNode
+    400000: curveDefaultPaint
+    400002: curveDefaultPaint1
+    400004: curveDefaultPaint2
+    400006: curveDefaultPaint3
+    400008: curveDefaultPaint4
+    400010: curveDefaultPaint5
+    400012: curveDefaultPaint6
+    400014: curveDefaultPaint7
+    400016: curveDefaultPaint8
+    400018: handschuhe
+    400020: hemd
+    400022: jacke_hose
+    400024: kopf_maske
+    400026: krawadde
+    400028: schuhe
+    400030: //RootNode
+    2300000: handschuhe
+    2300002: hemd
+    2300004: jacke_hose
+    2300006: kopf_maske
+    2300008: krawadde
+    2300010: schuhe
+    3300000: handschuhe
+    3300002: hemd
+    3300004: jacke_hose
+    3300006: kopf_maske
+    3300008: krawadde
+    3300010: schuhe
+    4300000: handschuhe
+    4300002: krawadde
+    4300004: hemd
+    4300006: jacke_hose
+    4300008: schuhe
+    4300010: kopf_maske
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

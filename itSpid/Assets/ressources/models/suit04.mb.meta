@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 516c11cd982a14330b76677bc05b2595
+timeCreated: 1461685280
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: brust
+    100002: curveDefaultPaint
+    100004: curveDefaultPaint1
+    100006: curveDefaultPaint2
+    100008: curveDefaultPaint3
+    100010: curveDefaultPaint4
+    100012: curveDefaultPaint5
+    100014: curveDefaultPaint6
+    100016: curveDefaultPaint7
+    100018: curveDefaultPaint8
+    100020: hals
+    100022: handschuhe
+    100024: hemd
+    100026: ikHandle1
+    100028: ikHandle2
+    100030: ikHandle3
+    100032: ikHandle4
+    100034: ikHandle6
+    100036: ikHandle7
+    100038: ikHandle8
+    100040: jacke_hose
+    100042: kopf
+    100044: kopf_maske
+    100046: krawadde
+    100048: linke_hand
+    100050: linke_huefte
+    100052: linke_schulter
+    100054: linker_elbogen
+    100056: linker_fuss
+    100058: linkes_fussgelenk
+    100060: linkes_handgelenk
+    100062: linkes_knie
+    100064: main
+    100066: mario:left
+    100068: rechte_hand
+    100070: rechte_huefte
+    100072: rechte_schulter
+    100074: rechter_elbogen
+    100076: rechter_fuss
+    100078: rechtes_fussgelenk
+    100080: rechtes_handgelenk
+    100082: rechtes_knie
+    100084: schuhe
+    100086: //RootNode
+    400000: brust
+    400002: curveDefaultPaint
+    400004: curveDefaultPaint1
+    400006: curveDefaultPaint2
+    400008: curveDefaultPaint3
+    400010: curveDefaultPaint4
+    400012: curveDefaultPaint5
+    400014: curveDefaultPaint6
+    400016: curveDefaultPaint7
+    400018: curveDefaultPaint8
+    400020: hals
+    400022: handschuhe
+    400024: hemd
+    400026: ikHandle1
+    400028: ikHandle2
+    400030: ikHandle3
+    400032: ikHandle4
+    400034: ikHandle6
+    400036: ikHandle7
+    400038: ikHandle8
+    400040: jacke_hose
+    400042: kopf
+    400044: kopf_maske
+    400046: krawadde
+    400048: linke_hand
+    400050: linke_huefte
+    400052: linke_schulter
+    400054: linker_elbogen
+    400056: linker_fuss
+    400058: linkes_fussgelenk
+    400060: linkes_handgelenk
+    400062: linkes_knie
+    400064: main
+    400066: mario:left
+    400068: rechte_hand
+    400070: rechte_huefte
+    400072: rechte_schulter
+    400074: rechter_elbogen
+    400076: rechter_fuss
+    400078: rechtes_fussgelenk
+    400080: rechtes_handgelenk
+    400082: rechtes_knie
+    400084: schuhe
+    400086: //RootNode
+    4300000: handschuhe
+    4300002: krawadde
+    4300004: hemd
+    4300006: jacke_hose
+    4300008: schuhe
+    4300010: kopf_maske
+    9500000: //RootNode
+    13700000: handschuhe
+    13700002: hemd
+    13700004: jacke_hose
+    13700006: kopf_maske
+    13700008: krawadde
+    13700010: schuhe
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: main
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
