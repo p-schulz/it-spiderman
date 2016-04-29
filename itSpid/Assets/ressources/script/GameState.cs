@@ -25,7 +25,7 @@ public class GameState : MonoBehaviour {
 	public AudioClip music_gameover;
 
 	public AudioClip default_jump;
-	public AudioClip spin_jump;
+	public AudioClip punch;
 	public AudioClip swirl;
 	public AudioClip fireball;
 	public AudioClip pipe;
@@ -43,7 +43,7 @@ public class GameState : MonoBehaviour {
 	public fading fade;
 
 	public AudioSource music;
-	public AudioSource sfx;
+	public AudioSource sfx1;
 	public AudioSource sfx2;
 
 	public GameObject player;
@@ -142,7 +142,7 @@ public class GameState : MonoBehaviour {
 		model = GameObject.Find("Model");
 		cam = GameObject.Find("Main Camera");
 		music = GameObject.Find("Music").GetComponent<AudioSource>();
-		sfx = GameObject.Find("SFX1").GetComponent<AudioSource>();
+		sfx1 = GameObject.Find("SFX1").GetComponent<AudioSource>();
 		sfx2 = GameObject.Find("SFX2").GetComponent<AudioSource>();
 		fade = gameObject.GetComponent<fading>();
 		gui_controller = GameObject.Find("gui_handle");
@@ -200,21 +200,25 @@ public class GameState : MonoBehaviour {
 		return music;
 	}
 	public AudioSource getSFXSource() {
-		return sfx;
+		return sfx1;
 	}
 	public void setMusicSource(AudioSource s) {
 		music = s;
 	}
 	public void setSFXSource(AudioSource s) {
-		sfx = s;
+		sfx1 = s;
 	}
 	public void setMusic(AudioClip c) {
 		music.clip = c;
 	}
-	public void setSFX(AudioClip c) {
-		sfx.clip = c;
+	public void setSFX1(AudioClip c) {
+		sfx1.clip = c;
 	}
-	public void levelUnlocked(int i) {
+    public void setSFX2(AudioClip c)
+    {
+        sfx2.clip = c;
+    }
+    public void levelUnlocked(int i) {
 		levels[i] = true;
 	}
 	public void levelCleared(int i) {

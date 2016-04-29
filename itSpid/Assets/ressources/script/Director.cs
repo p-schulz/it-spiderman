@@ -85,8 +85,8 @@ public class Director : MonoBehaviour {
 			if(Input.anyKey && !pressed_start) {
 				gs.writeToConsole("loading prolog...");
 				pressed_start = true;
-				gs.sfx.clip = gs.pass_mark;
-				gs.sfx.Play();
+				gs.sfx2.clip = gs.pass_mark;
+				gs.sfx2.Play();
 				startMe.SetActive(false);
 				gs.setNextLevel(1);
 				gs.fade.FadeOutTransition(1);

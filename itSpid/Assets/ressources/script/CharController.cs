@@ -37,8 +37,8 @@ public class CharController : MonoBehaviour {
 		cam.GetComponent<SmoothCamera2D>().active = false;
         through_pipe = true;
         model.GetComponent<BoxCollider>().enabled = false;
-        gs.sfx.clip = gs.pipe;
-        gs.sfx.Play();
+        gs.sfx2.clip = gs.pipe;
+        gs.sfx2.Play();
         yield return new WaitForSeconds(0.7f);
         //through_pipe = false;
         //gs.setCurrentLevel(2);
@@ -80,7 +80,7 @@ public class CharController : MonoBehaviour {
 		//}
 
 		// movement in level
-		if (gs.getCurrentLevel() > 2) {
+		if (gs.getCurrentLevel() != -1) {
 			if(running && !paused && !lost && !through_pipe) {
 				if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.D))
                     model.transform.Translate(Vector3.forward * (0.05f + speed));
@@ -94,28 +94,28 @@ public class CharController : MonoBehaviour {
                     model.transform.Translate(Vector3.forward * 0.05f);
                 if (Input.GetKey(KeyCode.A))
                     model.transform.rotation = Quaternion.Euler(Vector3.up * 270);
-                if (Input.GetKey(KeyCode.K) || Input.GetKey(KeyCode.L))
+                if (Input.GetKey(KeyCode.K))
                     model.transform.Translate(Vector3.up * 0.159f);
 				if (Input.GetKey(KeyCode.S))
                     model.transform.Translate(Vector3.down * 0.1f);
 				if (Input.GetKeyDown(KeyCode.K)) {
-					gs.setSFX(gs.default_jump);
-					gs.sfx.Play();
+					gs.setSFX1(gs.default_jump);
+					gs.sfx1.Play();
 				}
 				if (Input.GetKeyDown(KeyCode.L)) {
-					gs.setSFX(gs.spin_jump);
-					gs.sfx.Play();
+					gs.setSFX2(gs.punch);
+					gs.sfx2.Play();
 				}
-				if (Input.GetKey(KeyCode.L))
-                    model.transform.Rotate(Vector3.up * Time.deltaTime * rotFact);
+				//if (Input.GetKey(KeyCode.L))
+                //    model.transform.Rotate(Vector3.up * Time.deltaTime * rotFact);
 			}
 
 			// pause and quit (space)
 			if (Input.GetKeyDown(KeyCode.P) && !lost) {
                 switch (paused) { 
 					case true:
-						gs.setSFX(gs.press_pause);
-						gs.sfx.Play();
+						gs.setSFX2(gs.press_pause);
+						gs.sfx2.Play();
 						gs.getMusicSource().UnPause();
 						paused = false;
 						gs.writeToConsole("game resumed");
@@ -123,8 +123,8 @@ public class CharController : MonoBehaviour {
 						Time.timeScale = 1;
 						break;
 					case false:
-						gs.setSFX(gs.press_pause);
-						gs.sfx.Play();
+						gs.setSFX2(gs.press_pause);
+						gs.sfx2.Play();
 						gs.getMusicSource().Pause();
 						paused = true;
 						gs.writeToConsole("game paused");
@@ -134,8 +134,8 @@ public class CharController : MonoBehaviour {
 				}
 			}
             if (Input.GetKey(KeyCode.Space) && paused && !lost) {
-                gs.setSFX(gs.press_pause);
-				gs.sfx.Play();
+                gs.setSFX2(gs.press_pause);
+				gs.sfx2.Play();
                 Time.timeScale = 1;
                 gs.fade.FadeOutTransition(2);
             }
