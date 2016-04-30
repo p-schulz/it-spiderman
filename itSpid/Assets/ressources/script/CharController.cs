@@ -13,6 +13,7 @@ public class CharController : MonoBehaviour {
 	public float speed = 0.005f;
     public bool finish;
     public bool running;
+    public bool punching = false;
 
     int current_level;
     int next_level;
@@ -67,6 +68,12 @@ public class CharController : MonoBehaviour {
         running = true;
     }
 
+    IEnumerator punchopuncho() {
+        punching = true;
+        yield return new WaitForSeconds(1);
+        punching = false;
+    }
+
 	public void triggerGameOver() {
     	StartCoroutine("lostLife");
     }
@@ -103,6 +110,7 @@ public class CharController : MonoBehaviour {
 					gs.sfx1.Play();
 				}
 				if (Input.GetKeyDown(KeyCode.L)) {
+                    StartCoroutine("punchopuncho");
 					gs.setSFX2(gs.punch);
 					gs.sfx2.Play();
 				}
