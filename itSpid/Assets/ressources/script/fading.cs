@@ -28,6 +28,7 @@ public class fading : MonoBehaviour {
 		game_state_manager = GameObject.Find("GameState");
 		gs = game_state_manager.GetComponent<GameState>();
 		fade_black = GameObject.Find("fader");
+		DontDestroyOnLoad(fade_black);
 
 		if(blend_on_start) {
 			alpha_fade.a = 0.0f; 
@@ -85,6 +86,7 @@ public class fading : MonoBehaviour {
 			gs.music.Stop();
 			gs.setCurrentLevel(next_level);
 			SceneManager.LoadScene(next_level);
+			gs.initObjects();
 			fadeout = false;
             //gs.levelChanged();
 		}

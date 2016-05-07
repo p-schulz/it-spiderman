@@ -75,7 +75,6 @@ public class Director : MonoBehaviour {
 
 	void Update () {
 		// mainmenu
-		// TODO: joints/ropes to title model, drop from ceiling (physics)
 		if(gs.getCurrentLevel() == 0) {
 			start_timer += Time.deltaTime;
 			if(start_timer >= 12.0f && !started) {
@@ -112,33 +111,6 @@ public class Director : MonoBehaviour {
 					message.SetActive(false);
 					gs.setNextLevel(2);
 					gs.fade.FadeOutTransition(2);
-				}
-			}
-		}
-
-		// map
-		if(gs.getCurrentLevel() == 2) {
-            if (message == null)
-                message = GameObject.Find("Start");
-			if(!map_loaded) {
-				message = GameObject.Find("Start");
-				message.SetActive(false);
-				map_loaded = true;
-				gs.music.clip = gs.music_overworld;
-				gs.music.Play();
-				gs.fade.fadein = true;
-				gs.fade.blend_on_start = false;
-				gs.fade.ResetFade();
-				gs.setNextLevel(3);
-                started = false;
-            }
-			if(map_loaded) {
-				if(Input.GetKeyDown(KeyCode.Return)) {
-					//lm.StartLevel(3);
-                    gs.writeToConsole("loading level " + gs.getCurrentLevel().ToString());
-                    StartCoroutine("loadLevel");
-					gs.fade.FadeOutTransition(3);
-                    started = false;
 				}
 			}
 		}

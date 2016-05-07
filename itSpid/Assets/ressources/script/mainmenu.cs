@@ -1,58 +1,37 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class mainmenu : MonoBehaviour {
 
-	public GameObject cam;
-	public GameObject startMe;
-	public GameObject schulzi;
-	public GameObject fadeBlack;
-	public AudioClip startClip;
+	public GameObject gamestate;
+	public GameState gs;
+	public GameObject[] arrows;
+	public int item = 0;
 
-	Color fade;
-	float pressStart = 0.0f;
-	bool started = false;
-	bool pressed = false;
-
-	IEnumerator company() {
-		yield return new WaitForSeconds(1);
-		schulzi.SetActive(true);
-		fadeBlack.GetComponent<AudioSource>().Play();
-		yield return new WaitForSeconds(1.5f);
-		schulzi.SetActive(false);
-		yield return new WaitForSeconds(0.5f);
-		GameObject.Find("GameState").GetComponent<GameState>().music.Play();
-		yield return new WaitForSeconds(0.5f);
-		cam.GetComponent<fading>().enabled = true;
+	public void changeItem(int i) {
+		arrows[item].SetActive(false);
+		item = Mathf.Abs((item + i) % arrows.Length);
+		arrows[item].SetActive(true);
 	}
 
-	void Start () {
-		GameObject.Find("GameState").GetComponent<GameState>().music.clip = GameObject.Find("GameState").GetComponent<GameState>().music_intro;
-		// show presenting logo
-		fade.a = 1.0f;
-		fade.r = 0;
-		fade.g = 0;
-		fade.b = 0;
-		fadeBlack.GetComponent<Image>().color = fade;
-		cam.GetComponent<fading>().enabled = false;
-		StartCoroutine("company");
+	void Start() {
+		gamestate = GameObject.Find("GameState");
+		gs = gamestate.GetComponent<GameState>();
+
+		for(int i = 0; i < 3; i++)
+			arrows[i].SetActive(false);
+		arrows[item].SetActive(true);
 	}
 
-	// Update is called once per frame
-	void Update () {
-		pressStart += Time.deltaTime;
-		if(pressStart >= 12.0f && !started) {
-			startMe.SetActive(true);
-			started = true;
-		}
-
-		if(Input.anyKey && !pressed) {
-			pressed = true;
-			fadeBlack.GetComponent<AudioSource>().clip = startClip;
-			fadeBlack.GetComponent<AudioSource>().Play();
-			startMe.SetActive(false);
-			GameObject.Find("GameState").GetComponent<GameState>().fade.FadeOutTransition(1);
+	void Update() {
+		if(Input.GetKeyDown(KeyCode.UpArrow))
+			changeItem(-1);
+		if(Input.GetKeyDown(KeyCode.DownArrow))
+			changeItem(1);
+		if(Input.GetKeyDown(KeyCode.Return) && item == 0) {
+			gs.fade.FadeOutTransition(1);
 		}
 	}
 }

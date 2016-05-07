@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class CharController : MonoBehaviour {
@@ -114,6 +115,8 @@ public class CharController : MonoBehaviour {
 					gs.setSFX2(gs.punch);
 					gs.sfx2.Play();
 				}
+				if (Input.GetKeyDown(KeyCode.Escape))
+					gs.fade.FadeOutTransition(0);
 				//if (Input.GetKey(KeyCode.L))
                 //    model.transform.Rotate(Vector3.up * Time.deltaTime * rotFact);
 			}

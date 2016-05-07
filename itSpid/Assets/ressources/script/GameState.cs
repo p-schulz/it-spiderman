@@ -99,8 +99,8 @@ public class GameState : MonoBehaviour {
 	
 
 	void Start () {
-		DontDestroyOnLoad(this);
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(this);
+		//DontDestroyOnLoad(gameObject);
 		levels_total = 2;
 		start = 0;
 		intro = 1;
