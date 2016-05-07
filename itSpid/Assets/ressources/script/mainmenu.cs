@@ -9,10 +9,12 @@ public class mainmenu : MonoBehaviour {
 	public GameState gs;
 	public GameObject[] arrows;
 	public int item = 0;
+    public int incr = 0;
 
 	public void changeItem(int i) {
 		arrows[item].SetActive(false);
-		item = Mathf.Abs((item + i) % arrows.Length);
+        incr = incr + i;
+		item = Mathf.Abs((incr) % arrows.Length);
 		arrows[item].SetActive(true);
 	}
 
