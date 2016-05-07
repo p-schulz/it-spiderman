@@ -38,20 +38,20 @@ public class Director : MonoBehaviour {
     IEnumerator cut01()
     {
         switchCam(cam);
-        gs.writeToConsole("cut immident (7)");
-        yield return new WaitForSeconds(7);
+        gs.writeToConsole("cut immident (8)");
+        yield return new WaitForSeconds(8);
         switchCam(cam2);
         subtitle.GetComponent<Text>().text = "Captain Maximo, what are you doing here?";
-        gs.writeToConsole("cut immident (5)");
-        yield return new WaitForSeconds(5);
+        gs.writeToConsole("cut immident (6)");
+        yield return new WaitForSeconds(6);
         switchCam(cam3);
         subtitle.GetComponent<Text>().text = "Look Italian Spiderman, with the formula \n there is now two of me...";
-        gs.writeToConsole("cut immident (3)");
-        yield return new WaitForSeconds(3);
+        gs.writeToConsole("cut immident (4)");
+        yield return new WaitForSeconds(4);
         switchCam(cam2);
         subtitle.GetComponent<Text>().text = "You evil monster!";
-        gs.writeToConsole("cut immident (2)");
-        yield return new WaitForSeconds(2);
+        gs.writeToConsole("cut immident (3)");
+        yield return new WaitForSeconds(3);
         switchCam(cam);
         subtitle.GetComponent<Text>().text = "To be continued...";
     }
