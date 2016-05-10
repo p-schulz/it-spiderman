@@ -95,14 +95,14 @@ public class CharController : MonoBehaviour {
 		// movement in level
 		if (gs.getCurrentLevel() != -1) {
 			if(running && !paused && !lost && !through_pipe) {
-				if (Input.GetKey(KeyCode.D)) {
+				if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.J)) {
                     model.transform.Translate(Vector3.forward * 0.05f);
 					anim.Play("walking_inPlace");
 				}
                 if (Input.GetKey(KeyCode.D))
                     model.transform.rotation = Quaternion.Euler(Vector3.up * 90);
                 
-                if (Input.GetKey(KeyCode.A)) {
+                if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.J)) {
 					anim.Play("walking_inPlace");
                     model.transform.Translate(Vector3.forward * 0.05f);
                 }
