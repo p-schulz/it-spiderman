@@ -10,6 +10,8 @@ public class CharController : MonoBehaviour {
 	public GameObject cam;
 	public GameState gs;
 
+	public Animation anim;
+
     public float rotFact = 3600.0f;
 	public float speed = 0.005f;
     public bool finish;
@@ -22,6 +24,7 @@ public class CharController : MonoBehaviour {
     bool through_pipe;
     bool paused;
     bool lost;
+    bool jumping;
 
 	void Start () {
 		game_state_manager = GameObject.Find("GameState");
@@ -29,7 +32,6 @@ public class CharController : MonoBehaviour {
 		model = GameObject.Find("Model");
 		cam = GameObject.Find("Main Camera");
 		gs = game_state_manager.GetComponent<GameState>();
-
 		// dev
 		lost = false;
 		running = true;
@@ -74,6 +76,11 @@ public class CharController : MonoBehaviour {
         yield return new WaitForSeconds(1);
         punching = false;
     }
+    IEnumerator jump() {
+    	jumping = true;
+    	yield return new WaitForSeconds(1);
+    	jumping = false;
+    }
 
 	public void triggerGameOver() {
     	StartCoroutine("lostLife");
@@ -82,30 +89,44 @@ public class CharController : MonoBehaviour {
 	void Update () {
 		paused = gs.getPause();
 
-		// movement on map
-		//if (gs.getCurrentLevel() == 2) {
-
-		//}
+		if (jumping)
+            model.transform.Translate(Vector3.forward * (0.05f + speed));
 
 		// movement in level
 		if (gs.getCurrentLevel() != -1) {
 			if(running && !paused && !lost && !through_pipe) {
-				if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.D))
-                    model.transform.Translate(Vector3.forward * (0.05f + speed));
-				if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.A))
-                    model.transform.Translate(Vector3.forward * (0.05f + speed));
-				if (Input.GetKey(KeyCode.D))
+				if (Input.GetKey(KeyCode.D)) {
                     model.transform.Translate(Vector3.forward * 0.05f);
+					anim.Play("walking_inPlace");
+				}
                 if (Input.GetKey(KeyCode.D))
                     model.transform.rotation = Quaternion.Euler(Vector3.up * 90);
-                if (Input.GetKey(KeyCode.A))
+                
+                if (Input.GetKey(KeyCode.A)) {
+					anim.Play("walking_inPlace");
                     model.transform.Translate(Vector3.forward * 0.05f);
+                }
                 if (Input.GetKey(KeyCode.A))
                     model.transform.rotation = Quaternion.Euler(Vector3.up * 270);
-                if (Input.GetKey(KeyCode.K))
+                
+                if (Input.GetKey(KeyCode.K)) {
                     model.transform.Translate(Vector3.up * 0.159f);
-				if (Input.GetKey(KeyCode.S))
+                    jumping = true;
+                    StartCoroutine("jump");
+					anim.Play("running_jump");
+                }
+				if (Input.GetKey(KeyCode.S)) {
                     model.transform.Translate(Vector3.down * 0.1f);
+				}
+				if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.D)) {
+                    model.transform.Translate(Vector3.forward * (0.05f + speed));
+					anim.Play("running_inPlace");
+				}
+
+				if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.A)) {
+                    model.transform.Translate(Vector3.forward * (0.05f + speed));
+					anim.Play("running_inPlace");
+				}
 				if (Input.GetKeyDown(KeyCode.K)) {
 					gs.setSFX1(gs.default_jump);
 					gs.sfx1.Play();
@@ -114,6 +135,13 @@ public class CharController : MonoBehaviour {
                     StartCoroutine("punchopuncho");
 					gs.setSFX2(gs.punch);
 					gs.sfx2.Play();
+					anim.Play("kicking");
+				}
+				if (Input.GetKeyDown(KeyCode.I)) {
+                    StartCoroutine("punchopuncho");
+					gs.setSFX2(gs.punch);
+					gs.sfx2.Play();
+					anim.Play("uppercut");
 				}
 				if (Input.GetKeyDown(KeyCode.Escape))
 					gs.fade.FadeOutTransition(0);
