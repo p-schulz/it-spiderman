@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/asteroid.unity
+- path: Assets/trailer.unity
   isLoaded: 1
   isActive: 1

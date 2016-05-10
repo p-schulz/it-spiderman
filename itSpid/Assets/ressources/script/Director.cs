@@ -54,6 +54,8 @@ public class Director : MonoBehaviour {
         yield return new WaitForSeconds(3);
         switchCam(cam);
         subtitle.GetComponent<Text>().text = "To be continued...";
+        yield return new WaitForSeconds(12);
+        gs.fade.FadeOutTransition(0);
     }
 
     IEnumerator company() {
