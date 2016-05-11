@@ -6,9 +6,7 @@ public class cutscene_anim_itspid : MonoBehaviour {
 	public Animation anim;
 	public AnimationClip animation01;
 
-
 	public bool anim01;
-
 
 	void Update () {
 	
@@ -18,5 +16,6 @@ public class cutscene_anim_itspid : MonoBehaviour {
 			anim.clip = animation01;
 			anim.Play();
 		}
+
 	}
 }

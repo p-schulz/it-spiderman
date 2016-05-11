@@ -25,6 +25,7 @@ public class CharController : MonoBehaviour {
     bool paused;
     bool lost;
     bool jumping;
+    bool hitting;
 
 	void Start () {
 		game_state_manager = GameObject.Find("GameState");
@@ -71,15 +72,17 @@ public class CharController : MonoBehaviour {
         running = true;
     }
 
-    IEnumerator punchopuncho() {
-        punching = true;
-        yield return new WaitForSeconds(1);
-        punching = false;
-    }
     IEnumerator jump() {
     	jumping = true;
-    	yield return new WaitForSeconds(1);
+    	yield return new WaitForSeconds(0.5f);
     	jumping = false;
+    }
+    IEnumerator hit() {
+        hitting = true;
+        punching = true;
+        yield return new WaitForSeconds(0.8f);
+        hitting = false;
+        punching = false;
     }
 
 	public void triggerGameOver() {
@@ -89,58 +92,72 @@ public class CharController : MonoBehaviour {
 	void Update () {
 		paused = gs.getPause();
 
-		if (jumping)
-            model.transform.Translate(Vector3.forward * (0.05f + speed));
-
 		// movement in level
 		if (gs.getCurrentLevel() != -1) {
 			if(running && !paused && !lost && !through_pipe) {
-				if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.J)) {
+
+                if (!hitting && !jumping && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.K) && !Input.GetKey(KeyCode.L) && !Input.GetKey(KeyCode.I))
+                    anim.Play("weight_shift");
+                if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.J) && (jumping || hitting))
+                    model.transform.Translate(Vector3.forward * 0.05f);
+                if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.J) && (jumping || hitting))
+                    model.transform.Translate(Vector3.forward * 0.05f);
+                if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.D) && (jumping || hitting))
+                    model.transform.Translate(Vector3.forward * (0.05f + speed));
+                if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.A) && (jumping || hitting))
+                    model.transform.Translate(Vector3.forward * (0.05f + speed));
+
+                if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.J) && !jumping && !hitting) {
                     model.transform.Translate(Vector3.forward * 0.05f);
 					anim.Play("walking_inPlace");
 				}
-                if (Input.GetKey(KeyCode.D))
-                    model.transform.rotation = Quaternion.Euler(Vector3.up * 90);
-                
-                if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.J)) {
+                if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.J) && !jumping && !hitting) {
 					anim.Play("walking_inPlace");
                     model.transform.Translate(Vector3.forward * 0.05f);
                 }
+
                 if (Input.GetKey(KeyCode.A))
                     model.transform.rotation = Quaternion.Euler(Vector3.up * 270);
-                
-                if (Input.GetKey(KeyCode.K)) {
+                if (Input.GetKey(KeyCode.D))
+                    model.transform.rotation = Quaternion.Euler(Vector3.up * 90);
+
+                if (Input.GetKey(KeyCode.K))
                     model.transform.Translate(Vector3.up * 0.159f);
-                    jumping = true;
-                    StartCoroutine("jump");
-					anim.Play("running_jump");
-                }
+
 				if (Input.GetKey(KeyCode.S)) {
                     model.transform.Translate(Vector3.down * 0.1f);
 				}
-				if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.D)) {
+
+				if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.D) && !jumping && !hitting) {
+                    model.transform.Translate(Vector3.forward * (0.05f + speed));
+					anim.Play("running_inPlace");
+				}
+				if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.A) && !jumping && !hitting) {
                     model.transform.Translate(Vector3.forward * (0.05f + speed));
 					anim.Play("running_inPlace");
 				}
 
-				if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.A)) {
-                    model.transform.Translate(Vector3.forward * (0.05f + speed));
-					anim.Play("running_inPlace");
-				}
 				if (Input.GetKeyDown(KeyCode.K)) {
-					gs.setSFX1(gs.default_jump);
+                    //jumping = true;
+                    StartCoroutine("jump");
+                    anim["jump"].speed = 2;
+                    anim.Play("jump");
+                    gs.setSFX1(gs.default_jump);
 					gs.sfx1.Play();
 				}
-				if (Input.GetKeyDown(KeyCode.L)) {
-                    StartCoroutine("punchopuncho");
+				if (Input.GetKeyDown(KeyCode.L) && !jumping && !hitting) {
+                    //StartCoroutine("punchopuncho");
 					gs.setSFX2(gs.punch);
 					gs.sfx2.Play();
+                    StartCoroutine("hit");
+                    anim["kicking"].speed = 2;
 					anim.Play("kicking");
 				}
-				if (Input.GetKeyDown(KeyCode.I)) {
-                    StartCoroutine("punchopuncho");
+				if (Input.GetKeyDown(KeyCode.I) && !jumping && !hitting) {
+                    //StartCoroutine("punchopuncho");
 					gs.setSFX2(gs.punch);
 					gs.sfx2.Play();
+                    StartCoroutine("hit");
 					anim.Play("uppercut");
 				}
 				if (Input.GetKeyDown(KeyCode.Escape))
