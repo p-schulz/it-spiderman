@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/start.unity
+- path: Assets/intro_casino.unity
   isLoaded: 1
   isActive: 1
