@@ -16,12 +16,16 @@ public class fading : MonoBehaviour {
 	public Color alpha_fade;
 
 	public int next_level;
-	public float fade_in_speed = 0.03f;
+    public float fade_in_delay = 0.5f;
+    public float fade_in_speed = 0.03f;
 	public float fade_out_speed = 0.1f;
 
 	public bool blend_on_start;
-	public bool fadein = true;
+    public bool fadein = true;
 	public bool fadeout = false;
+
+    bool in_delay = true;
+    bool delay_finished = false;
 
 
 	void Start () {
@@ -40,6 +44,15 @@ public class fading : MonoBehaviour {
 		}
 	}
 
+    IEnumerator FadeInDelay()
+    {
+        in_delay = false;
+        gs.writeToConsole("Delay for fade-in: " + fade_in_delay + " seconds");
+        yield return new WaitForSeconds(fade_in_delay);
+        delay_finished = true;
+        gs.writeToConsole("Fading done!");
+    }
+
 	public void ResetFade() {
 		game_state_manager = GameObject.Find("GameState");
 		gs = game_state_manager.GetComponent<GameState>();
@@ -53,7 +66,7 @@ public class fading : MonoBehaviour {
 		if(fadein) {
 			alpha_fade.a = 1.0f;
 			fade_black.GetComponent<Image>().color = alpha_fade;
-		}
+        }
 	}
 
 	public void FadeOut() {
@@ -68,7 +81,10 @@ public class fading : MonoBehaviour {
 
 	void Update () {
 
-		if(fadein && alpha_fade.a > 0) {
+        if(!delay_finished && in_delay)
+            StartCoroutine(FadeInDelay());
+
+        if (fadein && alpha_fade.a > 0 && delay_finished) {
 			alpha_fade.a -= fade_in_speed;
 			fade_black.GetComponent<Image>().color = alpha_fade;
 		}
@@ -88,7 +104,6 @@ public class fading : MonoBehaviour {
 			SceneManager.LoadScene(next_level);
 			gs.initObjects();
 			fadeout = false;
-            //gs.levelChanged();
 		}
 	}
 }

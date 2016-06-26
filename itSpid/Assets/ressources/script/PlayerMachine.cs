@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/*
- * Example implementation of the SuperStateMachine and SuperCharacterController
- */
 [RequireComponent(typeof(SuperCharacterController))]
 [RequireComponent(typeof(PlayerInputController))]
 public class PlayerMachine : SuperStateMachine {
@@ -12,12 +9,13 @@ public class PlayerMachine : SuperStateMachine {
 
     public float WalkSpeed = 4.0f;
     public float WalkAcceleration = 30.0f;
+    public float RunSpeed = 8.0f;
     public float JumpAcceleration = 5.0f;
     public float JumpHeight = 3.0f;
     public float Gravity = 25.0f;
 
     // Add more states by comma separating them
-    enum PlayerStates { Idle, Walk, Jump, Fall }
+    enum PlayerStates { Idle, Walk, Jump, Fall, Punch, Run }
 
     private SuperCharacterController controller;
 
@@ -37,7 +35,7 @@ public class PlayerMachine : SuperStateMachine {
         controller = gameObject.GetComponent<SuperCharacterController>();
 		
 		// Our character's current facing direction, planar to the ground
-        lookDirection = transform.forward;
+        lookDirection = -1 * transform.right;
 
         // Set our currentState to idle on startup
         currentState = PlayerStates.Idle;
@@ -45,8 +43,9 @@ public class PlayerMachine : SuperStateMachine {
 
     protected override void EarlyGlobalSuperUpdate()
     {
-		// Rotate out facing direction horizontally based on mouse input
+        // Rotate out facing direction horizontally based on mouse input
         lookDirection = Quaternion.AngleAxis(input.Current.MouseInput.x, controller.up) * lookDirection;
+        //lookDirection = moveDirection;
         // Put any code in here you want to run BEFORE the state's update function.
         // This is run regardless of what state you're in
     }
