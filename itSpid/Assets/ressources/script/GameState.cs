@@ -40,6 +40,10 @@ public class GameState : MonoBehaviour {
 	public GameObject gui_score;
 	public GameObject gui_stars;
 	public GameObject gui_banner;
+    public Text statistics;
+    public Text finish;
+    public Text subtext;
+    public Slider power;
 	public fading fade;
 
 	public AudioSource music;
@@ -49,8 +53,11 @@ public class GameState : MonoBehaviour {
 	public GameObject player;
 	public GameObject model;
 	public GameObject cam;
+    public basic_behaviour last_enemy;
+    public int health = 100;
+    public int enemies = 0;
 
-	Console console;
+    Console console;
 
 	bool[] levels;
 	bool[] levels_cleared;
@@ -63,7 +70,7 @@ public class GameState : MonoBehaviour {
 	// 3 = blue
 
 	bool init;
-
+    bool cleared;
 	bool running;
 	bool through_pipe;
 	bool paused;
@@ -96,6 +103,7 @@ public class GameState : MonoBehaviour {
 	public float level_start;
 	public float level_end = 58;
 	int time_left;
+    bool endscene;
 	
 
 	void Start () {
@@ -120,7 +128,29 @@ public class GameState : MonoBehaviour {
 		console.write("scripts initialized");
 		init = true;
 		initObjects();
+        finish.enabled = false;
+        statistics.enabled = false;
 	}
+
+    IEnumerator levelFinished()
+    {
+        music.volume = 0.55f;
+        music.clip = music_gameover;
+        music.Play();
+        subtext.enabled = false;
+        if (player.GetComponent<CharController>().lost)
+            power.value = 0;
+        yield return new WaitForSeconds(2);
+        cleared = true;
+        statistics.enabled = true;
+        statistics.text += "\n Tempi erado: " + (int) Time.timeSinceLevelLoad + " secundas"
+                        + "\n Vaffanculos silenci: " + enemies;
+        yield return new WaitForSeconds(10);
+        if (!player.GetComponent<CharController>().lost)
+            fade.FadeOutTransition(2);
+        else
+            fade.FadeOutTransition(0);
+    }
 
 	IEnumerator gameIsOver() {
 		running = false;
@@ -312,8 +342,15 @@ public class GameState : MonoBehaviour {
 	}
 	
 	void Update () {
+        if(last_enemy.getState() && !endscene) {
+            endscene = true;
+            finish.enabled = true;
+            StartCoroutine("levelFinished");
+        }
+        if(endscene && finish.fontSize < 76)
+            finish.fontSize++;
 
-		if(init && running) {	
+		if (init && running) {	
 			// update scores
     	    gui_lifes.GetComponent<Text>().text = "x " + lifes.ToString();
 			gui_coins.GetComponent<Text>().text = "x " + coins.ToString();

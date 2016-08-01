@@ -35,5 +35,9 @@ public class mainmenu : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Return) && item == 0) {
 			gs.fade.FadeOutTransition(1);
 		}
+        if(Input.GetKeyDown(KeyCode.Return) && item == 2)
+        {
+            Application.Quit();
+        }
 	}
 }

@@ -21,8 +21,8 @@ public class Console : MonoBehaviour {
 	void Start () {
 		game_state_manager = GameObject.Find("GameState");
 		status = game_state_manager.GetComponent<GameState>();
-		history = "Super Mario World 3D development build 0.11\n"
-				+ "(c) Patrick Schulz, 2015\n"
+		history = "Italian Spiderman development build 0.7.28\n"
+				+ "(c) Patrick Schulz, Jens Schindel, Fabian Gorschlüter - 2015\n"
 				+ "-------------------------------------------\n"
 				+ System.DateTime.Now.ToString() + "\n"
 				+ SystemInfo.operatingSystem + "\n"
@@ -42,7 +42,7 @@ public class Console : MonoBehaviour {
 			scrollPosition = new Vector2(0, Mathf.Infinity);
 		}
 
-		if (Input.GetKeyDown(KeyCode.Escape) && active) {
+		if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.C) && active) {
 			active = false;
 		}
 		

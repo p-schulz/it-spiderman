@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CharController : MonoBehaviour {
 
@@ -9,8 +10,11 @@ public class CharController : MonoBehaviour {
 	public GameObject model;
 	public GameObject cam;
 	public GameState gs;
+    public basic_behaviour last_enemy;
+    public Text finished;
+    public pauseMenu menu;
 
-	public Animation anim;
+    public Animation anim;
 
     public float rotFact = 3600.0f;
     public float walkspeed = 0.045f;
@@ -18,14 +22,16 @@ public class CharController : MonoBehaviour {
     public bool finish;
     public bool running;
     public bool punching = false;
+    public bool hitting;
+    public bool lost;
 
     int current_level;
     int next_level;
 
+    float distToGround;
+
     bool paused;
-    bool lost;
     bool jumping;
-    bool hitting;
     bool turning;
     bool direction; // 0 = left, 1 = right
 
@@ -38,21 +44,26 @@ public class CharController : MonoBehaviour {
 		// dev
 		lost = false;
 		running = true;
-	}
+        distToGround = model.GetComponent<Collider>().bounds.extents.y;
+    }
 
 	IEnumerator lostLife() {
-		cam.GetComponent<SmoothCamera2D>().active = false;	
+		cam.GetComponent<SmoothCamera2D>().active = false;
+        last_enemy.defeated = true;
         running = false;
         gs.setRunning(false);
-		gs.music.Stop();
-		gs.music.clip = gs.music_lost;
-		gs.music.Play();
+		//gs.music.Stop();
+        //gs.music.volume = 0.55f;
+        //gs.music.clip = gs.music_gameover;
+	    //gs.music.Play();
 		model.transform.Translate(Vector3.up * Time.deltaTime);
     	yield return new WaitForSeconds(1);
     	model.GetComponent<CapsuleCollider>().enabled = false;
-    	yield return new WaitForSeconds(2.5f);
-		gs.loseLife();
+        yield return new WaitForSeconds(5.5f);
+        gs.loseLife();
+        gs.fade.FadeOutTransition(0);
     }
+
     IEnumerator finishSequence() {
         gs.music.Stop();
         gs.music.volume = 1;
@@ -75,14 +86,38 @@ public class CharController : MonoBehaviour {
         hitting = false;
         punching = false;
     }
+    IEnumerator gotHit()
+    {
+        gs.setSFX2(gs.punch);
+        gs.sfx2.Play();
+        lost = true;
+        anim["knocked_down"].speed = 1.5f;
+        anim.Play("knocked_down");
+        finished.text = "TERMINADO";
+        yield return new WaitForSeconds(2);
+        triggerGameOver();
+    }
     IEnumerator turn() {
     	turning = true;
     	yield return new WaitForSeconds(0.75f);
     	turning = false;
     }
-
+    public void unpause()
+    {
+        gs.pause(false);
+        paused = false;
+    }
+    public bool getPause()
+    {
+        return paused;
+    }
 	public void triggerGameOver() {
     	StartCoroutine("lostLife");
+    }
+
+    bool isGrounded()
+    {
+        return Physics.Raycast(model.transform.position, -Vector3.up, distToGround + 0.1f);
     }
 
 	void Update () {
@@ -137,14 +172,15 @@ public class CharController : MonoBehaviour {
                 if (Input.GetKey(KeyCode.D) && !turning)
                     model.transform.rotation = Quaternion.Euler(Vector3.up * 90);
 
-                if (Input.GetKey(KeyCode.K))
-                    model.transform.Translate(Vector3.up * 0.159f);
-
+                if (Input.GetKeyDown(KeyCode.K) && isGrounded())
+                    model.GetComponent<Rigidbody>().AddForce(Vector3.up * 250);
+                    //model.transform.Translate(Vector3.up * 0.159f);
+                /*
 				if (Input.GetKey(KeyCode.S)) {
                     model.transform.Translate(Vector3.down * 0.1f);
-				}
+				}*/
 
-				if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.D) && !jumping && !hitting && !turning) {
+                if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.D) && !jumping && !hitting && !turning) {
                     model.transform.Translate(Vector3.forward * (walkspeed + speed));
 					anim.Play("running_inPlace");
 				}
@@ -177,10 +213,14 @@ public class CharController : MonoBehaviour {
                     StartCoroutine("hit");
 					anim.Play("uppercut");
 				}
-				if (Input.GetKeyDown(KeyCode.Escape))
-					gs.fade.FadeOutTransition(0);
+                if (Input.GetKeyDown(KeyCode.Escape) && !menu.visible && !lost)
+                {
+                    gs.pause(true);
+                    paused = true;
+                    menu.visible = true;
+                }
 			}
-
+            /*
 			// pause and quit (space)
 			if (Input.GetKeyDown(KeyCode.P) && !lost) {
                 switch (paused) { 
@@ -204,6 +244,7 @@ public class CharController : MonoBehaviour {
 						break;
 				}
 			}
+            */
             if (Input.GetKey(KeyCode.Space) && paused && !lost) {
                 gs.setSFX2(gs.press_pause);
 				gs.sfx2.Play();
