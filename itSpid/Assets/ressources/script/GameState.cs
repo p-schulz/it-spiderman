@@ -147,9 +147,11 @@ public class GameState : MonoBehaviour {
                         + "\n Vaffanculos silenci: " + enemies;
         yield return new WaitForSeconds(10);
         if (!player.GetComponent<CharController>().lost)
+        {
             fade.FadeOutTransition(2);
+        }
         else
-            fade.FadeOutTransition(0);
+            fade.FadeOutTransition(1);
     }
 
 	IEnumerator gameIsOver() {
