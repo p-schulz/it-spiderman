@@ -245,7 +245,8 @@ public class GameMaster : MonoBehaviour {
 
         yield return new WaitForSeconds(ExitFadeOutTime);
 
-        Application.LoadLevel("StarMenu");
+        //Application.LoadLevel("StarMenu");
+        Application.Quit();
     }
 
     IEnumerator AddMultipleCoins(int coins)
