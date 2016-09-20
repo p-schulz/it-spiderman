@@ -73,7 +73,7 @@ public partial class PlayerMachine : SuperStateMachine
         anim["uppercut"].speed = 2.0f;
         anim["kicking"].speed = 2.0f;
         anim["backflip"].speed = 2.0f;
-        anim["jump"].speed = 1.3f;
+        //anim["jump"].speed = 1.3f;
         lookDirection = Quaternion.AngleAxis(InitialRotation, controller.up) * Vector3.forward;
 
         artUpDirection = controller.up;

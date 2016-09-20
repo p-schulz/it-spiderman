@@ -5,6 +5,8 @@ public class MatteFade : MonoBehaviour {
 
     private CanvasGroup canvasGroup;
 
+    public float delay;
+
     public void FadeIn(float time)
     {
         gameObject.SetActive(true);
@@ -26,6 +28,8 @@ public class MatteFade : MonoBehaviour {
         canvasGroup = GetComponent<CanvasGroup>();
 
         float i = 0;
+
+        yield return new WaitForSeconds(delay);
 
         while (i < 1.0f)
         {
