@@ -57,9 +57,9 @@ public partial class PlayerMachine : SuperStateMachine {
             return;
         }
 
-        if (!anim.IsPlaying("idle") && !anim.IsPlaying("land") && !anim.IsPlaying("getting_up_1"))
+        if (!anim.IsPlaying("weight_shift") && !anim.IsPlaying("land") && !anim.IsPlaying("getting_up_1"))
         {
-            anim.CrossFade("idle", 0.3f);
+            anim.CrossFade("weight_shift", 0.3f);
         }
     }
 
@@ -236,9 +236,9 @@ public partial class PlayerMachine : SuperStateMachine {
             {
                 if (Vector3.Angle(Math3d.ProjectVectorOnPlane(controller.up, moveDirection), Vector3.Cross(wallCollisionNormal, controller.up)) > 90)
                 {
-                    if (!anim.IsPlaying("wall_slide_left"))
+                    if (!anim.IsPlaying("crouch_left"))
                     {
-                        anim.CrossFade("wall_slide_left", 0.05f);
+                        anim.CrossFade("crouch_left", 0.05f);
                         sound.EndFootsteps();
                     }
 
@@ -248,9 +248,9 @@ public partial class PlayerMachine : SuperStateMachine {
                 }
                 else
                 {
-                    if (!anim.IsPlaying("wall_slide_right"))
+                    if (!anim.IsPlaying("crouch_right"))
                     {
-                        anim.CrossFade("wall_slide_right", 0.05f);
+                        anim.CrossFade("crouch_right", 0.05f);
                         sound.EndFootsteps();
                     }
 
@@ -330,11 +330,11 @@ public partial class PlayerMachine : SuperStateMachine {
             }
             else
             {
-                if (!anim.IsPlaying("idle"))
+                if (!anim.IsPlaying("weight_shift"))
                 {
-                    anim.CrossFade("idle", 0.15f);
+                    anim.CrossFade("weight_shift", 0.15f);
                     sound.EndFootsteps();
-                    sound.StartFootsteps(anim["idle"].length / 2f, 0.95f);
+                    sound.StartFootsteps(anim["weight_shift"].length / 2f, 0.95f);
                 }
 
                 artUpDirection = Vector3.RotateTowards(artUpDirection, controller.up, artRotationSpeed * controller.deltaTime, 0);
@@ -474,7 +474,7 @@ public partial class PlayerMachine : SuperStateMachine {
 
         RunSmokeEffect.enableEmission = true;
 
-        anim.Play("falling");
+        anim.Play("falling_idle");
 
         sound.PlaySlide();
     }
@@ -989,7 +989,8 @@ public partial class PlayerMachine : SuperStateMachine {
 
     void Dive_EnterState()
     {
-        anim.Play("falling");
+        anim["hurricane_kick"].speed *= 1.5f;
+        anim.Play("hurricane_kick");
 
         controller.DisableClamping();
         controller.DisableSlopeLimit();
@@ -1428,7 +1429,7 @@ public partial class PlayerMachine : SuperStateMachine {
             {
                 exitCrouch = false;
                 anim["crouching_idle"].speed = 1;
-                anim.Play("idle");
+                anim.Play("weight_shift");
                 currentState = PlayerStates.Idle;
                 return;
             }
@@ -1518,7 +1519,7 @@ public partial class PlayerMachine : SuperStateMachine {
         {
             transform.position = ClimbTarget();
 
-            anim.Play("idle");
+            anim.Play("weight_shift");
 
             currentState = PlayerStates.Idle;
         }
@@ -1852,7 +1853,7 @@ public partial class PlayerMachine : SuperStateMachine {
         verticalMoveSpeed = 0;
         moveDirection = Vector3.zero;
 
-        anim.CrossFade("idle", 0.3f);
+        anim.CrossFade("weight_shift", 0.3f);
 
         if (!goldPlayer)
         {

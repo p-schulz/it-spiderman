@@ -2,10 +2,8 @@
 using System.Collections;
 
 public class MatteFade : MonoBehaviour {
-
+    public float delay = 0;
     private CanvasGroup canvasGroup;
-
-    public float delay;
 
     public void FadeIn(float time)
     {
@@ -25,11 +23,10 @@ public class MatteFade : MonoBehaviour {
 
     IEnumerator FadeMatteIn(float time)
     {
+        yield return new WaitForSeconds(delay);
         canvasGroup = GetComponent<CanvasGroup>();
 
         float i = 0;
-
-        yield return new WaitForSeconds(delay);
 
         while (i < 1.0f)
         {

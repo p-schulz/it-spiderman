@@ -1,10 +1,6 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: getPlatforms
 Cmd: compileSnippet
-  error: 2 plat 8 at (0): Program 'frag_surf', error X4506: ps_4_0_level_9_1 input limit (8) exceeded, shader uses 9 inputs.\nCompiling Fragment program with LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF
+  error: 2 plat 8 at (0): Program 'frag_surf', error X4506: ps_4_0_level_9_1 input limit (8) exceeded, shader uses 9 inputs.\nCompiling Fragment program with LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF UNITY_HDR_ON
 Platform defines: UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3
-  api=8 type=1 insize=7187 outsize=0 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=0
-Cmd: compileSnippet
-  error: 2 plat 8 at (0): Program 'frag_surf', error X4506: ps_4_0_level_9_1 input limit (8) exceeded, shader uses 9 inputs.\nCompiling Fragment program with LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF
-Platform defines: UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3
-  api=8 type=1 insize=7187 outsize=0 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=0
+  api=8 type=1 insize=7187 outsize=0 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF UNITY_HDR_ON pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=0

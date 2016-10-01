@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour {
     private Vector2 currentMoveWeight;
     private Vector2 currentCameraWeight;
 
-    public float MoveDeadZone = 0.10f;
+    public float MoveDeadZone = 0.550f;
     public float CameraDeadZone = 0.20f;
 
     private string[] JoySticks = { "JoystickUp", "JoystickDown", "JoystickLeft", "JoystickRight", "Joystick_3a", "Joystick_3b", "Joystick_4a", "Joystick_4b", "Joystick_5a", "Joystick_5b", "Joystick_6b", "Joystick_6b", "Joystick_7a", "Joystick_7b", "Joystick_8a", "Joystick_8b" };
@@ -54,6 +54,7 @@ public class InputManager : MonoBehaviour {
         }
 
         GetKeyBindings();
+        SetPreset(1);
 	}
 
     void SetKeyboardDefaults()
@@ -65,7 +66,7 @@ public class InputManager : MonoBehaviour {
 
         CustomInput.SetKey(KeyCode.Space, JumpIndex);
         CustomInput.SetKey(KeyCode.Return, StrikeIndex);
-        CustomInput.SetKey(KeyCode.LeftControl, CrouchIndex);
+        CustomInput.SetKey(KeyCode.PageUp, CrouchIndex);
 
         CustomInput.SetKey(KeyCode.UpArrow, CameraUpIndex);
         CustomInput.SetKey(KeyCode.DownArrow, CameraDownIndex);
@@ -88,7 +89,7 @@ public class InputManager : MonoBehaviour {
 
         CustomInput.SetKey(KeyCode.Joystick1Button0, JumpIndex);
         CustomInput.SetKey(KeyCode.Joystick1Button2, StrikeIndex);
-        CustomInput.SetKey(KeyCode.Joystick1Button5, CrouchIndex);
+        CustomInput.SetKey(KeyCode.Joystick1Button6, CrouchIndex);
 
         CustomInput.SetAxis("Joystick_5a", CameraUpIndex);
         CustomInput.SetAxis("Joystick_5b", CameraDownIndex);

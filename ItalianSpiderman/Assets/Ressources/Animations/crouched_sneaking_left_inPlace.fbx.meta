@@ -137,7 +137,7 @@ ModelImporter:
     400126: mixamorig:Spine
     400128: mixamorig:Spine1
     400130: mixamorig:Spine2
-    7400000: wall_slide_right
+    7400000: crouch_right
     9500000: //RootNode
     11100000: //RootNode
   materials:
@@ -162,7 +162,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: wall_slide_right
+      name: crouch_right
       takeName: mixamo.com
       firstFrame: 0
       lastFrame: 38
