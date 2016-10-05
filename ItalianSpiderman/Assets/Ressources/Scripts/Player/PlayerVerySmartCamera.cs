@@ -3,36 +3,42 @@ using System.Collections;
 
 public class PlayerVerySmartCamera : MonoBehaviour {
 
-    public bool AutoTrack = false;
+    public bool AutoTrack = true;
 
-    public float InitialPosition = 0.3f;
+    // determines distance from camera to player [3,5]
+    public float InitialPosition = 0.5f;
 
-    public float YSensitivity = 45.0f;
-    public float XSensitivity = 45.0f;
+    // determines sensitivity of joystick input x,y
+    public float YSensitivity = 0.1f;
+    public float XSensitivity = 2.5f;
 
+    // determines minimal height distance of camera to player (world(x),camera(z))
     public float MinDistance = 5.0f;
     public float MaxDistance = 15.0f;
 
-    public float MinHeight = 2.0f;
-    public float MaxHeight = 8.0f;
+    // determines minimal height distance of camera to player (world(y),camera(y))
+    public float MinHeight = 3.0f;
+    public float MaxHeight = 5.0f;
 
-    public float MinAngle = 10.0f;
-    public float MaxAngle = 30.0f;
+    // determines viewing angle towards player (rotation on world(z),camera(x))
+    public float MinAngle = 5.0f;
+    public float MaxAngle = 15.0f;
 
+    // determines camera movement during jumping - ?
     public float MinDampWeight = 0.75f;
     public float MaxDampWeight = 0.3f;
+
+    // determines vertical camera movement during jumping
+    public float MinMaximumJumpHeight = 5.0f;
+    public float MaxMaximumJumpHeight = 8.0f;
+    public float MinMaxHeightAdjustment = 5.0f;
+    public float MaxMaxHeightAdjustment = 12.0f;
 
     public float MinDropDistance = 10.0f;
     public float MaxDropDistance = 25.0f;
 
     public float MinDropRotation = 0.0f;
     public float MaxDropRotation = 60.0f;
-
-    public float MinMaximumJumpHeight = 5.0f;
-    public float MaxMaximumJumpHeight = 8.0f;
-
-    public float MinMaxHeightAdjustment = 5.0f;
-    public float MaxMaxHeightAdjustment = 12.0f;
 
     public Transform target { get; private set; }
     private PlayerMachine Player;
@@ -58,24 +64,6 @@ public class PlayerVerySmartCamera : MonoBehaviour {
     private Vector3 constantShakePosition;
 
     private IEnumerator shakeCoroutine;
-
-	void Start () {
-        currentCameraPosition = InitialPosition;
-
-        target = GameObject.FindWithTag("Player").transform;
-
-        input = target.GetComponent<PlayerInput>();
-        Player = target.GetComponent<PlayerMachine>();
-        controller = target.GetComponent<SuperCharacterController>();
-
-        currentRotationHorizontal = Player.InitialRotation;
-
-        var height = Mathf.Lerp(MinHeight, MaxHeight, currentCameraPosition);
-
-        verticalPosition = Math3d.ProjectPointOnLine(Vector3.zero, controller.up, target.position + height * controller.up);
-
-        StartCoroutine(ConstantShake());
-	}
 
     float currentShakeMagnitude;
 
@@ -153,36 +141,61 @@ public class PlayerVerySmartCamera : MonoBehaviour {
         }
     }
 
-	void LateUpdate () {
+    // might be deletable
+    void SetPlanarDamping(bool enabled)
+    {
+        planarDamping = enabled;
+        planarDampVelocity = Vector3.zero;
+    }
 
+    /////////////////////////////////
+    // Routines (Start and Update) //
+    /////////////////////////////////
+
+    // Startup routine
+    void Start()
+    {
+        currentCameraPosition = InitialPosition;
+
+        target = GameObject.FindWithTag("Player").transform;
+
+        input = target.GetComponent<PlayerInput>();
+        Player = target.GetComponent<PlayerMachine>();
+        controller = target.GetComponent<SuperCharacterController>();
+
+        currentRotationHorizontal = Player.InitialRotation;
+
+        var height = Mathf.Lerp(MinHeight, MaxHeight, currentCameraPosition);
+
+        // controller.up is y-axis world
+        verticalPosition = Math3d.ProjectPointOnLine(Vector3.zero, controller.up, target.position + height * controller.up);
+
+        StartCoroutine(ConstantShake());
+    }
+
+    void LateUpdate () {
+
+         // get current camera parameters
         var height = Mathf.Lerp(MinHeight, MaxHeight, currentCameraPosition);
         var maxHeight = Mathf.Lerp(MinMaximumJumpHeight, MaxMaximumJumpHeight, currentCameraPosition);
         var maxHeightAdjustment = Mathf.Lerp(MinMaxHeightAdjustment, MaxMaxHeightAdjustment, currentCameraPosition);
         var distance = Mathf.Lerp(MinDistance, MaxDistance, currentCameraPosition);
         var angle = Mathf.Lerp(MinAngle, MaxAngle, currentCameraPosition);
         var weight = Mathf.Lerp(MinDampWeight, MaxDampWeight, currentCameraPosition);
-
         Vector3 targetPoint = target.position;
 
-        if (Player.StateCompare(PlayerMachine.PlayerStates.Hang) || Player.StateCompare(PlayerMachine.PlayerStates.Climb))
-        {
+        // damp movement if player is climbing or hanging
+        if (Player.StateCompare(PlayerMachine.PlayerStates.Hang) || Player.StateCompare(PlayerMachine.PlayerStates.Climb)) {
             targetPoint = Player.ClimbTarget();
-
-            if (!planarDamping)
-            {
-                SetPlanarDamping(true);
-            }
-        }
-        else
-        {
-            if (planarDamping)
-            {
-                SetPlanarDamping(false);
-            }
+            // start damping
+            if (!planarDamping) { SetPlanarDamping(true); }
+        } else {
+            // end damping
+            if (planarDamping) { SetPlanarDamping(false); }
         }
 
-        if (!Player.Airborn())
-        {
+        // if player is not in air
+        if (!Player.Airborn()) {
             liftoffPoint = targetPoint;
 
             verticalPosition = Vector3.SmoothDamp(verticalPosition, Math3d.ProjectPointOnLine(Vector3.zero, controller.up, targetPoint + height * controller.up), ref currentDampVelocity, 0.2f);
@@ -220,40 +233,31 @@ public class PlayerVerySmartCamera : MonoBehaviour {
             }
         }
 
+        // calc angle adjustment due to player movement
         Vector3 direction = Math3d.ProjectVectorOnPlane(controller.up, (targetPoint - transform.position).normalized);
-
         float angleAdjustment = Vector3.Angle(direction, Math3d.ProjectVectorOnPlane(controller.up, transform.forward));
-
         if (!AutoTrack)
             angleAdjustment = 0;
-
         angleAdjustment = SuperMath.PointAbovePlane(transform.right, transform.position, targetPoint) ? angleAdjustment : -angleAdjustment;
 
-        currentRotationHorizontal = SuperMath.ClampAngle(currentRotationHorizontal - input.Current.CameraInput.x * XSensitivity + angleAdjustment);
-
+        // calc new horizontal angle and clamp to (305 to 235 degrees, without angle repeat)
+        currentRotationHorizontal = SuperMath.ClampAngle(currentRotationHorizontal - input.Current.CameraInput.x * XSensitivity + angleAdjustment, 235, 305, false);
         transform.rotation = Quaternion.AngleAxis(currentRotationHorizontal, controller.up);
 
+        // get the new distance/height psoition of the camera
         currentCameraPosition = Mathf.Clamp(currentCameraPosition - input.Current.CameraInput.y * YSensitivity, 0, 1);
 
-        if (planarDamping)
-        {
+        // apply damping
+        if (planarDamping) {
             planarPosition = Vector3.SmoothDamp(planarPosition, Math3d.ProjectPointOnPlane(controller.up, Vector3.zero, targetPoint), ref planarDampVelocity, 0.2f);
-        }
-        else
-        {
+        } else {
             planarPosition = Math3d.ProjectPointOnPlane(controller.up, Vector3.zero, targetPoint);
         }
 
+        // set new position and rotation (vertical)
         transform.position = planarPosition + verticalPosition - transform.forward * distance + cameraShakePosition + constantShakePosition;
-
         transform.rotation = Quaternion.AngleAxis(angle + currentRotationVertical, transform.right) * transform.rotation;
 
         currentShakeMagnitude = 0;
 	}
-
-    void SetPlanarDamping(bool enabled)
-    {
-        planarDamping = enabled;
-        planarDampVelocity = Vector3.zero;
-    }
 }

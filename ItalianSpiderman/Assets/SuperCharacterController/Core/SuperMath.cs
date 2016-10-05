@@ -52,12 +52,16 @@ public static class SuperMath {
         return Time.time > startTime + duration;
     }
 
-    public static float ClampAngle(float angle)
+    /// <summary>
+    /// Clamps any angle rotation min/-360 to max/360 degrees
+    /// with continuing angle or without
+    /// </summary>
+    public static float ClampAngle(float angle, float min = -360F, float max = 360F, bool repeat = true)
     {
-        if (angle < -360F)
-            angle += 360F;
-        if (angle > 360F)
-            angle -= 360F;
+        if (angle < min)
+            angle = (repeat) ? angle += min : angle = min;
+        if (angle > max)
+            angle = (repeat) ? angle -= max : angle = max;
         return angle;
     }
 
