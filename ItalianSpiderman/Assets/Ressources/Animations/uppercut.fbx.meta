@@ -164,8 +164,8 @@ ModelImporter:
     - serializedVersion: 16
       name: uppercut
       takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 40
+      firstFrame: 13.1
+      lastFrame: 20.9
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

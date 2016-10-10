@@ -164,8 +164,8 @@ ModelImporter:
     - serializedVersion: 16
       name: right_hook
       takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 33
+      firstFrame: 6.3
+      lastFrame: 13.8
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

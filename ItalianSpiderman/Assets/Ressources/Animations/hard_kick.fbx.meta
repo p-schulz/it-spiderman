@@ -164,8 +164,8 @@ ModelImporter:
     - serializedVersion: 16
       name: hard_kick
       takeName: mixamo.com
-      firstFrame: 12
-      lastFrame: 34
+      firstFrame: 15
+      lastFrame: 21
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

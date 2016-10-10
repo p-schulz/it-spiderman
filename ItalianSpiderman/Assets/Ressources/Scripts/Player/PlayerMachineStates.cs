@@ -498,7 +498,7 @@ public partial class PlayerMachine : SuperStateMachine {
 
         RunSmokeEffect.enableEmission = true;
 
-        anim.Play("falling_idle");
+        anim.Play("roll");
 
         sound.PlaySlide();
     }
@@ -1048,8 +1048,8 @@ public partial class PlayerMachine : SuperStateMachine {
     /// </summary>
 
     void Dive_EnterState() {
-        anim["hurricane_kick"].speed *= 1.5f;
-        anim.Play("hurricane_kick");
+        anim["flying_inPlace"].speed *= 1.5f;
+        anim.Play("flying_inPlace");
 
         controller.DisableClamping();
         controller.DisableSlopeLimit();
