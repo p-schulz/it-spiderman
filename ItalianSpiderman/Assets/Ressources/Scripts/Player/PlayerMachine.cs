@@ -25,7 +25,8 @@ public partial class PlayerMachine : SuperStateMachine
         AirKnockbackForwards,
         KnockbackRecover,
         KnockbackForwardsRecover,
-        Crouch,
+        Kick,
+        KickJump,
         Hang,
         Climb,
         SlideRecover,
@@ -42,8 +43,7 @@ public partial class PlayerMachine : SuperStateMachine
         DeathBack
     }
 
-    public class JumpProfile
-    {
+    public class JumpProfile {
         public bool CanDive = false;
         public bool CanKick = false;
         public bool CanControlHeight = false;
@@ -56,8 +56,7 @@ public partial class PlayerMachine : SuperStateMachine
         public float CrossFadeTime;
     }
 
-    void Start()
-    {
+    void Start() {
         input = GetComponent<PlayerInput>();
         status = GetComponent<PlayerStatus>();
         sound = GetComponent<PlayerSound>();
@@ -82,19 +81,15 @@ public partial class PlayerMachine : SuperStateMachine
     }
 
 
-    protected override void EarlyGlobalSuperUpdate()
-    {
-    }
+    protected override void EarlyGlobalSuperUpdate() {}
 
-    protected override void LateGlobalSuperUpdate()
-    {
+    protected override void LateGlobalSuperUpdate() {
         // Trigger any objects we are directly standing on
         if (controller.IsClamping())
         {
             TriggerableObject triggerable = controller.currentGround.Transform.GetComponent<TriggerableObject>();
 
-            if (triggerable != null)
-            {
+            if (triggerable != null) {
                 triggerable.StandingOn(transform.position);
             }
         }
@@ -153,8 +148,7 @@ public partial class PlayerMachine : SuperStateMachine
         }
     }
 
-    public bool Airborn()
-    {
+    public bool Airborn() {
         if (StateCompare(PlayerStates.Jump) ||
             StateCompare(PlayerStates.Fall) ||
             StateCompare(PlayerStates.AirKnockback) ||
@@ -162,34 +156,29 @@ public partial class PlayerMachine : SuperStateMachine
             StateCompare(PlayerStates.GroundPound) ||
             StateCompare(PlayerStates.GroundPoundPrepare) ||
             StateCompare(PlayerStates.SFlip) ||
-            StateCompare(PlayerStates.MegaSpring))
-        {
+            StateCompare(PlayerStates.MegaSpring)) {
             return true;
         }
 
         return false;
     }
 
-    public Vector3 Velocity()
-    {
+    public Vector3 Velocity() {
         return moveDirection;
     }
 
     /// <summary>
     /// When hanging from a ledge, the target position Player will move to after finishing the climb
     /// </summary>
-    public Vector3 ClimbTarget()
-    {
+    public Vector3 ClimbTarget() {
         return transform.position + controller.up * (controller.height + controller.radius) + lookDirection * controller.radius * 1.5f;
     }
 
-    public bool StateCompare(Enum state)
-    {
+    public bool StateCompare(Enum state) {
         return (PlayerStates)state == (PlayerStates)currentState;
     }
 
-    public void Teleport(Vector3 target)
-    {
+    public void Teleport(Vector3 target) {
         if (StateCompare(PlayerStates.Idle) && Velocity().magnitude < 1.0f)
         {
             teleportTarget = target;
@@ -614,39 +603,36 @@ public partial class PlayerMachine : SuperStateMachine
         verticalMoveSpeed = 0;
     }
 
-    private string ResolveStrike()
-    {
-        if (strikeCount == 1)
-            return "right_hook"; // punch_single
-        else if (strikeCount == 2)
+    // which striking animation to play
+    private string ResolveStrike() {
+        if (strikeCount == 2)
             return "uppercut"; // punch_double
         else
-            return "hard_kick"; // kick_triple
+            return "right_hook"; // punch_single
     }
 
-    private JumpProfile ResolveJump()
-    {
-        if (Time.time > lastLandTime + 0.2f)
-        {
+    // which kicking animation to play
+    private string ResolveKick() {
+        return "hard_kick"; // kick_triple
+    }
+
+    private JumpProfile ResolveJump() {
+        if (Time.time > lastLandTime + 0.2f) {
             return jumpStandard;
         }
 
-        if (currentJumpProfile == jumpStandard && IsSliding())
-        {
+        if (currentJumpProfile == jumpStandard && IsSliding()) {
             return jumpStandard;
         }
 
-        if (currentJumpProfile == jumpStandard || currentJumpProfile == jumpSideFlip || currentJumpProfile == jumpWall || currentJumpProfile == jumpKick)
-        {
+        if (currentJumpProfile == jumpStandard || currentJumpProfile == jumpSideFlip || currentJumpProfile == jumpWall || currentJumpProfile == jumpKick) {
             return jumpDouble;
         }
 
-        if (currentJumpProfile == jumpDouble)
-        {
+        if (currentJumpProfile == jumpDouble) {
             Vector3 projected = Vector3.Project(moveDirection, lookDirection);
 
-            if (Vector3.Angle(projected, lookDirection) < 90.0f && moveSpeed > runSpeed * 0.9f)
-            {
+            if (Vector3.Angle(projected, lookDirection) < 90.0f && moveSpeed > runSpeed * 0.9f) {
                 return jumpTriple;
             }
         }
@@ -654,38 +640,31 @@ public partial class PlayerMachine : SuperStateMachine
         return jumpStandard;
     }
 
-    private Vector3 GetPunchPosition()
-    {
+    private Vector3 GetPunchPosition() {
         return GetPunchOrigin() + GetPunchOffset();
     }
 
-    private Vector3 GetPunchOrigin()
-    {
+    private Vector3 GetPunchOrigin() {
         return transform.position + (controller.up * controller.height * 0.5f);
     }
 
-    private Vector3 GetPunchOffset()
-    {
+    private Vector3 GetPunchOffset() {
         return lookDirection * controller.radius * 1.6f;
     }
 
-    private Vector3 GetKickPosition()
-    {
+    private Vector3 GetKickPosition() {
         return GetKickOrigin() + GetKickOffset();
     }
 
-    private Vector3 GetKickOrigin()
-    {
+    private Vector3 GetKickOrigin() {
         return transform.position + (controller.up * controller.height * 0.2f);
     }
 
-    private Vector3 GetKickOffset()
-    {
-        return lookDirection * controller.radius * 1.6f;
+    private Vector3 GetKickOffset() {
+        return lookDirection * controller.radius * 2.0f;
     }
 
-    private bool Strike(out GameObject struckObject, Vector3 origin, Vector3 offset, float radius=0)
-    {
+    private bool Strike(out GameObject struckObject, Vector3 origin, Vector3 offset, float radius=0) {
         struckObject = null;
 
         if (radius == 0)
@@ -696,8 +675,7 @@ public partial class PlayerMachine : SuperStateMachine
 
         Collider[] colliders = Physics.OverlapSphere(center, radius, controller.Walkable | EnemyLayerMask);
 
-        foreach (var col in colliders)
-        {
+        foreach (var col in colliders) {
             SuperCollisionType type = col.GetComponent<SuperCollisionType>();
 
             Vector3 closestPoint = SuperCollider.ClosestPointOnSurface(col, center, radius);
@@ -706,13 +684,11 @@ public partial class PlayerMachine : SuperStateMachine
 
             col.Raycast(new Ray(origin, closestPoint - origin), out hit, Mathf.Infinity);
 
-            if (type != null && Vector3.Angle(hit.normal, controller.up) < type.StandAngle)
-            {
+            if (type != null && Vector3.Angle(hit.normal, controller.up) < type.StandAngle) {
                 continue;
             }
 
-            if (Vector3.Angle(-hit.normal, lookDirection) < 60.0f)
-            {
+            if (Vector3.Angle(-hit.normal, lookDirection) < 60.0f) {
                 struckObject = col.gameObject;
                 return true;
             }
@@ -721,8 +697,7 @@ public partial class PlayerMachine : SuperStateMachine
         return false;
     }
 
-    private bool FootStrike(out GameObject struckObject)
-    {
+    private bool FootStrike(out GameObject struckObject) {
         struckObject = null;
 
         float radius = controller.radius;
@@ -808,8 +783,7 @@ public partial class PlayerMachine : SuperStateMachine
         return false;
     }
 
-    private bool ShouldHaveFallDamage()
-    {
+    private bool ShouldHaveFallDamage() {
         if (jumpPeak == Vector3.zero)
             return false;
 
@@ -858,8 +832,7 @@ public partial class PlayerMachine : SuperStateMachine
         {
             sound.PlayTripleJump();
         }
-        else if (currentJumpProfile == jumpKick)
-        {
+        else if (currentJumpProfile == jumpKick) {
             sound.PlayJumpKick();
         }
         else if (currentJumpProfile == jumpSideFlip)
@@ -870,8 +843,7 @@ public partial class PlayerMachine : SuperStateMachine
         {
             sound.PlayBackFlip();
         }
-        else if (currentJumpProfile == jumpWall)
-        {
+        else if (currentJumpProfile == jumpWall) {
             sound.PlayWallKick();
         }
     }

@@ -196,10 +196,10 @@ public class PlayerVerySmartCamera : MonoBehaviour {
 
         // if player is not in air
         if (!Player.Airborn()) {
+            // set lift off point
             liftoffPoint = targetPoint;
-
+            // calculate new vertical position
             verticalPosition = Vector3.SmoothDamp(verticalPosition, Math3d.ProjectPointOnLine(Vector3.zero, controller.up, targetPoint + height * controller.up), ref currentDampVelocity, 0.2f);
-
             currentRotationVertical = Mathf.SmoothDamp(currentRotationVertical, 0, ref currentRotationVelocity, 0.2f);
         }
         else

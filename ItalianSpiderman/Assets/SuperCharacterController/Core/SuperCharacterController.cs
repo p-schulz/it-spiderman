@@ -31,16 +31,14 @@ public class SuperCharacterController : MonoBehaviour
     /// as how far the ground is below us and what angle it is in relation to the controller.
     /// </summary>
     [SerializeField]
-    public struct Ground
-    {
+    public struct Ground {
         public RaycastHit Hit;
         public RaycastHit NearHit;
         public RaycastHit FarHit;
         public SuperCollisionType CollisionType;
         public Transform Transform;
 
-        public Ground(RaycastHit hit, RaycastHit nearHit, RaycastHit farHit, SuperCollisionType superCollisionType, Transform hitTransform)
-        {
+        public Ground(RaycastHit hit, RaycastHit nearHit, RaycastHit farHit, SuperCollisionType superCollisionType, Transform hitTransform) {
             Hit = hit;
             NearHit = nearHit;
             FarHit = farHit;
@@ -88,8 +86,7 @@ public class SuperCharacterController : MonoBehaviour
     private int TemporaryLayerIndex;
     private float fixedDeltaTime;
 
-    public void Awake()
-    {
+    public void Awake() {
         collisionData = new List<SuperCollision>();
 
         TemporaryLayerIndex = LayerMask.NameToLayer(TemporaryLayer);
@@ -104,8 +101,7 @@ public class SuperCharacterController : MonoBehaviour
         if (OwnCollider)
             IgnoreCollider(OwnCollider);
 
-        foreach (var sphere in spheres)
-        {
+        foreach (var sphere in spheres) {
             if (sphere.IsFeet)
                 feet = sphere;
 
@@ -122,20 +118,17 @@ public class SuperCharacterController : MonoBehaviour
 		gameObject.SendMessage("SuperStart", SendMessageOptions.DontRequireReceiver);
     }
 
-    void Update()
-    {
+    void Update() {
         // If we are using a fixed timestep, ensure we run the main update loop
         // a sufficient number of times based on the Time.deltaTime
 
-        if (!fixedTimeStep)
-        {
+        if (!fixedTimeStep) {
             deltaTime = Time.deltaTime;
 
             SingleUpdate();
             return;
         }
-        else
-        {
+        else {
             float delta = Time.deltaTime;
 
             while (delta > fixedDeltaTime)
@@ -156,8 +149,7 @@ public class SuperCharacterController : MonoBehaviour
         }
     }
 
-    void SingleUpdate()
-    {
+    void SingleUpdate() {
         // Check if we are clamped to an object implicity or explicity
         bool isClamping = clamping || currentlyClampedTo != null;
         Transform clampedTo = currentlyClampedTo != null ? currentlyClampedTo : currentGround.Transform;
@@ -240,34 +232,28 @@ public class SuperCharacterController : MonoBehaviour
         return false;
     }
 
-    void ClampToGround()
-    {
+    void ClampToGround() {
         float d = currentGround.Hit.distance;
         transform.position -= up * d;
     }
 
-    public void EnableClamping()
-    {
+    public void EnableClamping() {
         clamping = true;
     }
 
-    public void DisableClamping()
-    {
+    public void DisableClamping() {
         clamping = false;
     }
 
-    public void EnableSlopeLimit()
-    {
+    public void EnableSlopeLimit() {
         slopeLimiting = true;
     }
 
-    public void DisableSlopeLimit()
-    {
+    public void DisableSlopeLimit() {
         slopeLimiting = false;
     }
 
-    public bool IsClamping()
-    {
+    public bool IsClamping() {
         return clamping;
     }
 
@@ -275,13 +261,11 @@ public class SuperCharacterController : MonoBehaviour
     /// SphereCasts directly below the controller recurisvely until it either finds no ground, or a ground
     /// at an angle less than StandAngle
     /// </summary>
-    void ProbeGroundRecursive()
-    {
+    void ProbeGroundRecursive() {
         ProbeGroundRecursive(OffsetPosition(feet.Offset), 0);
     }
 
-    void ProbeGroundRecursive(Vector3 origin, float distanceTraveled)
-    {
+    void ProbeGroundRecursive(Vector3 origin, float distanceTraveled) {
         PushIgnoredColliders();
 
         // Add a small amount of Tolerance before casting downwards
@@ -289,12 +273,10 @@ public class SuperCharacterController : MonoBehaviour
         
         RaycastHit hit;
 
-        if (Physics.SphereCast(o, radius, down, out hit, Mathf.Infinity, Walkable))
-        {
+        if (Physics.SphereCast(o, radius, down, out hit, Mathf.Infinity, Walkable)) {
             var wall = hit.collider.gameObject.GetComponent<SuperCollisionType>();
 
-            if (wall == null)
-            {
+            if (wall == null) {
                 // TODO: just use some derived default values?
                 Debug.LogError("[SuperCharacterComponent]: Object on SuperCharacterController walkable layer does not have SuperCollisionType component attached");
             }
@@ -342,8 +324,7 @@ public class SuperCharacterController : MonoBehaviour
 
             currentGround = new Ground(hit, nearHit, farHit, wall, hit.transform);
         }
-        else
-        {
+        else {
             // Debug.LogError("[SuperCharacterComponent]: No ground was found below the player; player has escaped level");
         }
 
@@ -354,14 +335,12 @@ public class SuperCharacterController : MonoBehaviour
     /// Check if any of the CollisionSpheres are colliding with any walkable objects in the world.
     /// If they are, apply a proper pushback and retrieve the collision data
     /// </summary>
-    void Pushback()
-    {
+    void Pushback() {
         PushIgnoredColliders();
 
         collisionData.Clear();
 
-        foreach (var sphere in spheres)
-        {
+        foreach (var sphere in spheres) {
             foreach (Collider col in Physics.OverlapSphere(OffsetPosition(sphere.Offset), radius, Walkable))
             {
                 Vector3 position = OffsetPosition(sphere.Offset);
@@ -446,8 +425,7 @@ public class SuperCharacterController : MonoBehaviour
         }
     }
 
-    private void PushIgnoredColliders()
-    {
+    private void PushIgnoredColliders() {
         ignoredColliderStack.Clear();
 
         for (int i = 0; i < ignoredColliders.Count; i++)
@@ -458,8 +436,7 @@ public class SuperCharacterController : MonoBehaviour
         }
     }
 
-    private void PopIgnoredColliders()
-    {
+    private void PopIgnoredColliders() {
         for (int i = 0; i < ignoredColliderStack.Count; i++)
         {
             IgnoredCollider ic = ignoredColliderStack[i];
@@ -469,8 +446,7 @@ public class SuperCharacterController : MonoBehaviour
         ignoredColliderStack.Clear();
     }
 
-    void OnDrawGizmos()
-    {
+    void OnDrawGizmos() {
         if (debugSpheres)
         {
             if (spheres != null)
@@ -484,8 +460,7 @@ public class SuperCharacterController : MonoBehaviour
         }
     }
 
-    public Vector3 OffsetPosition(float y)
-    {
+    public Vector3 OffsetPosition(float y) {
         Vector3 p;
 
         p = transform.position;

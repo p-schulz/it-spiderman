@@ -38,8 +38,10 @@ public static class SuperMath {
         return values[values.Length - 1];
     }
 
-    public static bool PointAbovePlane(Vector3 planeNormal, Vector3 planePoint, Vector3 point)
-    {
+    /// <summary>
+    /// Checks if point is above the plane
+    /// </summary>
+    public static bool PointAbovePlane(Vector3 planeNormal, Vector3 planePoint, Vector3 point) {
         Vector3 direction = point - planePoint;
         return Vector3.Angle(direction, planeNormal) < 90;
     }

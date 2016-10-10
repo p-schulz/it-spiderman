@@ -14,27 +14,24 @@ public class PlayerInput : MonoBehaviour
 
     public InputManager input;
 
-    void Start()
-    {
-        if (PlayerCamera == null)
-        {
+    void Start() {
+        // check for camera on starrtup
+        if (PlayerCamera == null) {
             Debug.LogError("[PlayerInput]: Main camera not found");
         }
     }
 
-    void Update()
-    {
+    void Update() {
+        // ignore too little joystick movement
         Vector3 analogMoveInput = input.MovementInputDeadZoned();
 
         Vector3 moveInput = Vector3.zero;
 
-        if (analogMoveInput.x != 0)
-        {
+        if (analogMoveInput.x != 0) {
             moveInput += PlayerCamera.right * analogMoveInput.x;
         }
 
-        if (analogMoveInput.y != 0)
-        {
+        if (analogMoveInput.y != 0) {
             moveInput += PlayerCamera.forward * analogMoveInput.y;
         }
 
@@ -48,11 +45,10 @@ public class PlayerInput : MonoBehaviour
         bool jumpDown = input.JumpDown();
         bool strike = input.Strike();
         bool strikeDown = input.StrikeDown();
-        bool trigger = input.Crouch();
-        bool triggerDown = input.CrouchDown();
+        bool kick = input.Kick();
+        bool kickDown = input.KickDown();
 
-        Current = new PlayerInputSet()
-        {
+        Current = new PlayerInputSet() {
             MoveInput = moveInput,
             MoveMagnitude = moveMagnitude,
             CameraInput = cameraInput,
@@ -60,8 +56,8 @@ public class PlayerInput : MonoBehaviour
             JumpDown = jumpDown,
             Strike = strike,
             StrikeDown = strikeDown,
-            Trigger = trigger,
-            TriggerDown = triggerDown
+            Kick = kick,
+            KickDown = kickDown
         };
     }
 
@@ -82,8 +78,7 @@ public class PlayerInput : MonoBehaviour
     }
 }
 
-public struct PlayerInputSet
-{
+public struct PlayerInputSet {
     public Vector3 MoveInput;
     public Vector2 CameraInput;
     public float MoveMagnitude;
@@ -91,7 +86,7 @@ public struct PlayerInputSet
     public bool JumpDown;
     public bool Strike;
     public bool StrikeDown;
-    public bool Trigger;
-    public bool TriggerDown;
+    public bool Kick;
+    public bool KickDown;
 }
 

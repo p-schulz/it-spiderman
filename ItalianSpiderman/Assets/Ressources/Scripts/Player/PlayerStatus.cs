@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerStatus : MonoBehaviour {
 
     // Don't bother changing this in the inspector. Like you have a choice
-    public int Health = 8;
+    public int Health = 10;
     public HealthDisc Disc;
 
     public float InvicibleTime = 2.0f;
@@ -20,19 +20,19 @@ public class PlayerStatus : MonoBehaviour {
     private PlayerSound sound;
     private float lastHealTime;
 
-    void Start()
-    {
+    // Startup (health, invicible)
+    void Start() {
         CurrentHealth = Health;
-
         invincible = false;
-
         renderers = GetComponent<PlayerMachine>().AnimatedMesh.GetComponentsInChildren(typeof(Renderer));
-
         sound = GetComponent<PlayerSound>();
     }
 
-    public void TakeDamage(int damage)
-    {
+    /// <summary>
+    /// Health functions (heal,damage)
+    /// </summary>
+
+    public void TakeDamage(int damage) {
         CurrentHealth = (int)Mathf.Clamp(CurrentHealth - damage, 0, Health);
 
         Disc.UpdateDisc(CurrentHealth);
@@ -42,8 +42,7 @@ public class PlayerStatus : MonoBehaviour {
         Disc.Maximize();
     }
 
-    public void AddHealth(int health)
-    {
+    public void AddHealth(int health) {
         if (CurrentHealth != Health)
             sound.PlayGetLife();
 
@@ -56,30 +55,31 @@ public class PlayerStatus : MonoBehaviour {
         Disc.UpdateDisc(CurrentHealth);
     }
 
-    public void StartInvincible()
-    {
+    /// <summary>
+    /// ISpid Invincible routine
+    /// used for recover
+    /// </summary>
+
+    public void StartInvincible() {
         if (invincible)
             StartCoroutine(Invicibility());
     }
 
-    public bool Invincible()
-    {
+    public bool Invincible() {
         if (PermanentInvincibility)
             return true;
         else
             return invincible;
     }
 
-    public void EndInvincible()
-    {
+    public void EndInvincible() {
         StopAllCoroutines();
         invincible = false;
     }
 
-    private IEnumerator Invicibility()
-    {
-        foreach (Renderer renderer in renderers)
-        {
+    // Make ISpid flicker
+    private IEnumerator Invicibility() {
+        foreach (Renderer renderer in renderers) {
             renderer.enabled = false;
         }
 
@@ -87,12 +87,9 @@ public class PlayerStatus : MonoBehaviour {
         float lastFlicker = 0;
         float flickerFrequency = InvicibleTime / FlickersPerSecond;
 
-        while (i < InvicibleTime)
-        {
-            if (i > lastFlicker + flickerFrequency)
-            {
-                foreach (Renderer renderer in renderers)
-                {
+        while (i < InvicibleTime) {
+            if (i > lastFlicker + flickerFrequency) {
+                foreach (Renderer renderer in renderers) {
                     renderer.enabled = !renderer.enabled;
                 }
 
@@ -104,8 +101,7 @@ public class PlayerStatus : MonoBehaviour {
             yield return 0;
         }
 
-        foreach (Renderer renderer in renderers)
-        {
+        foreach (Renderer renderer in renderers) {
             renderer.enabled = true;
         }
 

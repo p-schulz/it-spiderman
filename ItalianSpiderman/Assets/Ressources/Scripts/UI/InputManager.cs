@@ -32,7 +32,7 @@ public class InputManager : MonoBehaviour {
 
     private const int JumpIndex = 4;
     private const int StrikeIndex = 5;
-    private const int CrouchIndex = 6;
+    private const int KickIndex = 6;
 
     private const int CameraUpIndex = 7;
     private const int CameraDownIndex = 8;
@@ -66,7 +66,7 @@ public class InputManager : MonoBehaviour {
 
         CustomInput.SetKey(KeyCode.Space, JumpIndex);
         CustomInput.SetKey(KeyCode.Return, StrikeIndex);
-        CustomInput.SetKey(KeyCode.PageUp, CrouchIndex);
+        CustomInput.SetKey(KeyCode.RightShift, KickIndex);
 
         CustomInput.SetKey(KeyCode.UpArrow, CameraUpIndex);
         CustomInput.SetKey(KeyCode.DownArrow, CameraDownIndex);
@@ -88,8 +88,8 @@ public class InputManager : MonoBehaviour {
         CustomInput.SetAxis("JoystickRight", MoveRightIndex);
 
         CustomInput.SetKey(KeyCode.Joystick1Button0, JumpIndex);
-        CustomInput.SetKey(KeyCode.Joystick1Button2, StrikeIndex);
-        CustomInput.SetKey(KeyCode.Joystick1Button6, CrouchIndex);
+        CustomInput.SetKey(KeyCode.Joystick1Button1, StrikeIndex);
+        CustomInput.SetKey(KeyCode.Joystick1Button2, KickIndex);
 
         CustomInput.SetAxis("Joystick_5a", CameraUpIndex);
         CustomInput.SetAxis("Joystick_5b", CameraDownIndex);
@@ -174,14 +174,14 @@ public class InputManager : MonoBehaviour {
         return CustomInput.isInputDown[StrikeIndex];
     }
 
-    public bool Crouch()
+    public bool Kick()
     {
-        return CustomInput.isInput[CrouchIndex];
+        return CustomInput.isInput[KickIndex];
     }
 
-    public bool CrouchDown()
+    public bool KickDown()
     {
-        return CustomInput.isInputDown[CrouchIndex];
+        return CustomInput.isInputDown[KickIndex];
     }
 
     public bool PauseDown()

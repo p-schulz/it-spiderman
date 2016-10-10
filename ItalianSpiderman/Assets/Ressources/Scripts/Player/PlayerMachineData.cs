@@ -56,8 +56,11 @@ public partial class PlayerMachine : SuperStateMachine {
     private bool isTakingFallDamage;
     private bool goldPlayer;
 
-    private JumpProfile jumpStandard = new JumpProfile
-    {
+    /// <summary>
+    /// Jump profiles
+    /// </summary>
+
+    private JumpProfile jumpStandard = new JumpProfile {
         CanDive = true,
         CanKick = true,
         CanControlHeight = true,
@@ -65,8 +68,7 @@ public partial class PlayerMachine : SuperStateMachine {
         Animation = "jump2"
     };
 
-    private JumpProfile jumpDouble = new JumpProfile
-    {
+    private JumpProfile jumpDouble = new JumpProfile {
         CanDive = true,
         CanKick = true,
         CanControlHeight = true,
@@ -75,29 +77,51 @@ public partial class PlayerMachine : SuperStateMachine {
         FallAnimation = "falling_idle"
     };
 
-    private JumpProfile jumpTriple = new JumpProfile
-    {
+    private JumpProfile jumpTriple = new JumpProfile {
         CanDive = true,
         JumpHeight = 6.0f,
         Animation = "forward_flip"
     };
 
-    private JumpProfile jumpBackFlip = new JumpProfile
-    {
+    private JumpProfile jumpBackFlip = new JumpProfile {
         JumpHeight = 5.0f,
         InitialForwardVelocity = -7.0f,
         Animation = "backflip"
     };
 
-    private JumpProfile jumpSideFlip = new JumpProfile
-    {
+    private JumpProfile jumpStrike = new JumpProfile {
+        JumpHeight = 1.0f,
+        Animation = "right_hook",
+        Gravity = 45.0f
+    };
+
+    private JumpProfile jumpFastStrike = new JumpProfile {
+        JumpHeight = 1.0f,
+        Animation = "Female_Laying_Pose",
+        Gravity = 45.0f
+    };
+
+    private JumpProfile jumpKick = new JumpProfile {
+        JumpHeight = 1.0f,
+        Animation = "roundhouse_kick",
+        Gravity = 45.0f
+    };
+
+    private JumpProfile jumpFastKick = new JumpProfile {
+        JumpHeight = 1.0f,
+        Animation = "Female_Laying_Pose",
+        Gravity = 45.0f
+    };
+
+
+
+    private JumpProfile jumpSideFlip = new JumpProfile {
         CanDive = true,
         JumpHeight = 5.0f,
         Animation = "forward_flip"
     };
 
-    private JumpProfile jumpLong = new JumpProfile
-    {
+    private JumpProfile jumpLong = new JumpProfile {
         JumpHeight = 2.7f,
         InitialForwardVelocity = 4.0f,
         Gravity = 17.0f,
@@ -105,8 +129,7 @@ public partial class PlayerMachine : SuperStateMachine {
         CrossFadeTime = 0.1f
     };
 
-    private JumpProfile jumpWall = new JumpProfile
-    {
+    private JumpProfile jumpWall = new JumpProfile {
         CanDive = true,
         CanControlHeight = true,
         JumpHeight = 5.0f,
@@ -115,14 +138,5 @@ public partial class PlayerMachine : SuperStateMachine {
         FallAnimation = "falling_idle"
     };
 
-    private JumpProfile jumpKick = new JumpProfile
-    {
-        JumpHeight = 1.0f,
-        Animation = "hard_kick",
-        Gravity = 45.0f
-    };
-
-    private JumpProfile fallProfile = new JumpProfile
-    {
-    };
+    private JumpProfile fallProfile = new JumpProfile {};
 }
