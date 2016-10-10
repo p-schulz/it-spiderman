@@ -98,7 +98,7 @@ public class InputManager : MonoBehaviour {
 
         CustomInput.SetKey(KeyCode.Joystick1Button7, PauseIndex);
 
-        MoveDeadZone = 0.10f;
+        MoveDeadZone = 0.60f;
         CameraDeadZone = 0.25f;
     }
 

@@ -291,7 +291,7 @@ public partial class PlayerMachine : SuperStateMachine {
         }
         else
         {
-            if (input.Current.MoveMagnitude > 0.5)
+            if (input.Current.MoveMagnitude > 0.3)
             {
                 if (!anim.IsPlaying("running_inPlace"))
                 {
@@ -338,7 +338,7 @@ public partial class PlayerMachine : SuperStateMachine {
                     chestTwistAngle = Mathf.MoveTowards(chestTwistAngle, 0, 200.0f * controller.deltaTime);
                 
             }
-            else if (input.Current.MoveMagnitude > 0.25)
+            else if (input.Current.MoveMagnitude > 0.05)
             {
                 if (!anim.IsPlaying("walking_inPlace"))
                 {
