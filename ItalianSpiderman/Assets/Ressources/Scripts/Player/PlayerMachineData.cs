@@ -109,7 +109,7 @@ public partial class PlayerMachine : SuperStateMachine {
 
     private JumpProfile jumpFastKick = new JumpProfile {
         JumpHeight = 1.0f,
-        Animation = "Female_Laying_Pose",
+        Animation = "flying_bicycle_kick",
         Gravity = 45.0f
     };
 

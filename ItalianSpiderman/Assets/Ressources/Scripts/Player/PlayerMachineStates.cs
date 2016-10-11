@@ -693,12 +693,12 @@ public partial class PlayerMachine : SuperStateMachine {
 
         // ISpid is kicking midair
         if (input.Current.KickDown) {
-            if (currentJumpProfile.CanKick && (moveSpeed <= 7.0f || verticalMoveSpeed > CalculateJumpSpeed(currentJumpProfile.JumpHeight, currentJumpProfile.Gravity) * 0.85f) && !slopeJumping) {
+            if (currentJumpProfile.CanKick && (moveSpeed <= 7.0f/* || verticalMoveSpeed > CalculateJumpSpeed(currentJumpProfile.JumpHeight, currentJumpProfile.Gravity) * 0.85f*/) && !slopeJumping) {
                 currentJumpProfile = jumpKick;
                 currentState = PlayerStates.Jump;
                 return;
             }
-            else if (currentJumpProfile.CanKick && ((moveSpeed > 7.0f && moveSpeed < 9.0f) || verticalMoveSpeed > CalculateJumpSpeed(currentJumpProfile.JumpHeight, currentJumpProfile.Gravity) * 0.85f) && !slopeJumping) {
+            else if (currentJumpProfile.CanKick && ((moveSpeed > 7.0f && moveSpeed < 10.0f)/* || verticalMoveSpeed > CalculateJumpSpeed(currentJumpProfile.JumpHeight, currentJumpProfile.Gravity) * 0.85f*/) && !slopeJumping) {
                 currentJumpProfile = jumpFastKick;
                 currentState = PlayerStates.Jump;
                 return;

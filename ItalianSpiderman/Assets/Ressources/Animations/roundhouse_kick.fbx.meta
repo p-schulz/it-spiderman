@@ -783,8 +783,9 @@ ModelImporter:
     4300090: pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface11
     4300092: pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface12
     4300094: pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface1
-    7400000: mixamo.com
+    7400000: roundhouse_kick
     9500000: //RootNode
+    11100000: //RootNode
     13700000: pasted__humanBody
     13700002: pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface1
     13700004: pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface1
@@ -853,7 +854,820 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: roundhouse_kick
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 26
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group
+        weight: 1
+      - path: group/pasted__group47
+        weight: 1
+      - path: group/pasted__group47/pasted__group
+        weight: 1
+      - path: group/pasted__group47/pasted__group/pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__group47/pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group1/pasted__pasted__polySurface11
+        weight: 1
+      - path: group/pasted__group47/pasted__group2
+        weight: 1
+      - path: group/pasted__group47/pasted__group2/pasted__pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group2/pasted__pasted__group1/pasted__pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__group47/pasted__group4
+        weight: 1
+      - path: group/pasted__group47/pasted__group4/pasted__pasted__group
+        weight: 1
+      - path: group/pasted__group47/pasted__group4/pasted__pasted__group/pasted__pasted__pasted__polySurface11
+        weight: 1
+      - path: group/pasted__group47/pasted__group5
+        weight: 1
+      - path: group/pasted__group47/pasted__group5/pasted__pasted__group4
+        weight: 1
+      - path: group/pasted__group47/pasted__group5/pasted__pasted__group4/pasted__pasted__pasted__group
+        weight: 1
+      - path: group/pasted__group47/pasted__group5/pasted__pasted__group4/pasted__pasted__pasted__group/pasted__pasted__pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__group47/pasted__group6
+        weight: 1
+      - path: group/pasted__group47/pasted__group6/pasted__pasted__group41 1
+        weight: 1
+      - path: group/pasted__group47/pasted__group6/pasted__pasted__group41 1/pasted__pasted__pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group6/pasted__pasted__group41 1/pasted__pasted__pasted__group1/pasted__pasted__pasted__pasted__polySurface11
+        weight: 1
+      - path: group/pasted__group47/pasted__group7
+        weight: 1
+      - path: group/pasted__group47/pasted__group7/pasted__pasted__group42 1
+        weight: 1
+      - path: group/pasted__group47/pasted__group7/pasted__pasted__group42 1/pasted__pasted__pasted__group2
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group7/pasted__pasted__group42 1/pasted__pasted__pasted__group2
+          1/pasted__pasted__pasted__pasted__polySurface12
+        weight: 1
+      - path: group/pasted__group47/pasted__group8
+        weight: 1
+      - path: group/pasted__group47/pasted__group8/pasted__pasted__group2
+        weight: 1
+      - path: group/pasted__group47/pasted__group8/pasted__pasted__group2/pasted__pasted__pasted__group1
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group8/pasted__pasted__group2/pasted__pasted__pasted__group1
+          1/pasted__pasted__pasted__pasted__polySurface13
+        weight: 1
+      - path: group/pasted__group47/pasted__group9
+        weight: 1
+      - path: group/pasted__group47/pasted__group9/pasted__pasted__group21 1
+        weight: 1
+      - path: group/pasted__group47/pasted__group9/pasted__pasted__group21 1/pasted__pasted__pasted__group11
+        weight: 1
+      - path: group/pasted__group47/pasted__group9/pasted__pasted__group21 1/pasted__pasted__pasted__group11/pasted__pasted__pasted__pasted__polySurface14
+        weight: 1
+      - path: group/pasted__group47/pasted__group10
+        weight: 1
+      - path: group/pasted__group47/pasted__group10/pasted__pasted__group22
+        weight: 1
+      - path: group/pasted__group47/pasted__group10/pasted__pasted__group22/pasted__pasted__pasted__group12
+        weight: 1
+      - path: group/pasted__group47/pasted__group10/pasted__pasted__group22/pasted__pasted__pasted__group12/pasted__pasted__pasted__pasted__polySurface15
+        weight: 1
+      - path: group/pasted__group47/pasted__group11
+        weight: 1
+      - path: group/pasted__group47/pasted__group11/pasted__pasted__group23
+        weight: 1
+      - path: group/pasted__group47/pasted__group11/pasted__pasted__group23/pasted__pasted__pasted__group13
+        weight: 1
+      - path: group/pasted__group47/pasted__group11/pasted__pasted__group23/pasted__pasted__pasted__group13/pasted__pasted__pasted__pasted__polySurface16
+        weight: 1
+      - path: group/pasted__group47/pasted__group12
+        weight: 1
+      - path: group/pasted__group47/pasted__group12/pasted__pasted__group7
+        weight: 1
+      - path: group/pasted__group47/pasted__group12/pasted__pasted__group7/pasted__pasted__pasted__group4
+        weight: 1
+      - path: group/pasted__group47/pasted__group12/pasted__pasted__group7/pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__group
+        weight: 1
+      - path: group/pasted__group47/pasted__group12/pasted__pasted__group7/pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__group/pasted__pasted__pasted__pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__group47/pasted__group13
+        weight: 1
+      - path: group/pasted__group47/pasted__group13/pasted__pasted__group71
+        weight: 1
+      - path: group/pasted__group47/pasted__group13/pasted__pasted__group71/pasted__pasted__pasted__group41
+        weight: 1
+      - path: group/pasted__group47/pasted__group13/pasted__pasted__group71/pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group13/pasted__pasted__group71/pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__group1/pasted__pasted__pasted__pasted__pasted__polySurface11
+        weight: 1
+      - path: group/pasted__group47/pasted__group14
+        weight: 1
+      - path: group/pasted__group47/pasted__group14/pasted__pasted__group72
+        weight: 1
+      - path: group/pasted__group47/pasted__group14/pasted__pasted__group72/pasted__pasted__pasted__group42
+        weight: 1
+      - path: group/pasted__group47/pasted__group14/pasted__pasted__group72/pasted__pasted__pasted__group42/pasted__pasted__pasted__pasted__group2
+        weight: 1
+      - path: group/pasted__group47/pasted__group14/pasted__pasted__group72/pasted__pasted__pasted__group42/pasted__pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__pasted__polySurface12
+        weight: 1
+      - path: group/pasted__group47/pasted__group15
+        weight: 1
+      - path: group/pasted__group47/pasted__group15/pasted__pasted__group73
+        weight: 1
+      - path: group/pasted__group47/pasted__group15/pasted__pasted__group73/pasted__pasted__pasted__group43
+        weight: 1
+      - path: group/pasted__group47/pasted__group15/pasted__pasted__group73/pasted__pasted__pasted__group43/pasted__pasted__pasted__pasted__group3
+        weight: 1
+      - path: group/pasted__group47/pasted__group15/pasted__pasted__group73/pasted__pasted__pasted__group43/pasted__pasted__pasted__pasted__group3/pasted__pasted__pasted__pasted__pasted__polySurface13
+        weight: 1
+      - path: group/pasted__group47/pasted__group16
+        weight: 1
+      - path: group/pasted__group47/pasted__group16/pasted__pasted__group74
+        weight: 1
+      - path: group/pasted__group47/pasted__group16/pasted__pasted__group74/pasted__pasted__pasted__group44
+        weight: 1
+      - path: group/pasted__group47/pasted__group16/pasted__pasted__group74/pasted__pasted__pasted__group44/pasted__pasted__pasted__pasted__group4
+        weight: 1
+      - path: group/pasted__group47/pasted__group16/pasted__pasted__group74/pasted__pasted__pasted__group44/pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__polySurface14
+        weight: 1
+      - path: group/pasted__group47/pasted__group17
+        weight: 1
+      - path: group/pasted__group47/pasted__group17/pasted__pasted__group14
+        weight: 1
+      - path: group/pasted__group47/pasted__group17/pasted__pasted__group14/pasted__pasted__pasted__group7
+        weight: 1
+      - path: group/pasted__group47/pasted__group17/pasted__pasted__group14/pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__group4
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group17/pasted__pasted__group14/pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__group4
+          1/pasted__pasted__pasted__pasted__pasted__group
+        weight: 1
+      - path: group/pasted__group47/pasted__group17/pasted__pasted__group14/pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__group4
+          1/pasted__pasted__pasted__pasted__pasted__group/pasted__pasted__pasted__pasted__pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__group47/pasted__group18
+        weight: 1
+      - path: group/pasted__group47/pasted__group18/pasted__pasted__group141
+        weight: 1
+      - path: group/pasted__group47/pasted__group18/pasted__pasted__group141/pasted__pasted__pasted__group71
+        weight: 1
+      - path: group/pasted__group47/pasted__group18/pasted__pasted__group141/pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__group41
+        weight: 1
+      - path: group/pasted__group47/pasted__group18/pasted__pasted__group141/pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group18/pasted__pasted__group141/pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__group1/pasted__pasted__pasted__pasted__pasted__pasted__polySurface11
+        weight: 1
+      - path: group/pasted__group47/pasted__group19
+        weight: 1
+      - path: group/pasted__group47/pasted__group19/pasted__pasted__group142
+        weight: 1
+      - path: group/pasted__group47/pasted__group19/pasted__pasted__group142/pasted__pasted__pasted__group72
+        weight: 1
+      - path: group/pasted__group47/pasted__group19/pasted__pasted__group142/pasted__pasted__pasted__group72/pasted__pasted__pasted__pasted__group42
+        weight: 1
+      - path: group/pasted__group47/pasted__group19/pasted__pasted__group142/pasted__pasted__pasted__group72/pasted__pasted__pasted__pasted__group42/pasted__pasted__pasted__pasted__pasted__group2
+        weight: 1
+      - path: group/pasted__group47/pasted__group19/pasted__pasted__group142/pasted__pasted__pasted__group72/pasted__pasted__pasted__pasted__group42/pasted__pasted__pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__pasted__pasted__polySurface12
+        weight: 1
+      - path: group/pasted__group47/pasted__group20
+        weight: 1
+      - path: group/pasted__group47/pasted__group20/pasted__pasted__group17
+        weight: 1
+      - path: group/pasted__group47/pasted__group20/pasted__pasted__group17/pasted__pasted__pasted__group14
+        weight: 1
+      - path: group/pasted__group47/pasted__group20/pasted__pasted__group17/pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__group7
+        weight: 1
+      - path: group/pasted__group47/pasted__group20/pasted__pasted__group17/pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__group4
+        weight: 1
+      - path: group/pasted__group47/pasted__group20/pasted__pasted__group17/pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__pasted__group
+        weight: 1
+      - path: group/pasted__group47/pasted__group20/pasted__pasted__group17/pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__pasted__group/pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__group47/pasted__group21
+        weight: 1
+      - path: group/pasted__group47/pasted__group21/pasted__pasted__group20
+        weight: 1
+      - path: group/pasted__group47/pasted__group21/pasted__pasted__group20/pasted__pasted__pasted__group17
+        weight: 1
+      - path: group/pasted__group47/pasted__group21/pasted__pasted__group20/pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__group14
+        weight: 1
+      - path: group/pasted__group47/pasted__group21/pasted__pasted__group20/pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__group7
+        weight: 1
+      - path: group/pasted__group47/pasted__group21/pasted__pasted__group20/pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__group4
+        weight: 1
+      - path: group/pasted__group47/pasted__group21/pasted__pasted__group20/pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group
+        weight: 1
+      - path: group/pasted__group47/pasted__group21/pasted__pasted__group20/pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__group47/pasted__group22
+        weight: 1
+      - path: group/pasted__group47/pasted__group22/pasted__pasted__group21
+        weight: 1
+      - path: group/pasted__group47/pasted__group22/pasted__pasted__group21/pasted__pasted__pasted__group20
+        weight: 1
+      - path: group/pasted__group47/pasted__group22/pasted__pasted__group21/pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__group17
+        weight: 1
+      - path: group/pasted__group47/pasted__group22/pasted__pasted__group21/pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__group14
+        weight: 1
+      - path: group/pasted__group47/pasted__group22/pasted__pasted__group21/pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__group7
+        weight: 1
+      - path: group/pasted__group47/pasted__group22/pasted__pasted__group21/pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group4
+        weight: 1
+      - path: group/pasted__group47/pasted__group22/pasted__pasted__group21/pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group
+        weight: 1
+      - path: group/pasted__group47/pasted__group22/pasted__pasted__group21/pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__group47/pasted__group23
+        weight: 1
+      - path: group/pasted__group47/pasted__group23/pasted__pasted__group22 1
+        weight: 1
+      - path: group/pasted__group47/pasted__group23/pasted__pasted__group22 1/pasted__pasted__pasted__group21
+        weight: 1
+      - path: group/pasted__group47/pasted__group23/pasted__pasted__group22 1/pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__group20
+        weight: 1
+      - path: group/pasted__group47/pasted__group23/pasted__pasted__group22 1/pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__group17
+        weight: 1
+      - path: group/pasted__group47/pasted__group23/pasted__pasted__group22 1/pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__pasted__group14
+        weight: 1
+      - path: group/pasted__group47/pasted__group23/pasted__pasted__group22 1/pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group7
+        weight: 1
+      - path: group/pasted__group47/pasted__group23/pasted__pasted__group22 1/pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group4
+        weight: 1
+      - path: group/pasted__group47/pasted__group23/pasted__pasted__group22 1/pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group
+        weight: 1
+      - path: group/pasted__group47/pasted__group23/pasted__pasted__group22 1/pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__group47/pasted__group24
+        weight: 1
+      - path: group/pasted__group47/pasted__group24/pasted__pasted__group221
+        weight: 1
+      - path: group/pasted__group47/pasted__group24/pasted__pasted__group221/pasted__pasted__pasted__group211
+        weight: 1
+      - path: group/pasted__group47/pasted__group24/pasted__pasted__group221/pasted__pasted__pasted__group211/pasted__pasted__pasted__pasted__group201
+        weight: 1
+      - path: group/pasted__group47/pasted__group24/pasted__pasted__group221/pasted__pasted__pasted__group211/pasted__pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__pasted__group171
+        weight: 1
+      - path: group/pasted__group47/pasted__group24/pasted__pasted__group221/pasted__pasted__pasted__group211/pasted__pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__pasted__pasted__group141
+        weight: 1
+      - path: group/pasted__group47/pasted__group24/pasted__pasted__group221/pasted__pasted__pasted__group211/pasted__pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group71
+        weight: 1
+      - path: group/pasted__group47/pasted__group24/pasted__pasted__group221/pasted__pasted__pasted__group211/pasted__pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group41
+        weight: 1
+      - path: group/pasted__group47/pasted__group24/pasted__pasted__group221/pasted__pasted__pasted__group211/pasted__pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group24/pasted__pasted__group221/pasted__pasted__pasted__group211/pasted__pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface11
+        weight: 1
+      - path: group/pasted__group47/pasted__group26
+        weight: 1
+      - path: group/pasted__group47/pasted__group26/pasted__pasted__group201
+        weight: 1
+      - path: group/pasted__group47/pasted__group26/pasted__pasted__group201/pasted__pasted__pasted__group171
+        weight: 1
+      - path: group/pasted__group47/pasted__group26/pasted__pasted__group201/pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__group141
+        weight: 1
+      - path: group/pasted__group47/pasted__group26/pasted__pasted__group201/pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__group71
+        weight: 1
+      - path: group/pasted__group47/pasted__group26/pasted__pasted__group201/pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__pasted__pasted__group41
+        weight: 1
+      - path: group/pasted__group47/pasted__group26/pasted__pasted__group201/pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group26/pasted__pasted__group201/pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface11
+        weight: 1
+      - path: group/pasted__group47/pasted__group27
+        weight: 1
+      - path: group/pasted__group47/pasted__group27/pasted__pasted__group202
+        weight: 1
+      - path: group/pasted__group47/pasted__group27/pasted__pasted__group202/pasted__pasted__pasted__group172
+        weight: 1
+      - path: group/pasted__group47/pasted__group27/pasted__pasted__group202/pasted__pasted__pasted__group172/pasted__pasted__pasted__pasted__group142
+        weight: 1
+      - path: group/pasted__group47/pasted__group27/pasted__pasted__group202/pasted__pasted__pasted__group172/pasted__pasted__pasted__pasted__group142/pasted__pasted__pasted__pasted__pasted__group72
+        weight: 1
+      - path: group/pasted__group47/pasted__group27/pasted__pasted__group202/pasted__pasted__pasted__group172/pasted__pasted__pasted__pasted__group142/pasted__pasted__pasted__pasted__pasted__group72/pasted__pasted__pasted__pasted__pasted__pasted__group42
+        weight: 1
+      - path: group/pasted__group47/pasted__group27/pasted__pasted__group202/pasted__pasted__pasted__group172/pasted__pasted__pasted__pasted__group142/pasted__pasted__pasted__pasted__pasted__group72/pasted__pasted__pasted__pasted__pasted__pasted__group42/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2
+        weight: 1
+      - path: group/pasted__group47/pasted__group27/pasted__pasted__group202/pasted__pasted__pasted__group172/pasted__pasted__pasted__pasted__group142/pasted__pasted__pasted__pasted__pasted__group72/pasted__pasted__pasted__pasted__pasted__pasted__group42/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface12
+        weight: 1
+      - path: group/pasted__group47/pasted__group28
+        weight: 1
+      - path: group/pasted__group47/pasted__group28/pasted__pasted__group27
+        weight: 1
+      - path: group/pasted__group47/pasted__group28/pasted__pasted__group27/pasted__pasted__pasted__group201
+        weight: 1
+      - path: group/pasted__group47/pasted__group28/pasted__pasted__group27/pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__group171
+        weight: 1
+      - path: group/pasted__group47/pasted__group28/pasted__pasted__group27/pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__pasted__group141
+        weight: 1
+      - path: group/pasted__group47/pasted__group28/pasted__pasted__group27/pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__pasted__group71
+        weight: 1
+      - path: group/pasted__group47/pasted__group28/pasted__pasted__group27/pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group41
+        weight: 1
+      - path: group/pasted__group47/pasted__group28/pasted__pasted__group27/pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group28/pasted__pasted__group27/pasted__pasted__pasted__group201/pasted__pasted__pasted__pasted__group171/pasted__pasted__pasted__pasted__pasted__group141/pasted__pasted__pasted__pasted__pasted__pasted__group71/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface11
+        weight: 1
+      - path: group/pasted__group47/pasted__group29
+        weight: 1
+      - path: group/pasted__group47/pasted__group29/pasted__pasted__group271
+        weight: 1
+      - path: group/pasted__group47/pasted__group29/pasted__pasted__group271/pasted__pasted__pasted__group202
+        weight: 1
+      - path: group/pasted__group47/pasted__group29/pasted__pasted__group271/pasted__pasted__pasted__group202/pasted__pasted__pasted__pasted__group172
+        weight: 1
+      - path: group/pasted__group47/pasted__group29/pasted__pasted__group271/pasted__pasted__pasted__group202/pasted__pasted__pasted__pasted__group172/pasted__pasted__pasted__pasted__pasted__group142
+        weight: 1
+      - path: group/pasted__group47/pasted__group29/pasted__pasted__group271/pasted__pasted__pasted__group202/pasted__pasted__pasted__pasted__group172/pasted__pasted__pasted__pasted__pasted__group142/pasted__pasted__pasted__pasted__pasted__pasted__group72
+        weight: 1
+      - path: group/pasted__group47/pasted__group29/pasted__pasted__group271/pasted__pasted__pasted__group202/pasted__pasted__pasted__pasted__group172/pasted__pasted__pasted__pasted__pasted__group142/pasted__pasted__pasted__pasted__pasted__pasted__group72/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group42
+        weight: 1
+      - path: group/pasted__group47/pasted__group29/pasted__pasted__group271/pasted__pasted__pasted__group202/pasted__pasted__pasted__pasted__group172/pasted__pasted__pasted__pasted__pasted__group142/pasted__pasted__pasted__pasted__pasted__pasted__group72/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group42/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2
+        weight: 1
+      - path: group/pasted__group47/pasted__group29/pasted__pasted__group271/pasted__pasted__pasted__group202/pasted__pasted__pasted__pasted__group172/pasted__pasted__pasted__pasted__pasted__group142/pasted__pasted__pasted__pasted__pasted__pasted__group72/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group42/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface12
+        weight: 1
+      - path: group/pasted__group47/pasted__group30
+        weight: 1
+      - path: group/pasted__group47/pasted__group30/pasted__pasted__group23 1
+        weight: 1
+      - path: group/pasted__group47/pasted__group30/pasted__pasted__group23 1/pasted__pasted__pasted__group22
+        weight: 1
+      - path: group/pasted__group47/pasted__group30/pasted__pasted__group23 1/pasted__pasted__pasted__group22/pasted__pasted__pasted__pasted__group21
+        weight: 1
+      - path: group/pasted__group47/pasted__group30/pasted__pasted__group23 1/pasted__pasted__pasted__group22/pasted__pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__pasted__group20
+        weight: 1
+      - path: group/pasted__group47/pasted__group30/pasted__pasted__group23 1/pasted__pasted__pasted__group22/pasted__pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__pasted__group17
+        weight: 1
+      - path: group/pasted__group47/pasted__group30/pasted__pasted__group23 1/pasted__pasted__pasted__group22/pasted__pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group14
+        weight: 1
+      - path: group/pasted__group47/pasted__group30/pasted__pasted__group23 1/pasted__pasted__pasted__group22/pasted__pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group7
+        weight: 1
+      - path: group/pasted__group47/pasted__group30/pasted__pasted__group23 1/pasted__pasted__pasted__group22/pasted__pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group4
+        weight: 1
+      - path: group/pasted__group47/pasted__group30/pasted__pasted__group23 1/pasted__pasted__pasted__group22/pasted__pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group
+        weight: 1
+      - path: group/pasted__group47/pasted__group30/pasted__pasted__group23 1/pasted__pasted__pasted__group22/pasted__pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__pasted__group20/pasted__pasted__pasted__pasted__pasted__pasted__group17/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group14/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group7/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group4/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__group47/pasted__group31
+        weight: 1
+      - path: group/pasted__group47/pasted__group31/pasted__pasted__group9
+        weight: 1
+      - path: group/pasted__group47/pasted__group31/pasted__pasted__group9/pasted__pasted__pasted__group2
+        weight: 1
+      - path: group/pasted__group47/pasted__group31/pasted__pasted__group9/pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__group1
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group31/pasted__pasted__group9/pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__group1
+          1/pasted__pasted__pasted__pasted__pasted__polySurface15
+        weight: 1
+      - path: group/pasted__group47/pasted__group32
+        weight: 1
+      - path: group/pasted__group47/pasted__group32/pasted__pasted__group31
+        weight: 1
+      - path: group/pasted__group47/pasted__group32/pasted__pasted__group31/pasted__pasted__pasted__group9
+        weight: 1
+      - path: group/pasted__group47/pasted__group32/pasted__pasted__group31/pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__group2
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group32/pasted__pasted__group31/pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__group2
+          1/pasted__pasted__pasted__pasted__pasted__group1 1
+        weight: 1
+      - path: group/pasted__group47/pasted__group32/pasted__pasted__group31/pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__group2
+          1/pasted__pasted__pasted__pasted__pasted__group1 1/pasted__pasted__pasted__pasted__pasted__pasted__polySurface13
+        weight: 1
+      - path: group/pasted__group47/pasted__group33
+        weight: 1
+      - path: group/pasted__group47/pasted__group33/pasted__pasted__group311
+        weight: 1
+      - path: group/pasted__group47/pasted__group33/pasted__pasted__group311/pasted__pasted__pasted__group91
+        weight: 1
+      - path: group/pasted__group47/pasted__group33/pasted__pasted__group311/pasted__pasted__pasted__group91/pasted__pasted__pasted__pasted__group21
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group33/pasted__pasted__group311/pasted__pasted__pasted__group91/pasted__pasted__pasted__pasted__group21
+          1/pasted__pasted__pasted__pasted__pasted__group11
+        weight: 1
+      - path: group/pasted__group47/pasted__group33/pasted__pasted__group311/pasted__pasted__pasted__group91/pasted__pasted__pasted__pasted__group21
+          1/pasted__pasted__pasted__pasted__pasted__group11/pasted__pasted__pasted__pasted__pasted__pasted__polySurface14
+        weight: 1
+      - path: group/pasted__group47/pasted__group34
+        weight: 1
+      - path: group/pasted__group47/pasted__group34/pasted__pasted__group312
+        weight: 1
+      - path: group/pasted__group47/pasted__group34/pasted__pasted__group312/pasted__pasted__pasted__group92
+        weight: 1
+      - path: group/pasted__group47/pasted__group34/pasted__pasted__group312/pasted__pasted__pasted__group92/pasted__pasted__pasted__pasted__group22
+        weight: 1
+      - path: group/pasted__group47/pasted__group34/pasted__pasted__group312/pasted__pasted__pasted__group92/pasted__pasted__pasted__pasted__group22/pasted__pasted__pasted__pasted__pasted__group12
+        weight: 1
+      - path: group/pasted__group47/pasted__group34/pasted__pasted__group312/pasted__pasted__pasted__group92/pasted__pasted__pasted__pasted__group22/pasted__pasted__pasted__pasted__pasted__group12/pasted__pasted__pasted__pasted__pasted__pasted__polySurface15
+        weight: 1
+      - path: group/pasted__group47/pasted__group35
+        weight: 1
+      - path: group/pasted__group47/pasted__group35/pasted__pasted__group313
+        weight: 1
+      - path: group/pasted__group47/pasted__group35/pasted__pasted__group313/pasted__pasted__pasted__group93
+        weight: 1
+      - path: group/pasted__group47/pasted__group35/pasted__pasted__group313/pasted__pasted__pasted__group93/pasted__pasted__pasted__pasted__group23
+        weight: 1
+      - path: group/pasted__group47/pasted__group35/pasted__pasted__group313/pasted__pasted__pasted__group93/pasted__pasted__pasted__pasted__group23/pasted__pasted__pasted__pasted__pasted__group13
+        weight: 1
+      - path: group/pasted__group47/pasted__group35/pasted__pasted__group313/pasted__pasted__pasted__group93/pasted__pasted__pasted__pasted__group23/pasted__pasted__pasted__pasted__pasted__group13/pasted__pasted__pasted__pasted__pasted__pasted__polySurface16
+        weight: 1
+      - path: group/pasted__group47/pasted__group36
+        weight: 1
+      - path: group/pasted__group47/pasted__group36/pasted__pasted__group314
+        weight: 1
+      - path: group/pasted__group47/pasted__group36/pasted__pasted__group314/pasted__pasted__pasted__group94
+        weight: 1
+      - path: group/pasted__group47/pasted__group36/pasted__pasted__group314/pasted__pasted__pasted__group94/pasted__pasted__pasted__pasted__group24
+        weight: 1
+      - path: group/pasted__group47/pasted__group36/pasted__pasted__group314/pasted__pasted__pasted__group94/pasted__pasted__pasted__pasted__group24/pasted__pasted__pasted__pasted__pasted__group14
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group36/pasted__pasted__group314/pasted__pasted__pasted__group94/pasted__pasted__pasted__pasted__group24/pasted__pasted__pasted__pasted__pasted__group14
+          1/pasted__pasted__pasted__pasted__pasted__pasted__polySurface17
+        weight: 1
+      - path: group/pasted__group47/pasted__group37
+        weight: 1
+      - path: group/pasted__group47/pasted__group37/pasted__pasted__group315
+        weight: 1
+      - path: group/pasted__group47/pasted__group37/pasted__pasted__group315/pasted__pasted__pasted__group95
+        weight: 1
+      - path: group/pasted__group47/pasted__group37/pasted__pasted__group315/pasted__pasted__pasted__group95/pasted__pasted__pasted__pasted__group25
+        weight: 1
+      - path: group/pasted__group47/pasted__group37/pasted__pasted__group315/pasted__pasted__pasted__group95/pasted__pasted__pasted__pasted__group25/pasted__pasted__pasted__pasted__pasted__group15
+        weight: 1
+      - path: group/pasted__group47/pasted__group37/pasted__pasted__group315/pasted__pasted__pasted__group95/pasted__pasted__pasted__pasted__group25/pasted__pasted__pasted__pasted__pasted__group15/pasted__pasted__pasted__pasted__pasted__pasted__polySurface18
+        weight: 1
+      - path: group/pasted__group47/pasted__group38
+        weight: 1
+      - path: group/pasted__group47/pasted__group38/pasted__pasted__group316
+        weight: 1
+      - path: group/pasted__group47/pasted__group38/pasted__pasted__group316/pasted__pasted__pasted__group96
+        weight: 1
+      - path: group/pasted__group47/pasted__group38/pasted__pasted__group316/pasted__pasted__pasted__group96/pasted__pasted__pasted__pasted__group26
+        weight: 1
+      - path: group/pasted__group47/pasted__group38/pasted__pasted__group316/pasted__pasted__pasted__group96/pasted__pasted__pasted__pasted__group26/pasted__pasted__pasted__pasted__pasted__group16
+        weight: 1
+      - path: group/pasted__group47/pasted__group38/pasted__pasted__group316/pasted__pasted__pasted__group96/pasted__pasted__pasted__pasted__group26/pasted__pasted__pasted__pasted__pasted__group16/pasted__pasted__pasted__pasted__pasted__pasted__polySurface19
+        weight: 1
+      - path: group/pasted__group47/pasted__group39
+        weight: 1
+      - path: group/pasted__group47/pasted__group39/pasted__pasted__group317
+        weight: 1
+      - path: group/pasted__group47/pasted__group39/pasted__pasted__group317/pasted__pasted__pasted__group97
+        weight: 1
+      - path: group/pasted__group47/pasted__group39/pasted__pasted__group317/pasted__pasted__pasted__group97/pasted__pasted__pasted__pasted__group27
+        weight: 1
+      - path: group/pasted__group47/pasted__group39/pasted__pasted__group317/pasted__pasted__pasted__group97/pasted__pasted__pasted__pasted__group27/pasted__pasted__pasted__pasted__pasted__group17
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group39/pasted__pasted__group317/pasted__pasted__pasted__group97/pasted__pasted__pasted__pasted__group27/pasted__pasted__pasted__pasted__pasted__group17
+          1/pasted__pasted__pasted__pasted__pasted__pasted__polySurface110
+        weight: 1
+      - path: group/pasted__group47/pasted__group40
+        weight: 1
+      - path: group/pasted__group47/pasted__group40/pasted__pasted__group38
+        weight: 1
+      - path: group/pasted__group47/pasted__group40/pasted__pasted__group38/pasted__pasted__pasted__group31
+        weight: 1
+      - path: group/pasted__group47/pasted__group40/pasted__pasted__group38/pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__group9
+        weight: 1
+      - path: group/pasted__group47/pasted__group40/pasted__pasted__group38/pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__group2
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group40/pasted__pasted__group38/pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__group2
+          1/pasted__pasted__pasted__pasted__pasted__pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group40/pasted__pasted__group38/pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__group2
+          1/pasted__pasted__pasted__pasted__pasted__pasted__group1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface11
+        weight: 1
+      - path: group/pasted__group47/pasted__group41
+        weight: 1
+      - path: group/pasted__group47/pasted__group41/pasted__pasted__group40
+        weight: 1
+      - path: group/pasted__group47/pasted__group41/pasted__pasted__group40/pasted__pasted__pasted__group38
+        weight: 1
+      - path: group/pasted__group47/pasted__group41/pasted__pasted__group40/pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__group31
+        weight: 1
+      - path: group/pasted__group47/pasted__group41/pasted__pasted__group40/pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__group9
+        weight: 1
+      - path: group/pasted__group47/pasted__group41/pasted__pasted__group40/pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__group2
+        weight: 1
+      - path: group/pasted__group47/pasted__group41/pasted__pasted__group40/pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group41/pasted__pasted__group40/pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+          1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface13
+        weight: 1
+      - path: group/pasted__group47/pasted__group42
+        weight: 1
+      - path: group/pasted__group47/pasted__group42/pasted__pasted__group41
+        weight: 1
+      - path: group/pasted__group47/pasted__group42/pasted__pasted__group41/pasted__pasted__pasted__group40
+        weight: 1
+      - path: group/pasted__group47/pasted__group42/pasted__pasted__group41/pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__group38
+        weight: 1
+      - path: group/pasted__group47/pasted__group42/pasted__pasted__group41/pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__group31
+        weight: 1
+      - path: group/pasted__group47/pasted__group42/pasted__pasted__group41/pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__group9
+        weight: 1
+      - path: group/pasted__group47/pasted__group42/pasted__pasted__group41/pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group42/pasted__pasted__group41/pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2
+          1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group42/pasted__pasted__group41/pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2
+          1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+          1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface13
+        weight: 1
+      - path: group/pasted__group47/pasted__group43
+        weight: 1
+      - path: group/pasted__group47/pasted__group43/pasted__pasted__group42
+        weight: 1
+      - path: group/pasted__group47/pasted__group43/pasted__pasted__group42/pasted__pasted__pasted__group41
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group43/pasted__pasted__group42/pasted__pasted__pasted__group41
+          1/pasted__pasted__pasted__pasted__group40
+        weight: 1
+      - path: group/pasted__group47/pasted__group43/pasted__pasted__group42/pasted__pasted__pasted__group41
+          1/pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__group38
+        weight: 1
+      - path: group/pasted__group47/pasted__group43/pasted__pasted__group42/pasted__pasted__pasted__group41
+          1/pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__group31
+        weight: 1
+      - path: group/pasted__group47/pasted__group43/pasted__pasted__group42/pasted__pasted__pasted__group41
+          1/pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9
+        weight: 1
+      - path: group/pasted__group47/pasted__group43/pasted__pasted__group42/pasted__pasted__pasted__group41
+          1/pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group43/pasted__pasted__group42/pasted__pasted__pasted__group41
+          1/pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2
+          1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group43/pasted__pasted__group42/pasted__pasted__pasted__group41
+          1/pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2
+          1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+          1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface12
+        weight: 1
+      - path: group/pasted__group47/pasted__group44
+        weight: 1
+      - path: group/pasted__group47/pasted__group44/pasted__pasted__group43
+        weight: 1
+      - path: group/pasted__group47/pasted__group44/pasted__pasted__group43/pasted__pasted__pasted__group42
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group44/pasted__pasted__group43/pasted__pasted__pasted__group42
+          1/pasted__pasted__pasted__pasted__group41 1
+        weight: 1
+      - path: group/pasted__group47/pasted__group44/pasted__pasted__group43/pasted__pasted__pasted__group42
+          1/pasted__pasted__pasted__pasted__group41 1/pasted__pasted__pasted__pasted__pasted__group40
+        weight: 1
+      - path: group/pasted__group47/pasted__group44/pasted__pasted__group43/pasted__pasted__pasted__group42
+          1/pasted__pasted__pasted__pasted__group41 1/pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__group38
+        weight: 1
+      - path: group/pasted__group47/pasted__group44/pasted__pasted__group43/pasted__pasted__pasted__group42
+          1/pasted__pasted__pasted__pasted__group41 1/pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group31
+        weight: 1
+      - path: group/pasted__group47/pasted__group44/pasted__pasted__group43/pasted__pasted__pasted__group42
+          1/pasted__pasted__pasted__pasted__group41 1/pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9
+        weight: 1
+      - path: group/pasted__group47/pasted__group44/pasted__pasted__group43/pasted__pasted__pasted__group42
+          1/pasted__pasted__pasted__pasted__group41 1/pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2
+        weight: 1
+      - path: group/pasted__group47/pasted__group44/pasted__pasted__group43/pasted__pasted__pasted__group42
+          1/pasted__pasted__pasted__pasted__group41 1/pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group44/pasted__pasted__group43/pasted__pasted__pasted__group42
+          1/pasted__pasted__pasted__pasted__group41 1/pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface11
+        weight: 1
+      - path: group/pasted__group47/pasted__group45
+        weight: 1
+      - path: group/pasted__group47/pasted__group45/pasted__pasted__group431
+        weight: 1
+      - path: group/pasted__group47/pasted__group45/pasted__pasted__group431/pasted__pasted__pasted__group421
+        weight: 1
+      - path: group/pasted__group47/pasted__group45/pasted__pasted__group431/pasted__pasted__pasted__group421/pasted__pasted__pasted__pasted__group411
+        weight: 1
+      - path: group/pasted__group47/pasted__group45/pasted__pasted__group431/pasted__pasted__pasted__group421/pasted__pasted__pasted__pasted__group411/pasted__pasted__pasted__pasted__pasted__group401
+        weight: 1
+      - path: group/pasted__group47/pasted__group45/pasted__pasted__group431/pasted__pasted__pasted__group421/pasted__pasted__pasted__pasted__group411/pasted__pasted__pasted__pasted__pasted__group401/pasted__pasted__pasted__pasted__pasted__pasted__group381
+        weight: 1
+      - path: group/pasted__group47/pasted__group45/pasted__pasted__group431/pasted__pasted__pasted__group421/pasted__pasted__pasted__pasted__group411/pasted__pasted__pasted__pasted__pasted__group401/pasted__pasted__pasted__pasted__pasted__pasted__group381/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group311
+        weight: 1
+      - path: group/pasted__group47/pasted__group45/pasted__pasted__group431/pasted__pasted__pasted__group421/pasted__pasted__pasted__pasted__group411/pasted__pasted__pasted__pasted__pasted__group401/pasted__pasted__pasted__pasted__pasted__pasted__group381/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group311/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group91
+        weight: 1
+      - path: group/pasted__group47/pasted__group45/pasted__pasted__group431/pasted__pasted__pasted__group421/pasted__pasted__pasted__pasted__group411/pasted__pasted__pasted__pasted__pasted__group401/pasted__pasted__pasted__pasted__pasted__pasted__group381/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group311/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group91/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group21
+        weight: 1
+      - path: group/pasted__group47/pasted__group45/pasted__pasted__group431/pasted__pasted__pasted__group421/pasted__pasted__pasted__pasted__group411/pasted__pasted__pasted__pasted__pasted__group401/pasted__pasted__pasted__pasted__pasted__pasted__group381/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group311/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group91/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group11
+        weight: 1
+      - path: group/pasted__group47/pasted__group45/pasted__pasted__group431/pasted__pasted__pasted__group421/pasted__pasted__pasted__pasted__group411/pasted__pasted__pasted__pasted__pasted__group401/pasted__pasted__pasted__pasted__pasted__pasted__group381/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group311/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group91/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group21/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group11/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface12
+        weight: 1
+      - path: group/pasted__group47/pasted__group46
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45/pasted__pasted__pasted__group43
+          1
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45/pasted__pasted__pasted__group43
+          1/pasted__pasted__pasted__pasted__group42 1
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45/pasted__pasted__pasted__group43
+          1/pasted__pasted__pasted__pasted__group42 1/pasted__pasted__pasted__pasted__pasted__group41
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45/pasted__pasted__pasted__group43
+          1/pasted__pasted__pasted__pasted__group42 1/pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__group40
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45/pasted__pasted__pasted__group43
+          1/pasted__pasted__pasted__pasted__group42 1/pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group38
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45/pasted__pasted__pasted__group43
+          1/pasted__pasted__pasted__pasted__group42 1/pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group31
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45/pasted__pasted__pasted__group43
+          1/pasted__pasted__pasted__pasted__group42 1/pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45/pasted__pasted__pasted__group43
+          1/pasted__pasted__pasted__pasted__group42 1/pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45/pasted__pasted__pasted__group43
+          1/pasted__pasted__pasted__pasted__group42 1/pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1
+        weight: 1
+      - path: group/pasted__group47/pasted__group46/pasted__pasted__group45/pasted__pasted__pasted__group43
+          1/pasted__pasted__pasted__pasted__group42 1/pasted__pasted__pasted__pasted__pasted__group41/pasted__pasted__pasted__pasted__pasted__pasted__group40/pasted__pasted__pasted__pasted__pasted__pasted__pasted__group38/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group31/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group9/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group2/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__group1/pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__polySurface1
+        weight: 1
+      - path: group/pasted__humanBody
+        weight: 1
+      - path: group/pasted__polySurface1
+        weight: 1
+      - path: group/pasted__polySurface2
+        weight: 1
+      - path: mixamorig:Hips
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:LeftUpLeg
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:LeftUpLeg/mixamorig:LeftLeg
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:LeftUpLeg/mixamorig:LeftLeg/mixamorig:LeftFoot
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:LeftUpLeg/mixamorig:LeftLeg/mixamorig:LeftFoot/mixamorig:LeftToeBase
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:LeftUpLeg/mixamorig:LeftLeg/mixamorig:LeftFoot/mixamorig:LeftToeBase/mixamorig:LeftToe_End
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:RightUpLeg
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:RightUpLeg/mixamorig:RightLeg
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:RightUpLeg/mixamorig:RightLeg/mixamorig:RightFoot
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:RightUpLeg/mixamorig:RightLeg/mixamorig:RightFoot/mixamorig:RightToeBase
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:RightUpLeg/mixamorig:RightLeg/mixamorig:RightFoot/mixamorig:RightToeBase/mixamorig:RightToe_End
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandIndex1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandIndex1/mixamorig:LeftHandIndex2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandIndex1/mixamorig:LeftHandIndex2/mixamorig:LeftHandIndex3
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandIndex1/mixamorig:LeftHandIndex2/mixamorig:LeftHandIndex3/mixamorig:LeftHandIndex4
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandMiddle1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandMiddle1/mixamorig:LeftHandMiddle2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandMiddle1/mixamorig:LeftHandMiddle2/mixamorig:LeftHandMiddle3
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandMiddle1/mixamorig:LeftHandMiddle2/mixamorig:LeftHandMiddle3/mixamorig:LeftHandMiddle4
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandPinky1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandPinky1/mixamorig:LeftHandPinky2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandPinky1/mixamorig:LeftHandPinky2/mixamorig:LeftHandPinky3
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandPinky1/mixamorig:LeftHandPinky2/mixamorig:LeftHandPinky3/mixamorig:LeftHandPinky4
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandRing1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandRing1/mixamorig:LeftHandRing2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandRing1/mixamorig:LeftHandRing2/mixamorig:LeftHandRing3
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandRing1/mixamorig:LeftHandRing2/mixamorig:LeftHandRing3/mixamorig:LeftHandRing4
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandThumb1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandThumb1/mixamorig:LeftHandThumb2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandThumb1/mixamorig:LeftHandThumb2/mixamorig:LeftHandThumb3
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandThumb1/mixamorig:LeftHandThumb2/mixamorig:LeftHandThumb3/mixamorig:LeftHandThumb4
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:Neck
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:Neck/mixamorig:Head
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:Neck/mixamorig:Head/mixamorig:HeadTop_End
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandIndex1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandIndex1/mixamorig:RightHandIndex2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandIndex1/mixamorig:RightHandIndex2/mixamorig:RightHandIndex3
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandIndex1/mixamorig:RightHandIndex2/mixamorig:RightHandIndex3/mixamorig:RightHandIndex4
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandMiddle1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandMiddle1/mixamorig:RightHandMiddle2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandMiddle1/mixamorig:RightHandMiddle2/mixamorig:RightHandMiddle3
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandMiddle1/mixamorig:RightHandMiddle2/mixamorig:RightHandMiddle3/mixamorig:RightHandMiddle4
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandPinky1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandPinky1/mixamorig:RightHandPinky2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandPinky1/mixamorig:RightHandPinky2/mixamorig:RightHandPinky3
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandPinky1/mixamorig:RightHandPinky2/mixamorig:RightHandPinky3/mixamorig:RightHandPinky4
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandRing1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandRing1/mixamorig:RightHandRing2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandRing1/mixamorig:RightHandRing2/mixamorig:RightHandRing3
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandRing1/mixamorig:RightHandRing2/mixamorig:RightHandRing3/mixamorig:RightHandRing4
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandThumb1
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandThumb1/mixamorig:RightHandThumb2
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandThumb1/mixamorig:RightHandThumb2/mixamorig:RightHandThumb3
+        weight: 1
+      - path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandThumb1/mixamorig:RightHandThumb2/mixamorig:RightHandThumb3/mixamorig:RightHandThumb4
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -891,7 +1705,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
