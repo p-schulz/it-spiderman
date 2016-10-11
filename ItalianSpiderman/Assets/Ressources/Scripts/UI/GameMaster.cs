@@ -29,6 +29,7 @@ public class GameMaster : MonoBehaviour {
     public int GoldPlayerCoinAmount;
 
     private int currentCoins;
+    private int nextLevel;
     private CoinTextHandler coinTextHandler;
 
     private bool paused;
@@ -75,7 +76,10 @@ public class GameMaster : MonoBehaviour {
     }
 
     private float lastFrameRateUpdate;
-
+    public void SetNextLevel(int n)
+    {
+        nextLevel = n;
+    }
     void Update()
     {
         if (inputManager.PauseDown())
@@ -245,7 +249,7 @@ public class GameMaster : MonoBehaviour {
 
         yield return new WaitForSeconds(ExitFadeOutTime);
 
-        Application.LoadLevel(0);
+        Application.LoadLevel(nextLevel);
         //Application.Quit();
     }
 

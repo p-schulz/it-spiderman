@@ -5,10 +5,11 @@ using System.Collections;
 public class LevelExit : MonoBehaviour {
     public AudioSource defaultMusic;
     public GameObject finishLine;
+    public int nextLevel;
 
 	// Use this for initialization
 	void Start () {
-	
+	    
 	}
 
     void OnTriggerEnter(Collider col)
@@ -25,6 +26,7 @@ public class LevelExit : MonoBehaviour {
         finishLine.SetActive(true);
         gameObject.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(5);
+        GameObject.FindObjectOfType<GameMaster>().SetNextLevel(nextLevel);
         GameObject.FindObjectOfType<GameMaster>().GameOver();
     }
 
