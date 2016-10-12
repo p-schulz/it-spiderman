@@ -191,7 +191,8 @@ public class GameMaster : MonoBehaviour {
 
         yield return new WaitForSeconds(1.0f);
 
-        Application.LoadLevel(0);
+        // watch to set the right next level for game over or level translation
+        Application.LoadLevel(nextLevel);
     }
 
     IEnumerator FadeOutMusic(float time)
@@ -249,8 +250,8 @@ public class GameMaster : MonoBehaviour {
 
         yield return new WaitForSeconds(ExitFadeOutTime);
 
-        Application.LoadLevel(nextLevel);
-        //Application.Quit();
+        // always set to 0 as it is the mainmenu
+        Application.LoadLevel(0);
     }
 
     IEnumerator AddMultipleCoins(int coins)
