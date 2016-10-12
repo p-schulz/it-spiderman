@@ -19,6 +19,8 @@ public class PlayerSound : MonoBehaviour {
     public AudioClip FlipIntoLevel;
     public AudioClip Slide;
     public AudioClip DiveLand;
+    public AudioClip KickJump;
+    public AudioClip KickJumpLand;
 
     public AudioClip[] SingleJump;
     public AudioClip DoubleJump;
@@ -89,6 +91,14 @@ public class PlayerSound : MonoBehaviour {
     public void EndFootsteps()
     {
         StopAllCoroutines();
+    }
+
+    public void PlayKickJump() {
+        PlayVoice(KickJump);
+    }
+
+    public void PlayKickJumpLand() {
+        SoundSource.PlayOneShot(KickJumpLand);
     }
 
     public void PlaySingleJump()

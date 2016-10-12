@@ -833,7 +833,7 @@ public partial class PlayerMachine : SuperStateMachine
             sound.PlayTripleJump();
         }
         else if (currentJumpProfile == jumpKick) {
-            sound.PlayJumpKick();
+            sound.PlayKickJump();
         }
         else if (currentJumpProfile == jumpSideFlip)
         {

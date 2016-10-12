@@ -691,7 +691,7 @@ public partial class PlayerMachine : SuperStateMachine {
     // ISpid is jumping
     void Jump_SuperUpdate() {
 
-        // ISpid is kicking midair
+        // ISpid is triggering a kick midair
         if (input.Current.KickDown) {
             if (currentJumpProfile.CanKick && (moveSpeed <= 7.0f/* || verticalMoveSpeed > CalculateJumpSpeed(currentJumpProfile.JumpHeight, currentJumpProfile.Gravity) * 0.85f*/) && !slopeJumping) {
                 currentJumpProfile = jumpKick;
@@ -704,13 +704,13 @@ public partial class PlayerMachine : SuperStateMachine {
                 return;
             }
             else if (currentJumpProfile.CanDive) {
-                sound.PlayDive();
-                currentState = PlayerStates.Dive;
+                sound.PlayKickJump();
+                currentState = PlayerStates.KickJump;
                 return;
             }
         }
 
-        // ISpid is striking midair
+        // ISpid is triggering a strike midair
         if (input.Current.StrikeDown) {
             if (currentJumpProfile.CanKick && (moveSpeed <= 7.0f || verticalMoveSpeed > CalculateJumpSpeed(currentJumpProfile.JumpHeight, currentJumpProfile.Gravity) * 0.85f) && !slopeJumping) {
                 currentJumpProfile = jumpStrike;
@@ -743,21 +743,13 @@ public partial class PlayerMachine : SuperStateMachine {
                     if (machine != null) {
                         moveSpeed = -5.0f;
 
-                        //if (goldPlayer) {
-                        //    machine.GetStruck(lookDirection, 10.0f, 15.0f);
-                        //    machine.MakeGold();
-                        //}
-                        //else {
-                            machine.GetStruck(lookDirection, 10.0f, 15.0f, 0.3f);
-                        //}
-
+                        machine.GetStruck(lookDirection, 10.0f, 15.0f, 0.3f);
                         Instantiate(EnemyHitEffect, GetKickPosition(), Quaternion.LookRotation(-lookDirection));
                     }
                     else if (trigger != null) {
                         moveSpeed = -12.0f;
 
                         trigger.Strike();
-
                         Instantiate(EnemyHitEffect, GetKickPosition(), Quaternion.LookRotation(-lookDirection));
                     }
                     else {
@@ -1063,15 +1055,12 @@ public partial class PlayerMachine : SuperStateMachine {
         SuperCollision col;
         Vector3 planarMoveDirection = Math3d.ProjectVectorOnPlane(controller.up, moveDirection);
 
-        if (SuperMath.PointAbovePlane(controller.up, jumpPeak, transform.position))
-        {
+        if (SuperMath.PointAbovePlane(controller.up, jumpPeak, transform.position)) {
             jumpPeak = transform.position;
         }
 
-        if (HasWallCollided(out col))
-        {
-            if (Vector3.Angle(-planarMoveDirection.normalized, col.normal) < 75.0f)
-            {
+        if (HasWallCollided(out col)) {
+            if (Vector3.Angle(-planarMoveDirection.normalized, col.normal) < 75.0f) {
                 moveSpeed = -2.0f;
                 lookDirection = Vector3.Reflect(-lookDirection, col.normal);
 
@@ -1083,14 +1072,11 @@ public partial class PlayerMachine : SuperStateMachine {
             }
         }
 
-        if (AcquiringGround())
-        {
+        if (AcquiringGround()) {
             verticalMoveSpeed = 0;
 
-            if (ShouldHaveFallDamage())
-            {
-                if (FallDamage())
-                {
+            if (ShouldHaveFallDamage()) {
+                if (FallDamage()) {
                     moveSpeed = Mathf.Clamp(5.0f, 0, moveSpeed);
                     verticalMoveSpeed = 0;
                     currentState = PlayerStates.KnockbackForwards;
@@ -1103,31 +1089,21 @@ public partial class PlayerMachine : SuperStateMachine {
             currentState = PlayerStates.Slide;
             return;
         }
-
-        if (!goldPlayer)
-        {
-            BodySlam();
-        }
-        else
-        {
-            GoldBodySlam();
-        }
+        
+        BodySlam();
 
         Vector3 right = Vector3.Cross(controller.up, lookDirection);
         Vector3 horizontalMovement = Vector3.zero;
 
-        if (input.Current.MoveInput != Vector3.zero)
-        {
+        if (input.Current.MoveInput != Vector3.zero) {
             Vector3 relativeMoveInput = Math3d.ProjectVectorOnPlane(right, input.Current.MoveInput);
 
             float targetMovement;
 
-            if (Vector3.Angle(lookDirection, relativeMoveInput) < 90)
-            {
+            if (Vector3.Angle(lookDirection, relativeMoveInput) < 90) {
                 targetMovement = relativeMoveInput.magnitude * (runSpeed + 6.1f);
             }
-            else
-            {
+            else {
                 targetMovement = relativeMoveInput.magnitude * runSpeed * 0.5f;
             }
 
@@ -1136,8 +1112,7 @@ public partial class PlayerMachine : SuperStateMachine {
             horizontalMovement = Math3d.ProjectVectorOnPlane(lookDirection, input.Current.MoveInput) * 220.0f * controller.deltaTime;
 
         }
-        else
-        {
+        else {
             moveSpeed = Mathf.MoveTowards(moveSpeed, 0, 8.0f * controller.deltaTime);
         }
 
@@ -1270,6 +1245,48 @@ public partial class PlayerMachine : SuperStateMachine {
 
         controller.EnableClamping();
         controller.EnableSlopeLimit();
+    }
+
+    /// <summary>
+    /// Italian Spiderman was knocked
+    /// </summary>
+
+    void KnockbackRecover_EnterState() {
+        anim.Play("jump");
+    }
+
+    void KnockbackRecover_SuperUpdate() {
+        if (!MaintainingGround()) {
+            currentState = PlayerStates.Fall;
+            return;
+        }
+
+        if (Timer(timeEnteredState, anim["jump"].length)) {
+            currentState = PlayerStates.Idle;
+        }
+    }
+
+    void KnockbackRecover_ExitState() {
+        status.StartInvincible();
+    }
+
+    void KnockbackForwardsRecover_EnterState() {
+        anim.Play("jump");
+    }
+
+    void KnockbackForwardsRecover_SuperUpdate() {
+        if (!MaintainingGround()) {
+            currentState = PlayerStates.Fall;
+            return;
+        }
+
+        if (Timer(timeEnteredState, anim["jump"].length)) {
+            currentState = PlayerStates.Idle;
+        }
+    }
+
+    void KnockbackForwardsRecover_ExitState() {
+        status.StartInvincible();
     }
 
     /// <summary>
@@ -1611,157 +1628,6 @@ public partial class PlayerMachine : SuperStateMachine {
     }
 
     /// <summary>
-    /// Italian Spiderman was knocked
-    /// </summary>
-
-    void KnockbackRecover_EnterState() {
-        anim.Play("jump");
-    }
-
-    void KnockbackRecover_SuperUpdate() {
-        if (!MaintainingGround()) {
-            currentState = PlayerStates.Fall;
-            return;
-        }
-
-        if (Timer(timeEnteredState, anim["jump"].length)) {
-            currentState = PlayerStates.Idle;
-        }
-    }
-
-    void KnockbackRecover_ExitState() {
-        status.StartInvincible();
-    }
-
-    void KnockbackForwardsRecover_EnterState() {
-        anim.Play("jump");
-    }
-
-    void KnockbackForwardsRecover_SuperUpdate() {
-        if (!MaintainingGround()) {
-            currentState = PlayerStates.Fall;
-            return;
-        }
-
-        if (Timer(timeEnteredState, anim["jump"].length)) {
-            currentState = PlayerStates.Idle;
-        }
-    }
-
-    void KnockbackForwardsRecover_ExitState() {
-        status.StartInvincible();
-    }
-
-    /// <summary>
-    /// Italian Spiderman preparing pound ground ----------------------> delete
-    /// </summary>
-
-    //void GroundPoundPrepare_EnterState() {
-    //    anim.Play("forward_flip");
-
-    //    sound.StopVoices();
-    //    sound.PlaySpin();
-
-    //    verticalMoveSpeed = 2.0f;
-    //    moveSpeed = 0.0f;
-
-    //    jumpPeak = transform.position;
-    //}
-
-    //void GroundPoundPrepare_SuperUpdate()
-    //{
-    //    moveDirection = controller.up * verticalMoveSpeed;
-
-    //    if (Timer(timeEnteredState, anim["forward_flip"].length))
-    //    {
-    //        currentState = PlayerStates.GroundPound;
-    //    }
-    //}
-
-    //void GroundPound_EnterState()
-    //{
-    //    sound.PlayGroundPoundDown();
-
-    //    verticalMoveSpeed = -20.0f;
-    //}
-
-    //void GroundPound_SuperUpdate()
-    //{
-    //    moveDirection = controller.up * verticalMoveSpeed;
-
-    //    GameObject struckObject;
-
-    //    if (FootStrike(out struckObject))
-    //    {
-    //        var machine = struckObject.GetComponent<EnemyMachine>();
-
-    //        if (machine)
-    //            machine.KillEnemy();
-    //    }
-
-    //    bool alreadyTriggered = false;
-
-    //    if (AcquiringGround())
-    //    {
-    //        if (!alreadyTriggered)
-    //        {
-    //            var trigger = controller.currentGround.Transform.GetComponent<TriggerableObject>();
-
-    //            if (trigger != null)
-    //            {
-    //                if (trigger.GroundPound())
-    //                {
-    //                    return;
-    //                }
-    //            }
-    //        }
-
-    //        currentState = PlayerStates.GroundPoundRecover;
-    //        return;
-    //    }
-    //}
-
-    //void GroundPoundRecover_EnterState()
-    //{
-    //    controller.EnableClamping();
-    //    controller.EnableSlopeLimit();
-
-    //    Instantiate(GroundPoundSmokeEffect, transform.position + controller.up * 0.15f, Quaternion.identity);
-
-    //    sound.PlayGroundPound();
-
-    //    if (ShouldHaveFallDamage())
-    //    {
-    //        if (FallDamage())
-    //        {
-    //            currentState = PlayerStates.Knockback;
-    //            return;
-    //        }
-    //    }
-
-    //    verticalMoveSpeed = 0.0f;
-    //    moveDirection = controller.up * verticalMoveSpeed;
-
-    //    anim.Play("jump");
-
-    //    SmartCamera.Shake(0.25f, 5.0f, 0.25f);
-    //}
-
-    //void GroundPoundRecover_SuperUpdate()
-    //{
-    //    if (!MaintainingGround())
-    //    {
-    //        currentState = PlayerStates.Fall;
-    //        return;
-    //    }
-
-    //    if (Timer(timeEnteredState, anim["jump"].length * 0.25f))
-    //    {
-    //        currentState = PlayerStates.Idle;
-    //    }
-    //}
-
-    /// <summary>
     /// Italian Spiderman striking (punch)
     /// </summary>
 
@@ -1935,21 +1801,120 @@ public partial class PlayerMachine : SuperStateMachine {
         }
     }
 
+    /// <summary>
+    /// Italian Spiderman striking midair (JumpKick)
+    /// </summary>
 
+    void KickJump_EnterState() {
+        anim.Play("flying_bicycle_kick");
+
+        controller.DisableClamping();
+        controller.DisableSlopeLimit();
+
+        moveSpeed += 5.0f;
+
+        jumpPeak = transform.position;
+    }
+
+    void KickJump_SuperUpdate() {
+        SuperCollision col;
+        Vector3 planarMoveDirection = Math3d.ProjectVectorOnPlane(controller.up, moveDirection);
+
+        // set new jumping peak if player is above previous peak
+        if (SuperMath.PointAbovePlane(controller.up, jumpPeak, transform.position)) {
+            jumpPeak = transform.position;
+        }
+
+        // collision with a wall
+        if (HasWallCollided(out col)) {
+            if (Vector3.Angle(-planarMoveDirection.normalized, col.normal) < 75.0f) {
+                moveSpeed = -2.0f;
+                lookDirection = Vector3.Reflect(-lookDirection, col.normal);
+
+                Instantiate(WallHitStarEffect, col.point, Quaternion.LookRotation(col.normal));
+
+                sound.PlayHeavyKnockback();
+                currentState = PlayerStates.AirKnockback;
+                return;
+            }
+        }
+
+        // landing on the ground
+        if (AcquiringGround()) {
+            verticalMoveSpeed = 0;
+
+            if (ShouldHaveFallDamage()) {
+                if (FallDamage()) {
+                    moveSpeed = Mathf.Clamp(5.0f, 0, moveSpeed);
+                    verticalMoveSpeed = 0;
+                    currentState = PlayerStates.KnockbackForwards;
+                    return;
+                }
+            }
+
+            sound.PlayKickJumpLand();
+
+            currentState = PlayerStates.Slide;
+            return;
+        }
+
+        BodySlam();
+
+        Vector3 right = Vector3.Cross(controller.up, lookDirection);
+        Vector3 horizontalMovement = Vector3.zero;
+
+        // direction changes (user input during jump kicking)
+        if (input.Current.MoveInput != Vector3.zero) {
+            Vector3 relativeMoveInput = Math3d.ProjectVectorOnPlane(right, input.Current.MoveInput);
+
+            float targetMovement;
+
+            if (Vector3.Angle(lookDirection, relativeMoveInput) < 90) {
+                targetMovement = relativeMoveInput.magnitude * (runSpeed + 6.1f);
+            }
+            else {
+                targetMovement = relativeMoveInput.magnitude * runSpeed * 0.5f;
+            }
+
+            moveSpeed = Mathf.MoveTowards(moveSpeed, targetMovement, 8.0f * controller.deltaTime);
+            horizontalMovement = Math3d.ProjectVectorOnPlane(lookDirection, input.Current.MoveInput) * 220.0f * controller.deltaTime;
+        }
+        else {
+            moveSpeed = Mathf.MoveTowards(moveSpeed, 0, 8.0f * controller.deltaTime);
+        }
+
+        verticalMoveSpeed = Mathf.MoveTowards(verticalMoveSpeed, -30.0f, 35.0f * controller.deltaTime);
+        moveDirection = Math3d.SetVectorLength(lookDirection, moveSpeed) + controller.up * verticalMoveSpeed + horizontalMovement;
+
+        Vector3 r = Vector3.Cross(lookDirection, controller.up);
+
+        float ratio = verticalMoveSpeed < 0 ? Mathf.Abs(verticalMoveSpeed / 20.0f) : 0;
+        float angle = Mathf.Lerp(0, 70.0f, ratio);
+
+        artUpDirection = Quaternion.AngleAxis(-angle, r) * controller.up;
+    }
+
+    void KickJump_ExitState() {
+        artUpDirection = controller.up;
+
+        controller.EnableClamping();
+        controller.EnableSlopeLimit();
+    }
+
+    /// <summary>
+    /// Italian Spiderman stagger (???)
+    /// </summary>
 
     bool staggerForward;
 
-    void Stagger_EnterState()
-    {
+    void Stagger_EnterState() {
         controller.EnableClamping();
         controller.EnableSlopeLimit();
 
-        if (staggerForward)
-        {
+        if (staggerForward) {
             anim.CrossFade("hard_kick", 1.15f);
         }
-        else
-        {
+        else {
             anim.CrossFade("hard_kick", 1.15f);
         }
     }
@@ -1978,18 +1943,20 @@ public partial class PlayerMachine : SuperStateMachine {
         status.StartInvincible();
     }
 
+    /// <summary>
+    /// Italian Spiderman teleporting (magie ist physik durch wollen)
+    /// </summary>
+
     Vector3 teleportTarget;
 
-    void TeleportOut_EnterState()
-    {
+    void TeleportOut_EnterState() {
         moveSpeed = 0;
         verticalMoveSpeed = 0;
         moveDirection = Vector3.zero;
 
         anim.CrossFade("weight_shift", 0.3f);
 
-        if (!goldPlayer)
-        {
+        if (!goldPlayer) {
             transparencyShaderSwapper.SwapNew();
             transparencyFade.FadeOut(1);
         }
@@ -1999,18 +1966,14 @@ public partial class PlayerMachine : SuperStateMachine {
         GameObject.FindObjectOfType<GameMaster>().FadeWhiteMatteOut(1.5f);
     }
 
-    void TeleportOut_SuperUpdate()
-    {
-        if (SuperMath.Timer(timeEnteredState, 2))
-        {
+    void TeleportOut_SuperUpdate() {
+        if (SuperMath.Timer(timeEnteredState, 2)) {
             transform.position = teleportTarget;
 
             var boulders = GameObject.FindObjectsOfType<RollingBallPath>();
 
-            foreach (var boulder in boulders)
-            {
-                if (Vector3.Distance(boulder.transform.position, transform.position) < 10.0f)
-                {
+            foreach (var boulder in boulders) {
+                if (Vector3.Distance(boulder.transform.position, transform.position) < 10.0f) {
                     Destroy(boulder.gameObject);
                 }
             }
@@ -2020,8 +1983,7 @@ public partial class PlayerMachine : SuperStateMachine {
         }
     }
 
-    void TeleportIn_EnterState()
-    {
+    void TeleportIn_EnterState() {
         if (!goldPlayer)
             transparencyFade.FadeIn(1);
 
@@ -2030,23 +1992,23 @@ public partial class PlayerMachine : SuperStateMachine {
         GameObject.FindObjectOfType<GameMaster>().FadeWhiteMatteIn(1.5f);
     }
 
-    void TeleportIn_SuperUpdate()
-    {
-        if (SuperMath.Timer(timeEnteredState, 1))
-        {
+    void TeleportIn_SuperUpdate() {
+        if (SuperMath.Timer(timeEnteredState, 1)) {
             currentState = PlayerStates.Idle;
             return;
         }
     }
 
-    void TeleportIn_ExitState()
-    {
+    void TeleportIn_ExitState() {
         if (!goldPlayer)
             transparencyShaderSwapper.SwapOriginal();
     }
 
-    void EnterLevel_EnterState()
-    {
+    /// <summary>
+    /// Italian Spiderman entering a stage
+    /// </summary>
+
+    void EnterLevel_EnterState() {
         anim["falling"].speed *= 1.5f;
 
         anim.Play("falling");
@@ -2061,41 +2023,39 @@ public partial class PlayerMachine : SuperStateMachine {
         controller.DisableSlopeLimit();
     }
 
-    void EnterLevel_SuperUpdate()
-    {
+    void EnterLevel_SuperUpdate() {
         jumpPeak = transform.position;
 
         verticalMoveSpeed = Mathf.MoveTowards(verticalMoveSpeed, -jumpStandard.MaximumGravity, jumpStandard.Gravity * controller.deltaTime);
 
         moveDirection = verticalMoveSpeed * controller.up;
 
-        if (AcquiringGround())
-        {
+        if (AcquiringGround()) {
             currentState = PlayerStates.Land;
             return;
         }
     }
 
-    void MegaSpring_EnterState()
-    {
+    /// <summary>
+    /// Italian Spiderman doing a mega jump
+    /// </summary>
+
+    void MegaSpring_EnterState() {
         controller.DisableClamping();
         controller.DisableSlopeLimit();
 
         anim.Play(jumpDouble.Animation);
     }
 
-    void MegaSpring_SuperUpdate()
-    {
+    void MegaSpring_SuperUpdate() {
         jumpPeak = transform.position;
 
-        if (verticalMoveSpeed < 0 && AcquiringGround())
-        {
+        if (verticalMoveSpeed < 0 && AcquiringGround()) {
             currentState = PlayerStates.Land;
             return;
         }
 
-        if (!anim.IsPlaying(jumpDouble.FallAnimation))
-        {
+        if (!anim.IsPlaying(jumpDouble.FallAnimation)) {
             anim.CrossFade(jumpDouble.FallAnimation, 0.2f);
         }
 
@@ -2104,21 +2064,19 @@ public partial class PlayerMachine : SuperStateMachine {
         moveDirection = Math3d.SetVectorLength(lookDirection, moveSpeed) + controller.up * verticalMoveSpeed;
     }
 
-    void DeathFront_EnterState()
-    {
+    /// <summary>
+    /// Italian Spiderman dying
+    /// </summary>
+
+    void DeathFront_EnterState() {
         anim.Play("stunned");
-
         sound.PlayDie();
-
         GameObject.FindObjectOfType<GameMaster>().GameOver();
     }
 
-    void DeathBack_EnterState()
-    {
+    void DeathBack_EnterState() {
         anim.Play("stunned");
-
         sound.PlayDie();
-
         GameObject.FindObjectOfType<GameMaster>().GameOver();
     }
 }
