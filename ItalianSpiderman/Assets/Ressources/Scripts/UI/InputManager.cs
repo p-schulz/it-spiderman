@@ -54,7 +54,7 @@ public class InputManager : MonoBehaviour {
         }
 
         GetKeyBindings();
-        SetPreset(1);
+        //SetPreset(1);
 	}
 
     void SetKeyboardDefaults()
