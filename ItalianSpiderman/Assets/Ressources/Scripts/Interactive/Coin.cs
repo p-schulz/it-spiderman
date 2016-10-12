@@ -23,7 +23,7 @@ public class Coin : MonoBehaviour {
 
     void Update()
     {
-        Art.rotation *= Quaternion.AngleAxis(SpinSpeed * Time.deltaTime, transform.forward);
+        Art.rotation *= Quaternion.AngleAxis(SpinSpeed * Time.deltaTime, transform.up);
     }
 
     void OnTriggerEnter(Collider col)
