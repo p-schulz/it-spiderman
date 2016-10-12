@@ -21,6 +21,10 @@ public class PlayerSound : MonoBehaviour {
     public AudioClip DiveLand;
     public AudioClip KickJump;
     public AudioClip KickJumpLand;
+    public AudioClip GroundKickJump;
+    public AudioClip StrikeJump;
+    public AudioClip StrikeJumpLand;
+    public AudioClip GroundStrikeJump;
 
     public AudioClip[] SingleJump;
     public AudioClip DoubleJump;
@@ -93,6 +97,10 @@ public class PlayerSound : MonoBehaviour {
         StopAllCoroutines();
     }
 
+    /// <summary>
+    /// Sounds for KickJump
+    /// </summary>
+
     public void PlayKickJump() {
         PlayVoice(KickJump);
     }
@@ -101,6 +109,30 @@ public class PlayerSound : MonoBehaviour {
         SoundSource.PlayOneShot(KickJumpLand);
     }
 
+    public void PlayGroundKickJump() {
+        PlayVoice(GroundKickJump);
+    }
+
+    /// <summary>
+    /// Sounds for StrikeJump
+    /// </summary>
+
+    public void PlayStrikeJump() {
+        PlayVoice(StrikeJump);
+    }
+
+    public void PlayStrikeJumpLand() {
+        SoundSource.PlayOneShot(StrikeJumpLand);
+    }
+
+    public void PlayGroundStrikeJump() {
+        PlayVoice(GroundStrikeJump);
+    }
+
+    /// <summary>
+    /// Sounds for Jumping
+    /// </summary>
+    
     public void PlaySingleJump()
     {
         PlayRandomVoice(SingleJump, 0f);

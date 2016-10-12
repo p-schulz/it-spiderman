@@ -106,20 +106,15 @@ public partial class PlayerMachine : SuperStateMachine {
         // ISpid is starting to kick from running
         if (!isTakingFallDamage && input.Current.KickDown) {
             // ISpid was running fast
-            if (moveSpeed > runSpeed * 0.9f)
-            {
+            if (moveSpeed > runSpeed * 0.9f) {
                 transform.position += controller.up * 0.3f;
                 verticalMoveSpeed = 6.0f;
-                currentState = PlayerStates.Kick;
-
-                // TODO implement flying kick state and activate it here
-                // -------------------------------------------------------------------------------------------------------------------------------------
-
+                sound.PlayGroundKickJump();
+                currentState = PlayerStates.KickJump;
                 return;
             }
             // ISpid was not running too fast
-            else
-            {
+            else {
                 currentState = PlayerStates.Kick;
                 return;
         }
@@ -131,8 +126,8 @@ public partial class PlayerMachine : SuperStateMachine {
             if (moveSpeed > runSpeed * 0.9f) {
                 transform.position += controller.up * 0.3f;
                 verticalMoveSpeed = 6.0f;
-                sound.PlayGroundDive();
-                currentState = PlayerStates.Dive;
+                sound.PlayGroundStrikeJump();
+                currentState = PlayerStates.StrikeJump;
                 return;
             }
             // ISpid was not running too fast
@@ -723,8 +718,8 @@ public partial class PlayerMachine : SuperStateMachine {
                 return;
             }
             else if (currentJumpProfile.CanDive) {
-                sound.PlayDive();
-                currentState = PlayerStates.Dive;
+                sound.PlayStrikeJump();
+                currentState = PlayerStates.StrikeJump;
                 return;
             }
         }
@@ -1037,103 +1032,103 @@ public partial class PlayerMachine : SuperStateMachine {
 
     /// <summary>
     /// Italian Spiderman Diving
-    /// </summary>
+    ///// </summary>
 
-    void Dive_EnterState() {
-        anim["flying_inPlace"].speed *= 1.5f;
-        anim.Play("flying_inPlace");
+    //void Dive_EnterState() {
+    //    anim["flying_inPlace"].speed *= 1.5f;
+    //    anim.Play("flying_inPlace");
 
-        controller.DisableClamping();
-        controller.DisableSlopeLimit();
+    //    controller.DisableClamping();
+    //    controller.DisableSlopeLimit();
 
-        moveSpeed += 6.1f;
+    //    moveSpeed += 6.1f;
 
-        jumpPeak = transform.position;
-    }
+    //    jumpPeak = transform.position;
+    //}
 
-    void Dive_SuperUpdate() {
-        SuperCollision col;
-        Vector3 planarMoveDirection = Math3d.ProjectVectorOnPlane(controller.up, moveDirection);
+    //void Dive_SuperUpdate() {
+    //    SuperCollision col;
+    //    Vector3 planarMoveDirection = Math3d.ProjectVectorOnPlane(controller.up, moveDirection);
 
-        if (SuperMath.PointAbovePlane(controller.up, jumpPeak, transform.position)) {
-            jumpPeak = transform.position;
-        }
+    //    if (SuperMath.PointAbovePlane(controller.up, jumpPeak, transform.position)) {
+    //        jumpPeak = transform.position;
+    //    }
 
-        if (HasWallCollided(out col)) {
-            if (Vector3.Angle(-planarMoveDirection.normalized, col.normal) < 75.0f) {
-                moveSpeed = -2.0f;
-                lookDirection = Vector3.Reflect(-lookDirection, col.normal);
+    //    if (HasWallCollided(out col)) {
+    //        if (Vector3.Angle(-planarMoveDirection.normalized, col.normal) < 75.0f) {
+    //            moveSpeed = -2.0f;
+    //            lookDirection = Vector3.Reflect(-lookDirection, col.normal);
 
-                Instantiate(WallHitStarEffect, col.point, Quaternion.LookRotation(col.normal));
+    //            Instantiate(WallHitStarEffect, col.point, Quaternion.LookRotation(col.normal));
 
-                sound.PlayHeavyKnockback();
-                currentState = PlayerStates.AirKnockback;
-                return;
-            }
-        }
+    //            sound.PlayHeavyKnockback();
+    //            currentState = PlayerStates.AirKnockback;
+    //            return;
+    //        }
+    //    }
 
-        if (AcquiringGround()) {
-            verticalMoveSpeed = 0;
+    //    if (AcquiringGround()) {
+    //        verticalMoveSpeed = 0;
 
-            if (ShouldHaveFallDamage()) {
-                if (FallDamage()) {
-                    moveSpeed = Mathf.Clamp(5.0f, 0, moveSpeed);
-                    verticalMoveSpeed = 0;
-                    currentState = PlayerStates.KnockbackForwards;
-                    return;
-                }
-            }
+    //        if (ShouldHaveFallDamage()) {
+    //            if (FallDamage()) {
+    //                moveSpeed = Mathf.Clamp(5.0f, 0, moveSpeed);
+    //                verticalMoveSpeed = 0;
+    //                currentState = PlayerStates.KnockbackForwards;
+    //                return;
+    //            }
+    //        }
 
-            sound.PlayDiveLand();
+    //        sound.PlayDiveLand();
             
-            currentState = PlayerStates.Slide;
-            return;
-        }
+    //        currentState = PlayerStates.Slide;
+    //        return;
+    //    }
         
-        BodySlam();
+    //    BodySlam();
 
-        Vector3 right = Vector3.Cross(controller.up, lookDirection);
-        Vector3 horizontalMovement = Vector3.zero;
+    //    Vector3 right = Vector3.Cross(controller.up, lookDirection);
+    //    Vector3 horizontalMovement = Vector3.zero;
 
-        if (input.Current.MoveInput != Vector3.zero) {
-            Vector3 relativeMoveInput = Math3d.ProjectVectorOnPlane(right, input.Current.MoveInput);
+    //    if (input.Current.MoveInput != Vector3.zero) {
+    //        Vector3 relativeMoveInput = Math3d.ProjectVectorOnPlane(right, input.Current.MoveInput);
 
-            float targetMovement;
+    //        float targetMovement;
 
-            if (Vector3.Angle(lookDirection, relativeMoveInput) < 90) {
-                targetMovement = relativeMoveInput.magnitude * (runSpeed + 6.1f);
-            }
-            else {
-                targetMovement = relativeMoveInput.magnitude * runSpeed * 0.5f;
-            }
+    //        if (Vector3.Angle(lookDirection, relativeMoveInput) < 90) {
+    //            targetMovement = relativeMoveInput.magnitude * (runSpeed + 6.1f);
+    //        }
+    //        else {
+    //            targetMovement = relativeMoveInput.magnitude * runSpeed * 0.5f;
+    //        }
 
-            moveSpeed = Mathf.MoveTowards(moveSpeed, targetMovement, 8.0f * controller.deltaTime);
+    //        moveSpeed = Mathf.MoveTowards(moveSpeed, targetMovement, 8.0f * controller.deltaTime);
 
-            horizontalMovement = Math3d.ProjectVectorOnPlane(lookDirection, input.Current.MoveInput) * 220.0f * controller.deltaTime;
+    //        horizontalMovement = Math3d.ProjectVectorOnPlane(lookDirection, input.Current.MoveInput) * 220.0f * controller.deltaTime;
 
-        }
-        else {
-            moveSpeed = Mathf.MoveTowards(moveSpeed, 0, 8.0f * controller.deltaTime);
-        }
+    //    }
+    //    else {
+    //        moveSpeed = Mathf.MoveTowards(moveSpeed, 0, 8.0f * controller.deltaTime);
+    //    }
 
-        verticalMoveSpeed = Mathf.MoveTowards(verticalMoveSpeed, -30.0f, 35.0f * controller.deltaTime);
+    //    verticalMoveSpeed = Mathf.MoveTowards(verticalMoveSpeed, -30.0f, 35.0f * controller.deltaTime);
 
-        moveDirection = Math3d.SetVectorLength(lookDirection, moveSpeed) + controller.up * verticalMoveSpeed + horizontalMovement;
+    //    moveDirection = Math3d.SetVectorLength(lookDirection, moveSpeed) + controller.up * verticalMoveSpeed + horizontalMovement;
 
-        Vector3 r = Vector3.Cross(lookDirection, controller.up);
+    //    Vector3 r = Vector3.Cross(lookDirection, controller.up);
 
-        float ratio = verticalMoveSpeed < 0 ? Mathf.Abs(verticalMoveSpeed / 20.0f) : 0;
-        float angle = Mathf.Lerp(0, 70.0f, ratio);
+    //    float ratio = verticalMoveSpeed < 0 ? Mathf.Abs(verticalMoveSpeed / 20.0f) : 0;
+    //    float angle = Mathf.Lerp(0, 70.0f, ratio);
 
-        artUpDirection = Quaternion.AngleAxis(-angle, r) * controller.up;
-    }
+    //    artUpDirection = Quaternion.AngleAxis(-angle, r) * controller.up;
+    //}
 
-    void Dive_ExitState() {
-        artUpDirection = controller.up;
+    //void Dive_ExitState() {
+    //    artUpDirection = controller.up;
 
-        controller.EnableClamping();
-        controller.EnableSlopeLimit();
-    }
+    //    controller.EnableClamping();
+    //    controller.EnableSlopeLimit();
+    //}
 
     /// <summary>
     /// Italian Spiderman doing a Sideflip
@@ -1715,6 +1710,106 @@ public partial class PlayerMachine : SuperStateMachine {
     }
 
     /// <summary>
+    /// Italian Spiderman striking midair (fast jump) (StrikeJump)
+    /// </summary>
+
+    void StrikeJump_EnterState() {
+        anim.Play("flying_inPlace");
+
+        controller.DisableClamping();
+        controller.DisableSlopeLimit();
+
+        moveSpeed += 6.0f;
+
+        jumpPeak = transform.position;
+    }
+
+    void StrikeJump_SuperUpdate() {
+        SuperCollision col;
+        Vector3 planarMoveDirection = Math3d.ProjectVectorOnPlane(controller.up, moveDirection);
+
+        // set new jumping peak if player is above previous peak
+        if (SuperMath.PointAbovePlane(controller.up, jumpPeak, transform.position)) {
+            jumpPeak = transform.position;
+        }
+
+        // collision with a wall
+        if (HasWallCollided(out col)) {
+            if (Vector3.Angle(-planarMoveDirection.normalized, col.normal) < 75.0f) {
+                moveSpeed = -2.0f;
+                lookDirection = Vector3.Reflect(-lookDirection, col.normal);
+
+                Instantiate(WallHitStarEffect, col.point, Quaternion.LookRotation(col.normal));
+
+                sound.PlayHeavyKnockback();
+                currentState = PlayerStates.AirKnockback;
+                return;
+            }
+        }
+
+        // landing on the ground
+        if (AcquiringGround()) {
+            verticalMoveSpeed = 0;
+
+            if (ShouldHaveFallDamage()) {
+                if (FallDamage()) {
+                    moveSpeed = Mathf.Clamp(5.0f, 0, moveSpeed);
+                    verticalMoveSpeed = 0;
+                    currentState = PlayerStates.KnockbackForwards;
+                    return;
+                }
+            }
+
+            sound.PlayStrikeJumpLand();
+
+            currentState = PlayerStates.Slide;
+            return;
+        }
+
+        BodySlam();
+
+        Vector3 right = Vector3.Cross(controller.up, lookDirection);
+        Vector3 horizontalMovement = Vector3.zero;
+
+        // direction changes (user input during jump kicking)
+        if (input.Current.MoveInput != Vector3.zero) {
+            Vector3 relativeMoveInput = Math3d.ProjectVectorOnPlane(right, input.Current.MoveInput);
+
+            float targetMovement;
+
+            if (Vector3.Angle(lookDirection, relativeMoveInput) < 90) {
+                targetMovement = relativeMoveInput.magnitude * (runSpeed + 6.1f);
+            }
+            else {
+                targetMovement = relativeMoveInput.magnitude * runSpeed * 0.5f;
+            }
+
+            moveSpeed = Mathf.MoveTowards(moveSpeed, targetMovement, 8.0f * controller.deltaTime);
+            horizontalMovement = Math3d.ProjectVectorOnPlane(lookDirection, input.Current.MoveInput) * 220.0f * controller.deltaTime;
+        }
+        else {
+            moveSpeed = Mathf.MoveTowards(moveSpeed, 0, 8.0f * controller.deltaTime);
+        }
+
+        verticalMoveSpeed = Mathf.MoveTowards(verticalMoveSpeed, -30.0f, 35.0f * controller.deltaTime);
+        moveDirection = Math3d.SetVectorLength(lookDirection, moveSpeed) + controller.up * verticalMoveSpeed + horizontalMovement;
+
+        Vector3 r = Vector3.Cross(lookDirection, controller.up);
+
+        float ratio = verticalMoveSpeed < 0 ? Mathf.Abs(verticalMoveSpeed / 20.0f) : 0;
+        float angle = Mathf.Lerp(0, 70.0f, ratio);
+
+        artUpDirection = Quaternion.AngleAxis(-angle, r) * controller.up;
+    }
+
+    void StrikeJump_ExitState() {
+        artUpDirection = controller.up;
+
+        controller.EnableClamping();
+        controller.EnableSlopeLimit();
+    }
+
+    /// <summary>
     /// Italian Spiderman striking (kick)
     /// </summary>
 
@@ -1802,7 +1897,7 @@ public partial class PlayerMachine : SuperStateMachine {
     }
 
     /// <summary>
-    /// Italian Spiderman striking midair (JumpKick)
+    /// Italian Spiderman striking midair (fast jump) (JumpKick)
     /// </summary>
 
     void KickJump_EnterState() {
@@ -1811,7 +1906,7 @@ public partial class PlayerMachine : SuperStateMachine {
         controller.DisableClamping();
         controller.DisableSlopeLimit();
 
-        moveSpeed += 5.0f;
+        moveSpeed += 6.0f;
 
         jumpPeak = transform.position;
     }
