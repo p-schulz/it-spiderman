@@ -106,7 +106,8 @@ public partial class PlayerMachine : SuperStateMachine {
         // ISpid is starting to kick from running
         if (!isTakingFallDamage && input.Current.KickDown) {
             // ISpid was running fast
-            if (moveSpeed > runSpeed * 0.9f) {
+            if (moveSpeed > runSpeed * 0.9f)
+            {
                 transform.position += controller.up * 0.3f;
                 verticalMoveSpeed = 6.0f;
                 sound.PlayGroundKickJump();
@@ -114,11 +115,12 @@ public partial class PlayerMachine : SuperStateMachine {
                 return;
             }
             // ISpid was not running too fast
-            else {
+            else
+            {
                 currentState = PlayerStates.Kick;
                 return;
+            }
         }
-    }
 
         // ISpid is starting to strike from running
         if (!isTakingFallDamage && input.Current.StrikeDown) {
@@ -1714,7 +1716,7 @@ public partial class PlayerMachine : SuperStateMachine {
     /// </summary>
 
     void StrikeJump_EnterState() {
-        anim.Play("flying_inPlace");
+        anim.Play("flying_superman_strike");
 
         controller.DisableClamping();
         controller.DisableSlopeLimit();
@@ -2007,10 +2009,10 @@ public partial class PlayerMachine : SuperStateMachine {
         controller.EnableSlopeLimit();
 
         if (staggerForward) {
-            anim.CrossFade("hard_kick", 1.15f);
+            anim.CrossFade("kick", 1.15f);
         }
         else {
-            anim.CrossFade("hard_kick", 1.15f);
+            anim.CrossFade("kick", 1.15f);
         }
     }
 

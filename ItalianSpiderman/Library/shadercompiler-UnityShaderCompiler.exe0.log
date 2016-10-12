@@ -1,2 +1,212 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: getPlatforms
+Cmd: preprocess
+  insize=8715 outsize=2134 ok=1
+Cmd: preprocess
+  insize=11308 outsize=700 ok=1
+Cmd: preprocess
+  insize=1461 outsize=493 ok=1
+Cmd: preprocess
+  insize=452 outsize=452 ok=1
+Cmd: preprocess
+  insize=1683 outsize=2323 ok=1
+Cmd: preprocess
+  insize=1137 outsize=433 ok=1
+Cmd: preprocess
+  insize=9910 outsize=837 ok=1
+Cmd: preprocess
+  insize=1697 outsize=351 ok=1
+Cmd: preprocess
+  insize=898 outsize=350 ok=1
+Cmd: preprocess
+  insize=983 outsize=309 ok=1
+Cmd: preprocess
+  insize=1531 outsize=1452 ok=1
+Cmd: preprocess
+  insize=1991 outsize=491 ok=1
+Cmd: preprocess
+  insize=1308 outsize=407 ok=1
+Cmd: preprocess
+  insize=3680 outsize=673 ok=1
+Cmd: preprocess
+  insize=1451 outsize=1633 ok=1
+Cmd: preprocess
+  insize=1518 outsize=2268 ok=1
+Cmd: preprocess
+  insize=1223 outsize=404 ok=1
+Cmd: preprocess
+  insize=6790 outsize=827 ok=1
+Cmd: preprocess
+  insize=1157 outsize=308 ok=1
+Cmd: preprocess
+  insize=1097 outsize=1052 ok=1
+Cmd: preprocess
+  insize=1061 outsize=1753 ok=1
+Cmd: preprocess
+  insize=2527 outsize=790 ok=1
+Cmd: preprocess
+  insize=940 outsize=295 ok=1
+Cmd: preprocess
+  insize=1379 outsize=387 ok=1
+Cmd: preprocess
+  insize=1431 outsize=348 ok=1
+Cmd: preprocess
+  insize=1230 outsize=267 ok=1
+Cmd: preprocess
+  insize=1406 outsize=348 ok=1
+Cmd: preprocess
+  insize=1256 outsize=322 ok=1
+Cmd: preprocess
+  insize=2328 outsize=648 ok=1
+Cmd: preprocess
+  insize=954 outsize=269 ok=1
+Cmd: preprocess
+  insize=674 outsize=320 ok=1
+Cmd: preprocess
+  insize=6423 outsize=1035 ok=1
+Cmd: preprocess
+  insize=33400 outsize=269 ok=1
+Cmd: preprocess
+  insize=1219 outsize=261 ok=1
+Cmd: preprocess
+  insize=4488 outsize=535 ok=1
+Cmd: preprocess
+  insize=1050 outsize=267 ok=1
+Cmd: preprocess
+  insize=4990 outsize=1857 ok=1
+Cmd: preprocess
+  insize=13303 outsize=1949 ok=1
+Cmd: preprocess
+  insize=1021 outsize=353 ok=1
+Cmd: preprocess
+  insize=6260 outsize=773 ok=1
+Cmd: preprocess
+  insize=2838 outsize=802 ok=1
+Cmd: preprocess
+  insize=1137 outsize=1798 ok=1
+Cmd: preprocess
+  insize=11152 outsize=2599 ok=1
+Cmd: preprocess
+  insize=2593 outsize=1205 ok=1
+Cmd: preprocess
+  insize=12909 outsize=2439 ok=1
+Cmd: preprocess
+  insize=2006 outsize=463 ok=1
+Cmd: preprocess
+  insize=1423 outsize=670 ok=1
+Cmd: preprocess
+  insize=1599 outsize=295 ok=1
+Cmd: preprocess
+  insize=24901 outsize=4335 ok=1
+Cmd: preprocess
+  insize=4094 outsize=562 ok=1
+Cmd: preprocess
+  insize=1760 outsize=300 ok=1
+Cmd: preprocess
+  insize=1026 outsize=355 ok=1
+Cmd: preprocess
+  insize=1156 outsize=431 ok=1
+Cmd: preprocess
+  insize=711 outsize=266 ok=1
+Cmd: preprocess
+  insize=5806 outsize=894 ok=1
+Cmd: preprocess
+  insize=5373 outsize=778 ok=1
+Cmd: preprocess
+  insize=555 outsize=363 ok=1
+Cmd: preprocess
+  insize=6723 outsize=952 ok=1
+Cmd: preprocess
+  insize=1523 outsize=528 ok=1
+Cmd: preprocess
+  insize=33409 outsize=270 ok=1
+Cmd: preprocess
+  insize=1133 outsize=1328 ok=1
+Cmd: preprocess
+  insize=5347 outsize=1767 ok=1
+Cmd: preprocess
+  insize=6924 outsize=251 ok=1
+Cmd: preprocess
+  insize=1195 outsize=1814 ok=1
+Cmd: preprocess
+  insize=4458 outsize=444 ok=1
+Cmd: preprocess
+  insize=4830 outsize=932 ok=1
+Cmd: preprocess
+  insize=1373 outsize=404 ok=1
+Cmd: preprocess
+  insize=5974 outsize=1284 ok=1
+Cmd: preprocess
+  insize=770 outsize=305 ok=1
+Cmd: preprocess
+  insize=692 outsize=317 ok=1
+Cmd: preprocess
+  insize=3850 outsize=664 ok=1
+Cmd: preprocess
+  insize=851 outsize=294 ok=1
+Cmd: preprocess
+  insize=1331 outsize=291 ok=1
+Cmd: preprocess
+  insize=2135 outsize=1002 ok=1
+Cmd: preprocess
+  insize=1427 outsize=1869 ok=1
+Cmd: preprocess
+  insize=5316 outsize=740 ok=1
+Cmd: preprocess
+  insize=1072 outsize=494 ok=1
+Cmd: preprocess
+  insize=1210 outsize=386 ok=1
+Cmd: preprocess
+  insize=553 outsize=259 ok=1
+Cmd: preprocess
+  insize=698 outsize=312 ok=1
+Cmd: preprocess
+  insize=5240 outsize=920 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=4587 outsize=1574 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=4587 outsize=918 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=8600 outsize=734 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=8600 outsize=1446 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=2 insize=8600 outsize=3866 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=3 insize=8600 outsize=3130 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=4161 outsize=1342 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=4161 outsize=1054 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=8435 outsize=734 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=8435 outsize=1446 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=2 insize=8435 outsize=3898 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=3 insize=8435 outsize=2654 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=4440 outsize=1342 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=4440 outsize=1054 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=5235 outsize=1966 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=5235 outsize=1426 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3980 outsize=1342 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3980 outsize=670 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=4262 outsize=1342 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=4262 outsize=1054 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=6825 outsize=2118 kw=DIRECTIONAL LIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=6825 outsize=642 kw=DIRECTIONAL LIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3658 outsize=1342 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3658 outsize=570 kw=DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1

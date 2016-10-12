@@ -71,7 +71,7 @@ public partial class PlayerMachine : SuperStateMachine
 
         anim["right_hook"].speed = 1.7f;
         anim["uppercut"].speed = 2.0f;
-        anim["kicking"].speed = 2.0f;
+        anim["kick"].speed = 2.0f;
         anim["backflip"].speed = 2.0f;
         anim["jump"].speed = 1.3f;
         lookDirection = Quaternion.AngleAxis(InitialRotation, controller.up) * Vector3.forward;
@@ -614,7 +614,7 @@ public partial class PlayerMachine : SuperStateMachine
 
     // which kicking animation to play
     private string ResolveKick() {
-        return "hard_kick"; // kick_triple
+        return "kick"; // kick_triple
     }
 
     private JumpProfile ResolveJump() {
