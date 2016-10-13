@@ -11,18 +11,15 @@ public class Coin : MonoBehaviour {
     public AudioClip CoinSound;
     public Transform Art;
 
-    void Awake()
-    {
+    void Awake() {
         RaycastHit hit;
 
-        if (UniformHeight && Physics.Raycast(transform.position, -Vector3.up, out hit, Mathf.Infinity))
-        {
+        if (UniformHeight && Physics.Raycast(transform.position, -Vector3.up, out hit, Mathf.Infinity)) {
             transform.position = hit.point + Vector3.up * PlacementHeight;
         }
     }
 
-    void Update()
-    {
+    void Update() {
         Art.rotation *= Quaternion.AngleAxis(SpinSpeed * Time.deltaTime, transform.up);
     }
 
@@ -39,8 +36,13 @@ public class Coin : MonoBehaviour {
         GameObject.FindObjectOfType<GameMaster>().AddCoin(Value);
         GameObject.FindObjectOfType<PlayerStatus>().AddHealth(Value);
 
+
+        // GameObject.FindObjectOfType<PlayerSound>().PlayEnjoyGuitar();
+
         if (DeathEffect)
             Instantiate(DeathEffect, transform.position, Quaternion.identity);
+
+        
 
         Destroy(gameObject);
     }

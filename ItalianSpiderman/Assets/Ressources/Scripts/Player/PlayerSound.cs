@@ -46,6 +46,14 @@ public class PlayerSound : MonoBehaviour {
     public AudioClip HeavyKnockback;
     public AudioClip LandHurt;
 
+    // picking up items sounds
+    public AudioClip EnjoyGuitar;
+    public AudioClip SmokeCigarette;
+
+    /// <summary>
+    /// general use functions
+    /// </summary>
+
     private IEnumerator voiceRoutine;
 
     void PlayVoice(AudioClip clip)
@@ -68,8 +76,8 @@ public class PlayerSound : MonoBehaviour {
         VoiceSource.PlayOneShot(clips[Random.Range(0, clips.Length)]);
     }
 
-    void PlayRandomVoice(AudioClip[] clips, float delay)
-    {
+    // Might be deleted
+    void PlayRandomVoice(AudioClip[] clips, float delay) {
         if (voiceRoutine != null)
             StopCoroutine(voiceRoutine);
 
@@ -86,6 +94,7 @@ public class PlayerSound : MonoBehaviour {
         source.PlayOneShot(clip);
     }
 
+    // Might be deleted
     public void StopVoices()
     {
         if (voiceRoutine != null)
@@ -95,6 +104,18 @@ public class PlayerSound : MonoBehaviour {
     public void EndFootsteps()
     {
         StopAllCoroutines();
+    }
+
+    /// <summary>
+    /// Sounds for Picking up coffee or cigarettes
+    /// </summary>
+
+    public void PlayEnjoyGuitar() {
+        PlayVoice(EnjoyGuitar);
+    }
+
+    public void PlaySmokeCigarette() {
+        PlayVoice(SmokeCigarette);
     }
 
     /// <summary>
@@ -133,9 +154,8 @@ public class PlayerSound : MonoBehaviour {
     /// Sounds for Jumping
     /// </summary>
     
-    public void PlaySingleJump()
-    {
-        PlayRandomVoice(SingleJump, 0f);
+    public void PlaySingleJump() {
+        PlayRandomVoice(SingleJump);
     }
 
     public void PlayDoubleJump()

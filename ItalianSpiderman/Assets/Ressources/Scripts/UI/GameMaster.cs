@@ -80,23 +80,20 @@ public class GameMaster : MonoBehaviour {
     {
         nextLevel = n;
     }
-    void Update()
-    {
-        if (inputManager.PauseDown())
-        {
+
+    void Update() {
+        if (inputManager.PauseDown()) {
             if (paused)
                 Unpause();
             else
                 Pause();
         }
 
-        if ((float)MusicSource.timeSamples / (float)MusicSource.clip.frequency > 140.7f)
-        {
+        if ((float)MusicSource.timeSamples / (float)MusicSource.clip.frequency > 140.7f) {
             MusicSource.timeSamples = (int)(72.775f * MusicSource.clip.frequency);
         }
 
-        if (DebugGUI && SuperMath.Timer(lastFrameRateUpdate, 0.25f))
-        {
+        if (DebugGUI && SuperMath.Timer(lastFrameRateUpdate, 0.25f)) {
             lastFrameRateUpdate = Time.time;
             FramerateText.text = (1.0f / Time.deltaTime).ToString("F0");
         }
@@ -211,22 +208,14 @@ public class GameMaster : MonoBehaviour {
         }
     }
 
-    public void AddCoin()
-    {
+    public void AddCoin() {
         currentCoins = Mathf.Clamp(currentCoins + 1, 0, 999);
 
-        SoundSource.PlayOneShot(CoinSound);
-
+        // SoundSource.PlayOneShot(CoinSound);
         coinTextHandler.UpdateValue(currentCoins);
-
-        if (currentCoins == GoldPlayerCoinAmount)
-        {
-            GameObject.FindObjectOfType<PlayerMachine>().GoldPlayerUpgrade();
-        }
     }
 
-    public void AddCoin(int coins)
-    {
+    public void AddCoin(int coins) {
         StartCoroutine(AddMultipleCoins(coins));
     }
 
@@ -254,32 +243,25 @@ public class GameMaster : MonoBehaviour {
         Application.LoadLevel(0);
     }
 
-    IEnumerator AddMultipleCoins(int coins)
-    {
+    IEnumerator AddMultipleCoins(int coins) {
         int remainingCoins = coins;
-
         float delay = 0.02f;
-
         float i = 1.1f;
 
-        while (remainingCoins > 0)
-        {
-            while (i < 1.0f)
-            {
+        while (remainingCoins > 0) {
+            while (i < 1.0f) {
                 i += Time.deltaTime / delay;
 
                 yield return 0;
             }
 
-            SoundSource.PlayOneShot(CoinSound);
+            // SoundSource.PlayOneShot(CoinSound);
 
             remainingCoins--;
             currentCoins = Mathf.Clamp(currentCoins + 1, 0, 999);
-
             coinTextHandler.UpdateValue(currentCoins);
 
-            if (currentCoins == GoldPlayerCoinAmount)
-            {
+            if (currentCoins == GoldPlayerCoinAmount) {
                 GameObject.FindObjectOfType<PlayerMachine>().GoldPlayerUpgrade();
             }
 
