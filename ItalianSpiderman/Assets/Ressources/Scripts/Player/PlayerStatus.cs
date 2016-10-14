@@ -43,9 +43,6 @@ public class PlayerStatus : MonoBehaviour {
     }
 
     public void AddHealth(int health) {
-        if (CurrentHealth != Health)
-            sound.PlayGetLife();
-
         // Are we fully healing?
         if (CurrentHealth != Health && CurrentHealth + health >= Health)
             Disc.Minimize();

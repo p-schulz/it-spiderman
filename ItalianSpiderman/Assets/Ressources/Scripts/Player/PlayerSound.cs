@@ -6,19 +6,26 @@ public class PlayerSound : MonoBehaviour {
     public AudioSource SoundSource;
     public AudioSource VoiceSource;
 
+    // slide, run and walk effects
     public AudioClip Footstep;
+    public AudioClip Impact;
     public AudioClip Skid;
     public AudioClip Land;
-    public AudioClip GroundPound;
-    public AudioClip Teleport;
-    public AudioClip GetLife;
-    public AudioClip Impact;
-    public AudioClip Upgrade;
-    public AudioClip Spring;
-    public AudioClip Spin;
-    public AudioClip FlipIntoLevel;
     public AudioClip Slide;
-    public AudioClip DiveLand;
+    public AudioClip WallHit;
+
+    // Game mechanic stuff
+    public AudioClip FlipIntoLevel;
+    public AudioClip Die;
+
+    // jump effects
+    public AudioClip[] jumps;
+    public AudioClip[] SideFlip;
+    public AudioClip[] SlideSpin;
+    public AudioClip BackFlip;
+    public AudioClip LandHurt;
+
+    // combat jumps
     public AudioClip KickJump;
     public AudioClip KickJumpLand;
     public AudioClip GroundKickJump;
@@ -26,29 +33,20 @@ public class PlayerSound : MonoBehaviour {
     public AudioClip StrikeJumpLand;
     public AudioClip GroundStrikeJump;
 
-    public AudioClip[] SingleJump;
-    public AudioClip DoubleJump;
-    public AudioClip[] TripleJump;
-    public AudioClip[] SideFlip;
-    public AudioClip[] BackFlip;
-    public AudioClip LongJump;
-    public AudioClip JumpKick;
-    public AudioClip WallHit;
+    // punch/kick/strike voices and effects
+    public AudioClip[] punches_voice;
+    public AudioClip[] punches_effect;
+    public AudioClip TakeDamage;
+    public AudioClip HeavyKnockback;
+
+    // climbing and hanging
     public AudioClip Climb;
     public AudioClip Hang;
-    public AudioClip TakeDamage;
-    public AudioClip PunchSingle;
-    public AudioClip PunchDouble;
-    public AudioClip Dive;
-    public AudioClip Die;
-    public AudioClip GroundPoundDown;
-    public AudioClip[] SlideSpin;
-    public AudioClip HeavyKnockback;
-    public AudioClip LandHurt;
 
     // picking up items sounds
     public AudioClip EnjoyGuitar;
     public AudioClip SmokeCigarette;
+
 
     /// <summary>
     /// general use functions
@@ -56,6 +54,25 @@ public class PlayerSound : MonoBehaviour {
 
     private IEnumerator voiceRoutine;
 
+    IEnumerator Footsteps(float speed, float delay) {
+        float lastStepTime = Time.time - speed + delay;
+
+        while (true) {
+            if (SuperMath.Timer(lastStepTime, speed)) {
+                SoundSource.PlayOneShot(Footstep, 0.07f);
+                lastStepTime = Time.time;
+            }
+
+            yield return 0;
+        }
+    }
+
+    IEnumerator PlayClipWithDelay(AudioSource source, AudioClip clip, float delay) {
+        yield return new WaitForSeconds(delay);
+
+        source.PlayOneShot(clip);
+    }
+    
     void PlayVoice(AudioClip clip)
     {
         if (voiceRoutine != null)
@@ -87,13 +104,6 @@ public class PlayerSound : MonoBehaviour {
         StartCoroutine(voiceRoutine);
     }
 
-    IEnumerator PlayClipWithDelay(AudioSource source, AudioClip clip, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        source.PlayOneShot(clip);
-    }
-
     // Might be deleted
     public void StopVoices()
     {
@@ -101,9 +111,88 @@ public class PlayerSound : MonoBehaviour {
             StopCoroutine(voiceRoutine);
     }
 
+    public void Stop() {
+        SoundSource.Stop();
+        SoundSource.volume = 1;
+        SoundSource.loop = false;
+    }
+
+    public void StartFootsteps(float speed, float delay) {
+        StopAllCoroutines();
+        StartCoroutine(Footsteps(speed, delay));
+    }
+
     public void EndFootsteps()
     {
         StopAllCoroutines();
+    }
+
+    /// <summary>
+    /// Sounds for Combat
+    /// </summary>
+     
+    public void PlayRandomPunch() {
+        PlayRandomVoice(punches_voice);
+    }
+
+    public void PlayPunch(int i) {
+        PlayVoice(punches_voice[i]);
+    }
+
+    public void PlayTakeDamage() {
+        PlayVoice(TakeDamage);
+    }
+
+    public void PlayHeavyKnockback() {
+        PlayVoice(HeavyKnockback);
+    }
+
+    /// <summary>
+    /// Sounds for Jumping
+    /// </summary>
+
+    public void PlayRandomJump() {
+        PlayRandomVoice(jumps);
+    }
+
+    public void PlayJump(int i) {
+        PlayVoice(jumps[i]);
+    }
+
+    public void PlaySideFlip() {
+        PlayRandomVoice(SideFlip);
+    }
+
+    public void PlayBackFlip() {
+        PlayVoice(BackFlip);
+    }
+
+    public void PlaySlideSpin() {
+        PlayRandomVoice(SlideSpin);
+    }
+
+    public void PlayLand() {
+        SoundSource.PlayOneShot(Land, 0.5f);
+    }
+
+    public void PlayLandHurt() {
+        PlayVoice(LandHurt);
+    }
+
+    public void PlayImpact() {
+        SoundSource.PlayOneShot(Impact, 0.6f);
+    }
+
+    /// <summary>
+    /// Sounds for Game mechanics
+    /// </summary>
+
+    public void PlayFlipIntoLevel() {
+        SoundSource.PlayOneShot(FlipIntoLevel);
+    }
+
+    public void PlayDie() {
+        PlayVoice(Die);
     }
 
     /// <summary>
@@ -151,207 +240,36 @@ public class PlayerSound : MonoBehaviour {
     }
 
     /// <summary>
-    /// Sounds for Jumping
+    /// Sound for sliding, stopping, wall hitting
     /// </summary>
-    
-    public void PlaySingleJump() {
-        PlayRandomVoice(SingleJump);
-    }
 
-    public void PlayDoubleJump()
-    {
-        PlayVoice(DoubleJump);
-    }
-
-    public void PlayTripleJump()
-    {
-        PlayRandomVoice(TripleJump);
-    }
-
-    public void PlayLongJump()
-    {
-        PlayVoice(LongJump);
-    }
-
-    public void PlaySideFlip()
-    {
-        PlayRandomVoice(SideFlip);
-    }
-
-    public void PlayBackFlip()
-    {
-        PlayRandomVoice(BackFlip);
-    }
-
-    public void PlaySlideSpin()
-    {
-        PlayRandomVoice(SlideSpin);
-    }
-
-    public void PlayJumpKick()
-    {
-        PlayVoice(JumpKick);
-    }
-
-    public void PlayClimb()
-    {
-        PlayVoice(Climb);
-    }
-
-    public void PlayHang()
-    {
-        PlayVoice(Hang);
-    }
-
-    public void PlayTakeDamage()
-    {
-        PlayVoice(TakeDamage);
-    }
-
-    public void PlayWallHit()
-    {
-        PlayVoice(WallHit);
-    }
-
-    public void PlayWallKick()
-    {
-        PlayRandomVoice(SingleJump);
-    }
-
-    public void PlaySinglePunch()
-    {
-        PlayVoice(PunchSingle);
-    }
-
-    public void PlayDoublePunch()
-    {
-        PlayVoice(PunchDouble);
-    }
-
-    public void PlayKick()
-    {
-        PlayVoice(JumpKick);
-    }
-
-    public void PlayDive()
-    {
-        PlayVoice(Dive);
-    }
-
-    public void PlayGroundDive()
-    {
-        PlayRandomVoice(SingleJump);
-    }
-
-    public void PlayLandHurt()
-    {
-        PlayVoice(LandHurt);
-    }
-
-    public void PlayDie()
-    {
-        PlayVoice(Die);
-    }
-
-    public void PlayGroundPoundDown()
-    {
-        PlayVoice(GroundPoundDown);
-    }
-
-    public void PlayHeavyKnockback()
-    {
-        PlayVoice(HeavyKnockback);
-    }
-
-    public void PlayTeleport()
-    {
-        SoundSource.PlayOneShot(Teleport);
-    }
-
-    public void PlayFlipIntoLevel()
-    {
-        SoundSource.PlayOneShot(FlipIntoLevel);
-    }
-
-    public void PlaySkid()
-    {
-        SoundSource.PlayOneShot(Skid, 0.6f);
-    }
-
-    public void PlayImpact()
-    {
-        SoundSource.PlayOneShot(Impact, 0.6f);
-    }
-
-    public void PlayLand()
-    {
-        SoundSource.PlayOneShot(Land, 0.5f);
-    }
-
-    public void PlayGroundPound()
-    {
-        SoundSource.PlayOneShot(GroundPound);
-    }
-
-    public void PlaySpin()
-    {
-        SoundSource.PlayOneShot(Spin);
-    }
-
-    public void PlayUpgrade()
-    {
-        SoundSource.PlayOneShot(Upgrade);
-    }
-
-    public void PlayGetLife()
-    {
-        SoundSource.PlayOneShot(GetLife);
-    }
-
-    public void PlaySpring()
-    {
-        SoundSource.PlayOneShot(Spring);
-    }
-
-    public void PlayDiveLand()
-    {
-        SoundSource.PlayOneShot(DiveLand);
-    }
-
-    public void PlaySlide()
-    {
+    // sliding
+    public void PlaySlide() {
         SoundSource.loop = true;
         SoundSource.clip = Slide;
         SoundSource.volume = 0.75f;
         SoundSource.Play();
     }
-
-    public void Stop()
-    {
-        SoundSource.Stop();
-        SoundSource.volume = 1;
-        SoundSource.loop = false;
+    
+    // stopping
+    public void PlaySkid() {
+        SoundSource.PlayOneShot(Skid, 0.6f);
     }
 
-    public void StartFootsteps(float speed, float delay)
-    {
-        StopAllCoroutines();
-        StartCoroutine(Footsteps(speed, delay));
+    // walking against wall
+    public void PlayWallHit() {
+        PlayVoice(WallHit);
     }
 
-    IEnumerator Footsteps(float speed, float delay)
-    {
-        float lastStepTime = Time.time - speed + delay;
+    /// <summary>
+    /// climbing and hanging
+    /// </summary>
 
-        while (true)
-        {
-            if (SuperMath.Timer(lastStepTime, speed))
-            {
-                SoundSource.PlayOneShot(Footstep, 0.07f);
-                lastStepTime = Time.time;
-            }
+    public void PlayClimb() {
+        PlayVoice(Climb);
+    }
 
-            yield return 0;
-        }
+    public void PlayHang() {
+        PlayVoice(Hang);
     }
 }

@@ -516,16 +516,9 @@ public partial class PlayerMachine : SuperStateMachine {
             currentState = PlayerStates.SFlip;
             return;
         }
-
-        if (!goldPlayer) {
-            BodySlam();
-        }
-        else {
-            GoldBodySlam();
-        }
+        BodySlam();
 
         SuperCollision col;
-
         Vector3 planarMoveDirection = Math3d.ProjectVectorOnPlane(controller.up, moveDirection);
 
         if (HasWallCollided(out col)) {
@@ -701,7 +694,6 @@ public partial class PlayerMachine : SuperStateMachine {
                 return;
             }
             else if (currentJumpProfile.CanDive) {
-                sound.PlayKickJump();
                 currentState = PlayerStates.KickJump;
                 return;
             }
@@ -720,7 +712,6 @@ public partial class PlayerMachine : SuperStateMachine {
                 return;
             }
             else if (currentJumpProfile.CanDive) {
-                sound.PlayStrikeJump();
                 currentState = PlayerStates.StrikeJump;
                 return;
             }
@@ -1431,47 +1422,38 @@ public partial class PlayerMachine : SuperStateMachine {
     }
 
     void Crouch_SuperUpdate() {
-        if (!MaintainingGround())
-        {
+        if (!MaintainingGround()) {
             currentState = PlayerStates.Fall;
             return;
         }
 
-        if (IsSliding())
-        {
+        if (IsSliding()) {
             currentState = PlayerStates.Slide;
             return;
         }
 
-        if (!exitCrouch)
-        {
-            if (input.Current.JumpDown)
-            {
-                if (moveSpeed != 0 && !Timer(timeEnteredState, 0.4f))
-                {
+        if (!exitCrouch) {
+            if (input.Current.JumpDown) {
+                if (moveSpeed != 0 && !Timer(timeEnteredState, 0.4f)) {
                     currentJumpProfile = jumpLong;
                     currentState = PlayerStates.Jump;
                 }
-                else if (moveSpeed != 0)
-                {
+                else if (moveSpeed != 0) {
                     currentJumpProfile = jumpStandard;
                     currentState = PlayerStates.Jump;
                 }
-                else
-                {
+                else {
                     currentJumpProfile = jumpBackFlip;
                     currentState = PlayerStates.Jump;
                 }
                 return;
             }
 
-            if (Time.time > timeEnteredState + anim["crouching_idle"].length)
-            {
+            if (Time.time > timeEnteredState + anim["crouching_idle"].length) {
                 if (!anim.IsPlaying("crouching_idle")) //idle
                     anim.Play("crouching_idle");
 
-                if (!input.Current.KickDown && moveDirection == Vector3.zero)
-                {
+                if (!input.Current.KickDown && moveDirection == Vector3.zero) {
                     exitCrouch = true;
                     crouchExitTime = Time.time;
 
@@ -1482,14 +1464,11 @@ public partial class PlayerMachine : SuperStateMachine {
                     return;
                 }
 
-                if (GroundAngle() > 30.0f)
-                {
+                if (GroundAngle() > 30.0f) {
                     moveDirection = Vector3.MoveTowards(moveDirection, SlopeDirection() * 13.0f, controller.deltaTime * 30.0f);
                 }
-                else
-                {
+                else {
                     moveSpeed = Mathf.MoveTowards(moveSpeed, 0, 15 * controller.deltaTime);
-
                     moveDirection = Math3d.SetVectorLength(moveDirection, Mathf.Abs(moveSpeed));
                 }
             }
@@ -1641,11 +1620,11 @@ public partial class PlayerMachine : SuperStateMachine {
         anim.Play(ResolveStrike());
 
         if (strikeCount == 1)
-            sound.PlaySinglePunch();
+            sound.PlayPunch(0);
         else if (strikeCount == 2)
-            sound.PlayDoublePunch();
+            sound.PlayPunch(1);
         else
-            sound.PlayKick();
+            sound.PlayPunch(2);
 
         hasStruck = false;
     }
@@ -1717,6 +1696,7 @@ public partial class PlayerMachine : SuperStateMachine {
 
     void StrikeJump_EnterState() {
         anim.Play("flying_superman_strike");
+        sound.PlayStrikeJump();
 
         controller.DisableClamping();
         controller.DisableSlopeLimit();
@@ -1827,14 +1807,10 @@ public partial class PlayerMachine : SuperStateMachine {
         anim.Rewind(ResolveKick());
         anim.Play(ResolveKick());
 
-        // cases for different kick sounds here
-        sound.PlayKick();
-        //if (kickCount == 1)
-        //    sound.PlaySinglePunch();
-        //else if (kickCount == 2)
-        //    sound.PlayDoublePunch();
-        //else
-        //    sound.PlayKick();
+        if (kickCount == 1)
+            sound.PlayPunch(0);
+        else
+            sound.PlayPunch(2);
 
         hasStruck = false;
     }
@@ -1904,6 +1880,7 @@ public partial class PlayerMachine : SuperStateMachine {
 
     void KickJump_EnterState() {
         anim.Play("flying_bicycle_kick");
+        sound.PlayKickJump();
 
         controller.DisableClamping();
         controller.DisableSlopeLimit();
@@ -2044,62 +2021,62 @@ public partial class PlayerMachine : SuperStateMachine {
     /// Italian Spiderman teleporting (magie ist physik durch wollen)
     /// </summary>
 
-    Vector3 teleportTarget;
+    //Vector3 teleportTarget;
 
-    void TeleportOut_EnterState() {
-        moveSpeed = 0;
-        verticalMoveSpeed = 0;
-        moveDirection = Vector3.zero;
+    //void TeleportOut_EnterState() {
+    //    moveSpeed = 0;
+    //    verticalMoveSpeed = 0;
+    //    moveDirection = Vector3.zero;
 
-        anim.CrossFade("weight_shift", 0.3f);
+    //    anim.CrossFade("weight_shift", 0.3f);
 
-        if (!goldPlayer) {
-            transparencyShaderSwapper.SwapNew();
-            transparencyFade.FadeOut(1);
-        }
+    //    if (!goldPlayer) {
+    //        transparencyShaderSwapper.SwapNew();
+    //        transparencyFade.FadeOut(1);
+    //    }
 
-        sound.PlayTeleport();
+    //    // sound.PlayTeleport();
 
-        GameObject.FindObjectOfType<GameMaster>().FadeWhiteMatteOut(1.5f);
-    }
+    //    GameObject.FindObjectOfType<GameMaster>().FadeWhiteMatteOut(1.5f);
+    //}
 
-    void TeleportOut_SuperUpdate() {
-        if (SuperMath.Timer(timeEnteredState, 2)) {
-            transform.position = teleportTarget;
+    //void TeleportOut_SuperUpdate() {
+    //    if (SuperMath.Timer(timeEnteredState, 2)) {
+    //        transform.position = teleportTarget;
 
-            var boulders = GameObject.FindObjectsOfType<RollingBallPath>();
+    //        var boulders = GameObject.FindObjectsOfType<RollingBallPath>();
 
-            foreach (var boulder in boulders) {
-                if (Vector3.Distance(boulder.transform.position, transform.position) < 10.0f) {
-                    Destroy(boulder.gameObject);
-                }
-            }
+    //        foreach (var boulder in boulders) {
+    //            if (Vector3.Distance(boulder.transform.position, transform.position) < 10.0f) {
+    //                Destroy(boulder.gameObject);
+    //            }
+    //        }
 
-            currentState = PlayerStates.TeleportIn;
-            return;
-        }
-    }
+    //        currentState = PlayerStates.TeleportIn;
+    //        return;
+    //    }
+    //}
 
-    void TeleportIn_EnterState() {
-        if (!goldPlayer)
-            transparencyFade.FadeIn(1);
+    //void TeleportIn_EnterState() {
+    //    if (!goldPlayer)
+    //        transparencyFade.FadeIn(1);
 
-        sound.PlayTeleport();
+    //    // sound.PlayTeleport();
 
-        GameObject.FindObjectOfType<GameMaster>().FadeWhiteMatteIn(1.5f);
-    }
+    //    GameObject.FindObjectOfType<GameMaster>().FadeWhiteMatteIn(1.5f);
+    //}
 
-    void TeleportIn_SuperUpdate() {
-        if (SuperMath.Timer(timeEnteredState, 1)) {
-            currentState = PlayerStates.Idle;
-            return;
-        }
-    }
+    //void TeleportIn_SuperUpdate() {
+    //    if (SuperMath.Timer(timeEnteredState, 1)) {
+    //        currentState = PlayerStates.Idle;
+    //        return;
+    //    }
+    //}
 
-    void TeleportIn_ExitState() {
-        if (!goldPlayer)
-            transparencyShaderSwapper.SwapOriginal();
-    }
+    //void TeleportIn_ExitState() {
+    //    if (!goldPlayer)
+    //        transparencyShaderSwapper.SwapOriginal();
+    //}
 
     /// <summary>
     /// Italian Spiderman entering a stage

@@ -26,11 +26,11 @@ public class Teleporter : MonoBehaviour {
         }
     }
 
-    void OnTriggerStay(Collider col)
-    {
-        if (!waitUntilLeave && col.gameObject.tag == "Player")
-        {
-            col.gameObject.GetComponent<PlayerMachine>().Teleport(Target.position);
-        }
-    }
+    //void OnTriggerStay(Collider col)
+    //{
+    //    if (!waitUntilLeave && col.gameObject.tag == "Player")
+    //    {
+    //        col.gameObject.GetComponent<PlayerMachine>().Teleport(Target.position);
+    //    }
+    //}
 }

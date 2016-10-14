@@ -261,10 +261,6 @@ public class GameMaster : MonoBehaviour {
             currentCoins = Mathf.Clamp(currentCoins + 1, 0, 999);
             coinTextHandler.UpdateValue(currentCoins);
 
-            if (currentCoins == GoldPlayerCoinAmount) {
-                GameObject.FindObjectOfType<PlayerMachine>().GoldPlayerUpgrade();
-            }
-
             i = 0;
         }
     }

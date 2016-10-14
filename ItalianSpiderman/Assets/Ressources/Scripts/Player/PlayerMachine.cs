@@ -86,8 +86,7 @@ public partial class PlayerMachine : SuperStateMachine
 
     protected override void LateGlobalSuperUpdate() {
         // Trigger any objects we are directly standing on
-        if (controller.IsClamping())
-        {
+        if (controller.IsClamping()) {
             TriggerableObject triggerable = controller.currentGround.Transform.GetComponent<TriggerableObject>();
 
             if (triggerable != null) {
@@ -95,16 +94,10 @@ public partial class PlayerMachine : SuperStateMachine
             }
         }
 
-        if (goldPlayer)
-        {
-            GoldBodySlam();
-        }
-
         // Increment our position based on our current velocity
         transform.position += moveDirection * controller.deltaTime;
 
-        if (DebugGui)
-        {
+        if (DebugGui) {
             DebugDraw.DrawVector(transform.position, lookDirection, 2.0f, 1.0f, Color.red, 0, true);
             DebugDraw.DrawVector(transform.position, input.Current.MoveInput, 1.0f, 1.0f, Color.yellow, 0, true);
             DebugDraw.DrawVector(transform.position, moveDirection, 1.0f, 1.0f, Color.blue, 0, true);
@@ -128,15 +121,13 @@ public partial class PlayerMachine : SuperStateMachine
             AnimatedMesh.localScale = new Vector3(1, 1, 1);
 
         // Check if we have fallen through the level, and place us on the first contacted ground if we have and return Player to idle
-        if (transform.position.y < -10)
-        {
+        if (transform.position.y < -10) {
             RaycastHit hit;
 
             Vector3 verticalPostionZeroed = transform.position;
             verticalPostionZeroed.y = 0;
 
-            if (Physics.Raycast(verticalPostionZeroed + Vector3.up * 5000, -Vector3.up, out hit, Mathf.Infinity, controller.Walkable))
-            {
+            if (Physics.Raycast(verticalPostionZeroed + Vector3.up * 5000, -Vector3.up, out hit, Mathf.Infinity, controller.Walkable)) {
                 transform.position = hit.point;
 
                 verticalMoveSpeed = 0;
@@ -179,16 +170,14 @@ public partial class PlayerMachine : SuperStateMachine
         return (PlayerStates)state == (PlayerStates)currentState;
     }
 
-    public void Teleport(Vector3 target) {
-        if (StateCompare(PlayerStates.Idle) && Velocity().magnitude < 1.0f)
-        {
-            teleportTarget = target;
-            currentState = PlayerStates.TeleportOut;
-        }
-    }
+    //public void Teleport(Vector3 target) {
+    //    if (StateCompare(PlayerStates.Idle) && Velocity().magnitude < 1.0f) {
+    //        teleportTarget = target;
+    //        currentState = PlayerStates.TeleportOut;
+    //    }
+    //}
 
-    public void MegaSpring(Vector3 direction, float velocity, float lift)
-    {
+    public void MegaSpring(Vector3 direction, float velocity, float lift) {
         lookDirection = Math3d.ProjectVectorOnPlane(controller.up, direction.normalized);
 
         moveSpeed = velocity;
@@ -200,94 +189,72 @@ public partial class PlayerMachine : SuperStateMachine
         return;
     }
 
-    public bool HeavyDamage(int damage, Vector3 origin)
-    {
-        if (status.Invincible())
-        {
+    public bool HeavyDamage(int damage, Vector3 origin) {
+        if (status.Invincible()) {
             return false;
         }
 
-        if (StateCompare(PlayerStates.Knockback) || StateCompare(PlayerStates.KnockbackForwards) || StateCompare(PlayerStates.TeleportIn) || StateCompare(PlayerStates.TeleportOut))
-        {
+        if (StateCompare(PlayerStates.Knockback) || StateCompare(PlayerStates.KnockbackForwards) || StateCompare(PlayerStates.TeleportIn) || StateCompare(PlayerStates.TeleportOut)) {
             return false;
         }
 
         Vector3 direction = Math3d.ProjectVectorOnPlane(controller.up, origin - transform.position).normalized;
 
-        if (direction == Vector3.zero)
-        {
+        if (direction == Vector3.zero) {
             direction = lookDirection;
         }
 
         bool forward = Vector3.Angle(direction, lookDirection) < 90;
 
-        if (Airborn())
-        {
-            if (forward)
-            {
+        if (Airborn()) {
+            if (forward) {
                 moveSpeed = -3.0f;
                 currentState = PlayerStates.AirKnockback;
             }
-            else
-            {
+            else {
                 moveSpeed = 3.0f;
                 currentState = PlayerStates.AirKnockbackForwards;
             }
         }
-        else
-        {
-
-            if (forward)
-            {
+        else {
+            if (forward) {
                 currentState = PlayerStates.Knockback;
                 moveSpeed = -3.0f;
             }
-            else
-            {
+            else {
                 currentState = PlayerStates.KnockbackForwards;
                 moveSpeed = 3.0f;
             }
         }
 
         lookDirection = forward ? direction : -direction;
-
         SmartCamera.Shake(1.6f, 25.0f, 0.5f);
-
         sound.PlayTakeDamage();
-
         Instantiate(TakeDamageEffect, transform.position + controller.up * controller.height * 0.6f, Quaternion.identity);
-
         status.TakeDamage(damage);
 
         return true;
     }
 
-    public bool GroundDamageLight(int damage, Vector3 origin, bool canHurtInAir=true)
-    {
+    public bool GroundDamageLight(int damage, Vector3 origin, bool canHurtInAir=true) {
         return GroundDamageLight(damage, origin, 4.0f, canHurtInAir);
     }
 
-    public bool GroundDamageLight(int damage, Vector3 origin, float pushbackSpeed, bool canHurtInAir=true)
-    {
-        if (status.Invincible())
-        {
+    public bool GroundDamageLight(int damage, Vector3 origin, float pushbackSpeed, bool canHurtInAir=true) {
+        if (status.Invincible()) {
             return false;
         }
 
-        if (StateCompare(PlayerStates.Stagger) || StateCompare(PlayerStates.TeleportIn) || StateCompare(PlayerStates.TeleportOut))
-        {
+        if (StateCompare(PlayerStates.Stagger) || StateCompare(PlayerStates.TeleportIn) || StateCompare(PlayerStates.TeleportOut)) {
             return false;
         }
 
-        if (!canHurtInAir && Airborn())
-        {
+        if (!canHurtInAir && Airborn()) {
             return false;
         }
 
-        if (StateCompare(PlayerStates.Slide))
-        {
-            if (Mathf.Abs(moveSpeed) > 3.0f)
-            {
+        if (StateCompare(PlayerStates.Slide)) {
+            if (Mathf.Abs(moveSpeed) > 3.0f) {
                 return false;
             }
         }
@@ -296,45 +263,35 @@ public partial class PlayerMachine : SuperStateMachine
 
         Vector3 direction = Math3d.ProjectVectorOnPlane(controller.up, origin - transform.position).normalized;
 
-        if (direction == Vector3.zero)
-        {
+        if (direction == Vector3.zero) {
             direction = lookDirection;
         }
 
         staggerForward = Vector3.Angle(direction, lookDirection) < 90;
 
-        if (Airborn())
-        {
-            if (staggerForward)
-            {
+        if (Airborn()) {
+            if (staggerForward) {
                 moveSpeed = -3.0f;
                 currentState = PlayerStates.AirKnockback;
             }
-            else
-            {
+            else {
                 moveSpeed = 3.0f;
                 currentState = PlayerStates.AirKnockbackForwards;
             }
         }
-        else
-        {
-            if (status.CurrentHealth == 0)
-            {
-                if (staggerForward)
-                {
+        else {
+            if (status.CurrentHealth == 0) {
+                if (staggerForward) {
                     currentState = PlayerStates.Knockback;
                     moveSpeed = -3.0f;
                 }
-                else
-                {
+                else {
                     currentState = PlayerStates.KnockbackForwards;
                     moveSpeed = 3.0f;
                 }
             }
-            else
-            {
+            else {
                 currentState = PlayerStates.Stagger;
-
                 moveSpeed = staggerForward ? -pushbackSpeed : pushbackSpeed;
             }
         }
@@ -342,72 +299,45 @@ public partial class PlayerMachine : SuperStateMachine
         Instantiate(TakeDamageEffect, transform.position + controller.up * controller.height * 0.6f, Quaternion.identity);
 
         sound.PlayTakeDamage();
-
         lookDirection = staggerForward ? direction : -direction;
-
         SmartCamera.Shake(0.85f, 15.0f, 0.5f);
 
         return true;
     }
 
-    // Bling bling
-    public void GoldPlayerUpgrade()
-    {
-        sound.PlayUpgrade();
-        goldMaterialSwapper.SwapNew();
-
-        var t = ((GameObject)Instantiate(UpgradeEffect, transform.position + controller.up * controller.height * 0.75f, Quaternion.identity)).transform;
-
-        t.parent = transform;
-
-        status.PermanentInvincibility = true;
-
-        goldPlayer = true;
-    }
-
-    private void RotateLookDirection(Vector3 target, float speed)
-    {
+    private void RotateLookDirection(Vector3 target, float speed) {
         lookDirection = Vector3.RotateTowards(lookDirection, target, speed * controller.deltaTime, 0);
     }
 
-    private void RotateMoveDirection(Vector3 target, float speed)
-    {
+    private void RotateMoveDirection(Vector3 target, float speed) {
         moveDirection = Vector3.RotateTowards(moveDirection, target, speed * controller.deltaTime, 0);
     }
 
-    private float GroundAngle()
-    {
+    private float GroundAngle() {
         return Vector3.Angle(controller.up, controller.currentGround.FarHit.normal);
     }
 
-    private Vector3 GroundNormal()
-    {
+    private Vector3 GroundNormal() {
         return controller.currentGround.FarHit.normal;
     }
 
-    private bool IsSliding()
-    {
+    private bool IsSliding() {
         return GroundAngle() > ((PlayerCollisionType)controller.currentGround.CollisionType).SlideAngle;
     }
 
-    private bool IsContinueSliding()
-    {
+    private bool IsContinueSliding() {
         return GroundAngle() > ((PlayerCollisionType)controller.currentGround.CollisionType).SlideContinueAngle;
     }
 
-    private Vector3 SlopeDirection()
-    {
+    private Vector3 SlopeDirection() {
         Vector3 n = controller.currentGround.Hit.normal;
         Vector3 r = Vector3.Cross(n, controller.down);
         return Vector3.Cross(r, n);
     }
 
-    private bool HasWallCollided(out SuperCollision superCollision)
-    {
-        foreach (var col in controller.collisionData)
-        {
-            if (Vector3.Angle(col.normal, controller.up) > 80.0f)
-            {
+    private bool HasWallCollided(out SuperCollision superCollision) {
+        foreach (var col in controller.collisionData) {
+            if (Vector3.Angle(col.normal, controller.up) > 80.0f) {
                 superCollision = col;
                 return true;
             }
@@ -417,20 +347,16 @@ public partial class PlayerMachine : SuperStateMachine
         return false;
     }
 
-    private bool HasHeadCollided()
-    {
+    private bool HasHeadCollided() {
         SuperCollision c;
         return HasHeadCollided(out c);
     }
 
-    private bool HasHeadCollided(out SuperCollision superCollision)
-    {
-        foreach (var col in controller.collisionData)
-        {
+    private bool HasHeadCollided(out SuperCollision superCollision) {
+        foreach (var col in controller.collisionData) {
             Vector3 direction = col.point - controller.OffsetPosition(controller.head.Offset);
 
-            if (Vector3.Angle(direction, controller.up) < 88.0f)
-            {
+            if (Vector3.Angle(direction, controller.up) < 88.0f) {
                 superCollision = col;
                 return true;
             }
@@ -440,20 +366,16 @@ public partial class PlayerMachine : SuperStateMachine
         return false;
     }
 
-    private bool HasFeetCollided()
-    {
+    private bool HasFeetCollided() {
         SuperCollision c;
         return HasFeetCollided(out c);
     }
 
-    private bool HasFeetCollided(out SuperCollision superCollision)
-    {
-        foreach (var col in controller.collisionData)
-        {
+    private bool HasFeetCollided(out SuperCollision superCollision) {
+        foreach (var col in controller.collisionData) {
             Vector3 direction = col.point - controller.OffsetPosition(controller.feet.Offset);
 
-            if (Vector3.Angle(direction, controller.down) < 88.0f)
-            {
+            if (Vector3.Angle(direction, controller.down) < 88.0f) {
                 superCollision = col;
                 return true;
             }
@@ -463,8 +385,7 @@ public partial class PlayerMachine : SuperStateMachine
         return false;
     }
 
-    private float WallCollisionAngle(Vector3 wallNormal, Vector3 direction)
-    {
+    private float WallCollisionAngle(Vector3 wallNormal, Vector3 direction) {
         Vector3 planarDirection = Math3d.ProjectVectorOnPlane(controller.up, direction);
         Vector3 planarWall = Math3d.ProjectVectorOnPlane(controller.up, wallNormal);
 
@@ -474,43 +395,32 @@ public partial class PlayerMachine : SuperStateMachine
     /// <summary>
     /// Checks if there exists a wall in front of us as well as a flat surface to finish the climb on
     /// </summary>
-    private bool CanGrabLedge(out Vector3 hitPosition, out GameObject grabbedObject)
-    {
+    private bool CanGrabLedge(out Vector3 hitPosition, out GameObject grabbedObject) {
         hitPosition = Vector3.zero;
-
         grabbedObject = null;
 
         Vector3 o = controller.OffsetPosition(controller.head.Offset);
-
         Collider[] colliders = Physics.OverlapSphere(o, controller.radius + 0.2f, controller.Walkable);
 
-        if (colliders.Length > 0)
-        {
-            foreach (var col in colliders)
-            {
+        if (colliders.Length > 0) {
+            foreach (var col in colliders) {
                 SuperCollisionType type = col.GetComponent<SuperCollisionType>();
-
                 Vector3 closestPoint = SuperCollider.ClosestPointOnSurface(col, o, controller.radius);
-
                 RaycastHit hit;
-
                 col.Raycast(new Ray(o, closestPoint - o), out hit, Mathf.Infinity);
 
-                if (Vector3.Angle(hit.normal, controller.up) < type.StandAngle)
-                {
+                if (Vector3.Angle(hit.normal, controller.up) < type.StandAngle) {
                     continue;
                 }
 
-                if (Vector3.Angle(-hit.normal, lookDirection) < 60.0f)
-                {
+                if (Vector3.Angle(-hit.normal, lookDirection) < 60.0f) {
                     Vector3 topOfHead = o + controller.up * controller.radius;
                     Vector3 direction = Math3d.ProjectVectorOnPlane(controller.up, closestPoint - o);
                     Vector3 rayOrigin = topOfHead + Math3d.AddVectorLength(direction, 0.02f);
 
                     col.Raycast(new Ray(rayOrigin, controller.down), out hit, 0.5f);
 
-                    if (Vector3.Angle(hit.normal, controller.up) < 20.0f)
-                    {
+                    if (Vector3.Angle(hit.normal, controller.up) < 20.0f) {
                         hitPosition = Math3d.ProjectPointOnPlane(controller.up, hit.point, topOfHead + direction);
                         grabbedObject = col.gameObject;
 
@@ -530,18 +440,15 @@ public partial class PlayerMachine : SuperStateMachine
     /// <param name="distance">Maximum distance ground can be below before automatically returning false</param>
     /// <param name="currentlyGrounded">At the time the method is being called, is our controller currently grounded (or airborn and unclamped).
     /// Typically characters already grounded should have a larger ground distance before being counted as ungrounded to aid movement over uneven terrain</param>
-    private bool IsGrounded(float distance, bool currentlyGrounded)
-    {
-        if (controller.currentGround.Hit.distance > distance)
-        {
+    private bool IsGrounded(float distance, bool currentlyGrounded) {
+        if (controller.currentGround.Hit.distance > distance) {
             return false;
         }
 
         Vector3 n = controller.currentGround.FarHit.normal;
         float angle = Vector3.Angle(n, Vector3.up);
 
-        if (angle > controller.currentGround.CollisionType.StandAngle)
-        {
+        if (angle > controller.currentGround.CollisionType.StandAngle) {
             return false;
         }
 
@@ -558,22 +465,17 @@ public partial class PlayerMachine : SuperStateMachine
 
         bool steady = Vector3.Distance(p, transform.position) <= distanceRatio * controller.radius;
 
-        if (!steady)
-        {
-            if (!currentlyGrounded)
-            {
+        if (!steady) {
+            if (!currentlyGrounded) {
                 return false;
             }
 
-            if (controller.currentGround.NearHit.distance < distance)
-            {
-                if (Vector3.Angle(controller.currentGround.NearHit.normal, controller.up) > controller.currentGround.CollisionType.StandAngle)
-                {
+            if (controller.currentGround.NearHit.distance < distance) {
+                if (Vector3.Angle(controller.currentGround.NearHit.normal, controller.up) > controller.currentGround.CollisionType.StandAngle) {
                     return false;
                 }
             }
-            else
-            {
+            else {
                 return false;
             }
         }
@@ -581,18 +483,15 @@ public partial class PlayerMachine : SuperStateMachine
         return true;
     }
 
-    private bool AcquiringGround()
-    {
+    private bool AcquiringGround() {
         return IsGrounded(acquireGroundDistance, false);
     }
 
-    private bool MaintainingGround()
-    {
+    private bool MaintainingGround() {
         return IsGrounded(maintainGroundDistance, true);
     }
 
-    private void GrabLedge(Vector3 ledgePosition)
-    {
+    private void GrabLedge(Vector3 ledgePosition) {
         Vector3 ledgeDirection = Math3d.ProjectVectorOnPlane(controller.up, transform.position - ledgePosition);
 
         lookDirection = -ledgeDirection.normalized;
@@ -614,7 +513,7 @@ public partial class PlayerMachine : SuperStateMachine
 
     // which kicking animation to play
     private string ResolveKick() {
-        return "kick"; // kick_triple
+        return "kick";
     }
 
     private JumpProfile ResolveJump() {
@@ -731,53 +630,18 @@ public partial class PlayerMachine : SuperStateMachine
         return false;
     }
 
-    private bool BodySlam()
-    {
+    private bool BodySlam() {
         float radius = controller.radius * 1.5f;
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius, EnemyLayerMask);
 
-        foreach (var col in colliders)
-        {
+        foreach (var col in colliders) {
             EnemyMachine machine = col.GetComponent<EnemyMachine>();
 
-            if (machine != null && machine is VillainMachine)
-            {
-                if (machine.GetStruck(Math3d.ProjectVectorOnPlane(controller.up, machine.transform.position - transform.position).normalized, 7.0f, 15.0f, 0.3f))
-                {
+            if (machine != null && machine is VillainMachine) {
+                if (machine.GetStruck(Math3d.ProjectVectorOnPlane(controller.up, machine.transform.position - transform.position).normalized, 7.0f, 15.0f, 0.3f)) {
                     sound.PlayImpact();
                 }
-            }
-        }
-
-        return false;
-    }
-
-    private bool GoldBodySlam()
-    {
-        float radius = controller.radius * 1.5f;
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position + controller.up * controller.height * 0.5f, radius);
-
-        foreach (var col in colliders)
-        {
-            EnemyMachine machine = col.GetComponent<EnemyMachine>();
-
-            if (machine != null)
-            {
-                if (machine.GetStruck(Math3d.ProjectVectorOnPlane(controller.up, machine.transform.position - transform.position).normalized, 7.0f, 15.0f))
-                {
-                    sound.PlayImpact();
-
-                    machine.MakeGold();
-                }
-            }
-
-            RollingBallGoldDestroy ball = col.GetComponent<RollingBallGoldDestroy>();
-
-            if (ball)
-            {
-                ball.BlowUp();
             }
         }
 
@@ -793,59 +657,47 @@ public partial class PlayerMachine : SuperStateMachine
 
         return Vector3.Distance(linePosition, peakPosition) > jumpDamageHeight;
     }
-    private bool FallDamage()
-    {
-        status.TakeDamage(2);
 
+    private bool FallDamage() {
+        status.TakeDamage(2);
         sound.PlayTakeDamage();
 
-        if (status.CurrentHealth == 0)
-        {
+        if (status.CurrentHealth == 0) {
             return true;
         }
-        else
-        {
+        else {
             isTakingFallDamage = true;
-
             ScaleAnimator.GetComponent<Animation>().Play();
-
             status.EndInvincible();
 
             return false;
         }
     }
 
-    private void PlayJumpSound()
-    {
-        if (currentJumpProfile == jumpStandard)
-        {
-            sound.PlaySingleJump();
+    private void PlayJumpSound() {
+        if (currentJumpProfile == jumpStandard) {
+            sound.PlayJump(0);
         }
-        else if (currentJumpProfile == jumpDouble)
-        {
-            sound.PlayDoubleJump();
+        else if (currentJumpProfile == jumpDouble) {
+            sound.PlayJump(1);
         }
-        else if (currentJumpProfile == jumpLong)
-        {
-            sound.PlayLongJump();
+        else if (currentJumpProfile == jumpTriple) { 
+            sound.PlayJump(2);
         }
-        else if (currentJumpProfile == jumpTriple)
-        {
-            sound.PlayTripleJump();
+        else if (currentJumpProfile == jumpLong) {
+            sound.PlayJump(0);
         }
         else if (currentJumpProfile == jumpKick) {
             sound.PlayKickJump();
         }
-        else if (currentJumpProfile == jumpSideFlip)
-        {
+        else if (currentJumpProfile == jumpSideFlip) {
             sound.PlaySideFlip();
         }
-        else if (currentJumpProfile == jumpBackFlip)
-        {
+        else if (currentJumpProfile == jumpBackFlip) {
             sound.PlayBackFlip();
         }
         else if (currentJumpProfile == jumpWall) {
-            sound.PlayWallKick();
+            sound.PlayRandomJump();
         }
     }
 
