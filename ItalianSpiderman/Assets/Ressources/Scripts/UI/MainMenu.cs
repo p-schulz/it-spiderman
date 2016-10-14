@@ -4,14 +4,29 @@ using System.Collections;
 public class MainMenu : MonoBehaviour {
     public GameObject WhiteMatte;
     public GameObject BlackMatte;
-    bool fading = false;
-	
+	public GameObject OptionsMatte;
+	bool fading = false;
+	/*
+	bool bloom_old = false;
+	bool bloom_new = false;
+	bool chroma = false;
+	bool noise = false;
+	*/
     public void StartNewGame()
     {
+		// save options
         WhiteMatte.SetActive(true);
         fading = true;
         StartCoroutine("LoadLevel01");
     }
+
+	public void OpenOptions() {
+		OptionsMatte.SetActive(true);
+	}
+
+	public void CloseOptions() {
+		OptionsMatte.SetActive(false);
+	}
 
     public void ExitButton()
     {
