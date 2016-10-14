@@ -513,7 +513,10 @@ public partial class PlayerMachine : SuperStateMachine
 
     // which kicking animation to play
     private string ResolveKick() {
-        return "kick";
+        if (kickCount == 2)
+            return "kick"; // punch_double
+        else
+            return "kick_mirrored"; // punch_single
     }
 
     private JumpProfile ResolveJump() {
