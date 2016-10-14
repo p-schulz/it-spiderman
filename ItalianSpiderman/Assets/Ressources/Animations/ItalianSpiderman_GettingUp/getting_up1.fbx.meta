@@ -164,7 +164,7 @@ ModelImporter:
     - serializedVersion: 16
       name: getting_up1
       takeName: mixamo.com
-      firstFrame: 0
+      firstFrame: 20.8
       lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0

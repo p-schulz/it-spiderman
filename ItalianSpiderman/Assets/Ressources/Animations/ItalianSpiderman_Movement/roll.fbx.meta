@@ -164,8 +164,8 @@ ModelImporter:
     - serializedVersion: 16
       name: roll
       takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 33
+      firstFrame: 12.7
+      lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

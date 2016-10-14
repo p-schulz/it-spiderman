@@ -164,8 +164,8 @@ ModelImporter:
     - serializedVersion: 16
       name: roundhouse_kick
       takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 26
+      firstFrame: 6
+      lastFrame: 12
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

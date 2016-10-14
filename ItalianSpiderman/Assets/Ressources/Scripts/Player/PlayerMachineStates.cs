@@ -1240,7 +1240,7 @@ public partial class PlayerMachine : SuperStateMachine {
     /// </summary>
 
     void KnockbackRecover_EnterState() {
-        anim.Play("jump");
+		anim.Play("getting_up2");
     }
 
     void KnockbackRecover_SuperUpdate() {
@@ -1249,7 +1249,7 @@ public partial class PlayerMachine : SuperStateMachine {
             return;
         }
 
-        if (Timer(timeEnteredState, anim["jump"].length)) {
+		if (Timer(timeEnteredState, anim["getting_up2"].length)) {
             currentState = PlayerStates.Idle;
         }
     }
@@ -1259,7 +1259,7 @@ public partial class PlayerMachine : SuperStateMachine {
     }
 
     void KnockbackForwardsRecover_EnterState() {
-        anim.Play("jump");
+        anim.Play("getting_up2");
     }
 
     void KnockbackForwardsRecover_SuperUpdate() {
@@ -1268,7 +1268,7 @@ public partial class PlayerMachine : SuperStateMachine {
             return;
         }
 
-        if (Timer(timeEnteredState, anim["jump"].length)) {
+        if (Timer(timeEnteredState, anim["getting_up2"].length)) {
             currentState = PlayerStates.Idle;
         }
     }
@@ -1282,7 +1282,7 @@ public partial class PlayerMachine : SuperStateMachine {
     /// </summary>
 
     void Knockback_EnterState() {
-        anim.Play("hit_to_body");
+        anim.Play("stunned");
     }
 
     void Knockback_SuperUpdate() {
@@ -1589,7 +1589,7 @@ public partial class PlayerMachine : SuperStateMachine {
     /// </summary>
 
     void SlideRecover_EnterState() {
-        anim.Play("jump");
+		anim.Play("getting_up2");
     }
 
     void SlideRecover_SuperUpdate() {
@@ -1598,7 +1598,7 @@ public partial class PlayerMachine : SuperStateMachine {
             return;
         }
 
-        if (Timer(timeEnteredState, anim["jump"].length)) {
+		if (Timer(timeEnteredState, anim["getting_up2"].length)) {
             currentState = PlayerStates.Idle;
         }
     }

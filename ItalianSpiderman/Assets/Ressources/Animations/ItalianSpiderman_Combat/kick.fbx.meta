@@ -147,7 +147,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
@@ -164,8 +164,8 @@ ModelImporter:
     - serializedVersion: 16
       name: kick
       takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 26
+      firstFrame: 11
+      lastFrame: 17
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
