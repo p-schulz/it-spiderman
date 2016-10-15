@@ -19,7 +19,7 @@ public class HealthDisc : MonoBehaviour {
 	void Start () {
         Disc.color = DiscColors[0];
 
-        if (DiscColors.Length != 4)
+        if (DiscColors.Length != 8)
         {
             Debug.LogError("Disc Colors array is not of length 4, and is required to be");
         }
@@ -40,7 +40,8 @@ public class HealthDisc : MonoBehaviour {
     {
         DiscOverlay.fillAmount = (8.0f - currentHealth) / 8.0f;
 
-        int colorIndex = (int)Mathf.Clamp(Mathf.Floor((8 - currentHealth) / 2), 0, DiscColors.Length - 1);
+		//int colorIndex = (int)Mathf.Clamp(Mathf.Floor((8 - currentHealth) / 2), 0, DiscColors.Length - 1);
+		int colorIndex = (int)Mathf.Clamp(Mathf.Floor(8 - currentHealth), 0, DiscColors.Length - 1);
 
         Disc.color = DiscGloss.color = DiscColors[colorIndex];
 	}
