@@ -5,6 +5,9 @@ public class MainMenu : MonoBehaviour {
     public GameObject WhiteMatte;
     public GameObject BlackMatte;
 	public GameObject OptionsMatte;
+    public GameObject HelpMatte;
+    public GameObject Keys;
+    public GameObject Pad;
 	bool fading = false;
 	/*
 	bool bloom_old = false;
@@ -27,6 +30,27 @@ public class MainMenu : MonoBehaviour {
 	public void CloseOptions() {
 		OptionsMatte.SetActive(false);
 	}
+
+    public void OpenHelp()
+    {
+        HelpMatte.SetActive(true);
+    }
+
+    public void CloseHelp()
+    {
+        HelpMatte.SetActive(false);
+    }
+
+    public void OpenKeys()
+    {
+        Keys.SetActive(true);
+        Pad.SetActive(false);
+    }
+    public void OpenPad()
+    {
+        Pad.SetActive(true);
+        Keys.SetActive(false);
+    }
 
     public void ExitButton()
     {
