@@ -9,4 +9,4 @@ Italian Spiderman is a mock up / prototype game for that 70's italian action mot
 The game is developed with Unity and fully written in C#.
 
 Italian Spiderman Alpha-Releases now available:
-[unixbeachparty.de](www.unixbeachparty.de)
+[unixbeachparty.de](#)
