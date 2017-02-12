@@ -1,5 +1,7 @@
 # Italian Spiderman
 
+![alt tag](conceptart.jpg)
+
 Italian Spiderman is a mock up / prototype game for that 70's italian action motion picture. In terms of summercourses at the university, this project aims to produce a 100% original and awesome 3D-sidescroller. Features:
 
   - Play as Italian Spiderman
